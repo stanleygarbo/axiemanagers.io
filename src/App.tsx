@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Layout from "./templates/Layout";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AddScholar from "./pages/AddScholar";
+import Search from "./pages/Search";
+import ScholarPage from "./pages/ScholarPage";
+import ScrollToTop from "./components/ScrollToTop";
+import About from "./pages/About";
+import Donate from "./pages/Donate";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <ScrollToTop />
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/add-scholar" component={AddScholar} />
+            <Route exact path="/scholar/:ronin" component={ScholarPage} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/donate" component={Donate} />
+          </Switch>
+        </Layout>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
