@@ -30,7 +30,7 @@ const SearchTemplate = () => {
     {
       enabled: ids.length > 0,
       keepPreviousData: true,
-      staleTime: Infinity,
+      staleTime: 60000,
     }
   );
 

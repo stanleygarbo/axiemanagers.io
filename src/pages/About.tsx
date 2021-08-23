@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaFacebookSquare } from "react-icons/fa";
 import { AiFillGithub } from "react-icons/ai";
 
 const About = () => {
@@ -17,7 +17,7 @@ const About = () => {
             <div
               className="dev__profile__name-img__img"
               style={{
-                backgroundImage: `url(https://st2.depositphotos.com/3336339/8196/i/600/depositphotos_81969890-stock-photo-red-chaotic-cubes-wall-background.jpg)`,
+                backgroundImage: `url(/thoma.jpg)`,
               }}
             ></div>
             <div className="dev__profile__name-img__name">
@@ -31,13 +31,23 @@ const About = () => {
             </div>
           </div>
           <div className="dev__profile__socials">
-            <div className="dev__profile__socials__github">
+            {/* <div className="dev__profile__socials__github">
               <a
                 target="_blank"
                 href="https://discord.com/users/756368831944982599"
                 rel="noreferrer"
               >
                 <AiFillGithub size={30} />
+              </a>
+            </div> */}
+
+            <div className="dev__profile__socials__facebook">
+              <a
+                target="_blank"
+                href="https://facebook.com/stanley.garbo29"
+                rel="noreferrer"
+              >
+                <FaFacebookSquare size={25} />
               </a>
             </div>
             <div className="dev__profile__socials__discord">
@@ -57,7 +67,7 @@ const About = () => {
           </div>
           <p>
             I am currently a 1st year college student and I have been a
-            consistent honor student when I was in senior highschool. We decided
+            consistent honor student when I was in senior highschool. I decided
             to build axiemanagers.io hoping that we would get noticed by
             managers by providing value first.
           </p>
@@ -69,76 +79,12 @@ const About = () => {
           </p>
 
           <p>
-            I have experience in freelancing as a web developer building
-            websites for clients, but I decided to stop since I was being
-            underpaid and overworked. That is why I chose to look for an axie
-            manager.
+            I made this tool hoping to be noticed by managers and get a
+            scholarship. If you want to hire me as a scholar please kindly add
+            me on facebook.
           </p>
         </div>
       </div>
-      {/* <div className="dev">
-        <div className="dev__profile">
-          <div className="dev__profile__name-img">
-            <div
-              className="dev__profile__name-img__img"
-              style={{
-                backgroundImage: `url(https://st2.depositphotos.com/3336339/8196/i/600/depositphotos_81969890-stock-photo-red-chaotic-cubes-wall-background.jpg)`,
-              }}
-            ></div>
-            <div className="dev__profile__name-img__name">
-              <span className="dev__profile__name-img__name__first">
-                RJ Juanillo
-              </span>{" "}
-              <span className="dev__profile__name-img__name__last"></span>
-              <div className="dev__profile__name-img__name__discord">
-                Don_#5127
-              </div>
-            </div>
-          </div>
-          <div className="dev__profile__socials">
-            <div className="dev__profile__socials__github">
-              <a
-                target="_blank"
-                href="https://discord.com/users/756368831944982599"
-              >
-                <AiFillGithub size={30} />
-              </a>
-            </div>
-            <div className="dev__profile__socials__discord">
-              <a
-                target="_blank"
-                href="https://discord.com/users/756368831944982599"
-              >
-                <FaDiscord size={25} />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="dev__about">
-          <div className="dev__about__short-bio">
-            18 y/o <span>With High Honors</span> Gamer/Programmer
-          </div>
-          <p>
-            I am currently a 1st year college student an I have been a
-            consistent honor student when I was in senior highschool. We decided
-            to build axiemanagers.io hoping that we would get noticed by
-            managers by providing value first.
-          </p>
-
-          <p>
-            Why must I be your next scholar? Aside from being a well-performing
-            student, I can also provide value and be your voluntary community
-            developer/programmer.
-          </p>
-
-          <p>
-            I have experience in freelancing as a web developer building
-            websites for clients, but I decided to stop since I was being
-            underpaid and overworked. That is why I chose to look for an axie
-            manager.
-          </p>
-        </div>
-      </div> */}
     </Container>
   );
 };
@@ -185,7 +131,9 @@ const Container = styled.div<{ colors: IColors }>`
             width: 60px;
             height: 60px;
             border-radius: 25px;
-            background-size: cover;
+            background-size: 200%;
+            background-position: center 0px;
+            background-repeat: no-repeat;
           }
           &__name {
             font-size: 1.2rem;

@@ -66,7 +66,7 @@ const ScholarPage = () => {
     ["Scholar", roninAddress],
     () => fetchScholarByAddress(roninAddress),
     {
-      staleTime: Infinity,
+      staleTime: 60000,
     }
   );
 
@@ -74,7 +74,7 @@ const ScholarPage = () => {
     ["Axies", roninAddress],
     () => fetchScholarAxies(roninAddress),
     {
-      staleTime: Infinity,
+      staleTime: 60000,
     }
   );
 
@@ -187,9 +187,9 @@ const ScholarPage = () => {
                     <div className="wrapper__data__date">
                       {scholarQuery?.data.chart !== null && earnedHoveredElement
                         ? earnedHoveredElement.x
-                        : moment(scholarQuery?.data.lastUpdated).format(
-                            "MMMM D, YYYY hh:mm A"
-                          )}
+                        : moment
+                            .unix(scholarQuery?.data.lastUpdated)
+                            .format("MMMM D, YYYY hh:mm A")}
                     </div>
                     <div className="wrapper__data__line-chart">
                       {scholarQuery?.data.chart === null ||
