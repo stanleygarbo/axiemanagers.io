@@ -38,7 +38,13 @@ const useScholarsContext = () => {
   }
 
   function addScholar({ ronin, color, nickname, managerShare }: IScholars) {
-    setScholars([...scholars, { ronin, color, nickname, managerShare }]);
+    const exists = scholars.find((obj) => obj.ronin === ronin);
+
+    if (!exists) {
+      setScholars([...scholars, { ronin, color, nickname, managerShare }]);
+    } else {
+      alert(`${exists.nickname} already added.`);
+    }
   }
 
   function updateScholar({ ronin, color, nickname, managerShare }: IScholars) {
