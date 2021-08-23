@@ -115,8 +115,9 @@ const Donate = () => {
       </div>
 
       <p>
-        Further improvements will come to Paradime Axie tracking tool, thank you
-        so much! Want to get in touch? Email me:{" "}
+        Further improvements will come to axiemanagers.io, I will be adding gas
+        fees, bulk import and much more! thank you so much! Want to get in
+        touch? Email me:{" "}
         <a
           style={{ color: colors.accent2 }}
           href="mailto:contact@axiemanagers.io"
