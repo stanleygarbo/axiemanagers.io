@@ -376,11 +376,11 @@ const ScholarPage = () => {
 
                 <h2>{scholar?.nickname}&apos;s Axies</h2>
                 {/* {ScholarAxies.error} */}
-                {/* {ScholarAxies.isLoading && (
-                <div className="axie-loader">
-                  <CircularLoader/>
-                </div>
-              )} */}
+                {axiesQuery.isLoading && (
+                  <div className="axie-loader">
+                    <CircularLoader />
+                  </div>
+                )}
                 <div className="team">
                   {axiesQuery.data?.map((i) => (
                     <div key={i.id} className="team__axie">
