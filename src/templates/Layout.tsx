@@ -33,11 +33,9 @@ const Layout: React.FC<ILayout> = ({ children }) => {
           </button>
         </div>
       ) : (
-        <>
-          {children}
-          <TopBar />
-        </>
+        <TopBar />
       )}
+      {!pathname.includes("/settings/") && children}
       <GlobalStyles colors={colors} />
     </Container>
   );

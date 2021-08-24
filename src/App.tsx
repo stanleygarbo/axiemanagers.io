@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import About from "./pages/About";
 import Donate from "./pages/Donate";
 import Settings from "./pages/Settings";
+import SettingsBulkImport from "./pages/SettingsBulkImport";
 
 const App: React.FC = () => {
   return (
@@ -28,8 +29,12 @@ const App: React.FC = () => {
               render={({ match: { path } }) => (
                 <>
                   <Route path={`${path}/`} component={Settings} exact />
-                  {/* <Route path={`${path}/home`} component={Dashboard} />
-        <Route path={`${path}/users`} component={UserPage} /> */}
+                  <Route
+                    path={`${path}/bulk-import`}
+                    component={SettingsBulkImport}
+                    exact
+                  />
+                  {/* <Route path={`${path}/users`} component={UserPage} /> */}
                 </>
               )}
             />
