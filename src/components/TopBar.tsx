@@ -52,7 +52,9 @@ const TopBar = () => {
             ? "Donate"
             : pathname === "/about"
             ? "About"
-            : pathname.includes("/scholar") && "Scholar"}
+            : pathname.includes("/scholar")
+            ? "Scholar"
+            : pathname.includes("/settings") && "Settings"}
         </div>
         {pathname !== "/search" && (
           <div className="wrapper__controls">
