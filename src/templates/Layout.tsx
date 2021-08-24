@@ -74,6 +74,7 @@ const Container = styled.div<{ colors: IColors }>`
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
 
       &__back {
         position: sticky;
