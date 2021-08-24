@@ -10,7 +10,7 @@ const SettingsNav = () => {
 
   return (
     <Container colors={colors}>
-      <div className="settings-title">SETTINGS</div>
+      <div className="settings-title">OPTIONS</div>
       <Link
         to="/settings/bulk-import"
         className={pathname === "/settings/bulk-import" ? `active-tab` : ""}
@@ -59,7 +59,7 @@ const Container = styled.div<{ colors: IColors }>`
       margin-left: 20px;
 
       margin-bottom: 10px;
-      color: ${colors.textIntense + 90};
+      color: ${colors.textIntense + 60};
     }
   `}
 `;
