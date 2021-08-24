@@ -83,6 +83,11 @@ const About = () => {
             scholarship. If you want to hire me as a scholar please kindly add
             me on facebook.
           </p>
+
+          <p>
+            EDIT: I am no longer looking for a manager, I hope you like the site
+            :)
+          </p>
         </div>
       </div>
     </Container>
