@@ -81,8 +81,17 @@ const HomeSection1: React.FC<{
               Total Farmed
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(totalFarmed)}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(totalFarmed)}
+              </div>
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalFarmed * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
           <div className="home-section1-wrapper__grid__total-manager box home-section1-wrapper__grid__item">
@@ -90,8 +99,17 @@ const HomeSection1: React.FC<{
               Manager's Total
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(Math.floor(totalManager))}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(Math.floor(totalManager))}
+              </div>
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalManager * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
           <div className="home-section1-wrapper__grid__total-scholar box home-section1-wrapper__grid__item">
@@ -99,8 +117,17 @@ const HomeSection1: React.FC<{
               Scholars' Total
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(Math.floor(totalScholars))}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(Math.floor(totalScholars))}
+              </div>
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalScholars * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
 
@@ -109,8 +136,17 @@ const HomeSection1: React.FC<{
               Total Average
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(Math.floor(totalAverage))}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(Math.floor(totalAverage))}
+              </div>
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalAverage * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
           <div className="home-section1-wrapper__grid__total-unclaimed box home-section1-wrapper__grid__item">
@@ -118,8 +154,18 @@ const HomeSection1: React.FC<{
               Total Unclaimed
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(totalUnclaimed)}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(totalUnclaimed)}
+              </div>
+
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalUnclaimed * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
           <div className="home-section1-wrapper__grid__total-claimed box home-section1-wrapper__grid__item">
@@ -127,8 +173,17 @@ const HomeSection1: React.FC<{
               Total Claimed
             </div>
             <div className="home-section1-wrapper__grid__item__value">
-              <img src="/slp.png" alt="slp" width={35} />
-              {addCommaToNumber(totalClaimed)}
+              <div className="home-section1-wrapper__grid__item__value__slp">
+                <img src="/slp.png" alt="slp" width={35} />
+                {addCommaToNumber(totalClaimed)}
+              </div>
+              <div className="home-section1-wrapper__grid__item__value__currency">
+                &#8776; &#8369;
+                {SLPPriceQuery.data &&
+                  addCommaToNumber(
+                    Math.floor(totalClaimed * SLPPriceQuery.data?.current)
+                  )}
+              </div>
             </div>
           </div>
         </div>
@@ -186,15 +241,23 @@ const Container = styled.div<{ colors: IColors }>`
           }
 
           &__value {
-            font-size: 25px;
-            font-weight: 700;
             color: ${colors.textIntense};
             display: flex;
-            align-items: center;
-            margin-top: 15px;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 5px;
 
-            img {
-              margin-right: 5px;
+            &__slp {
+              font-size: 25px;
+              font-weight: 700;
+              display: flex;
+              align-items: center;
+              img {
+                margin-right: 5px;
+              }
+            }
+            &__currency {
+              margin-left: 40px;
             }
           }
         }
@@ -283,9 +346,15 @@ const Container = styled.div<{ colors: IColors }>`
 
           &__item {
             &__value {
-              margin-top: 10px;
-              img {
-                width: 25px;
+              margin-top: 5px;
+              &__slp {
+                img {
+                  width: 25px;
+                }
+              }
+              &__currency {
+                margin-left: 32px;
+                font-size: 12px;
               }
             }
           }
