@@ -5,18 +5,39 @@ import TopBar from "../components/TopBar";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { Helmet } from "react-helmet-async";
+import { useHistory, useLocation } from "react-router-dom";
+import SettingsNav from "../components/SettingsNav";
+import { IoClose } from "react-icons/io5";
 
 const Layout: React.FC<ILayout> = ({ children }) => {
   const { colors } = useTheme();
+  const { pathname } = useLocation();
+  const { push } = useHistory();
 
   return (
-    <Container>
+    <Container colors={colors}>
       <Helmet>
         <meta name="theme" content={colors.BGLight} />
         <meta name="theme-color" content={colors.BGLight} />
       </Helmet>
-      <TopBar />
-      {children}
+      {pathname.includes("/settings/") ? (
+        <div className="settings-wrapper">
+          <SettingsNav />
+          {children}
+
+          <button
+            onClick={() => push("/settings")}
+            className="settings-wrapper__back"
+          >
+            <IoClose size={30} />
+          </button>
+        </div>
+      ) : (
+        <>
+          {children}
+          <TopBar />
+        </>
+      )}
       <GlobalStyles colors={colors} />
     </Container>
   );
@@ -48,6 +69,38 @@ const GlobalStyles = createGlobalStyle<{ colors: IColors }>`
   }
 `;
 
-const Container = styled.div``;
+const Container = styled.div<{ colors: IColors }>`
+  ${({ colors }) => css`
+    .settings-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      &__back {
+        position: sticky;
+        top: 90px;
+        right: 0px;
+        width: 50px;
+        height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 2px solid ${colors.textNotSoIntense};
+        border-radius: 100%;
+
+        background: transparent;
+
+        color: ${colors.textNotSoIntense};
+
+        &:hover {
+          background: ${colors.textIntense + 20};
+        }
+      }
+    }
+  `}
+`;
 
 export default Layout;

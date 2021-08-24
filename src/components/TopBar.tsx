@@ -58,7 +58,11 @@ const TopBar = () => {
         </div>
         {pathname !== "/search" && (
           <div className="wrapper__controls">
-            <button onClick={() => push("/settings")}>
+            <button
+              onClick={() =>
+                push(screenWidth > 1000 ? "/settings/bulk-import" : "/settings")
+              }
+            >
               <FiSettings size={22} />
             </button>
 
