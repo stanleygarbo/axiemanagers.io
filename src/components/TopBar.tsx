@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { FiSun, FiMoon, FiSearch } from "react-icons/fi";
+import { FiSun, FiMoon, FiSearch, FiSettings } from "react-icons/fi";
 import { useScreenSize } from "../contexts/screenSizeContext";
 import SearchScholar from "./SearchScholar";
 import { Link, useHistory, useLocation, withRouter } from "react-router-dom";
@@ -56,6 +56,10 @@ const TopBar = () => {
         </div>
         {pathname !== "/search" && (
           <div className="wrapper__controls">
+            <button onClick={() => push("/settings")}>
+              <FiSettings size={22} />
+            </button>
+
             <button onClick={toggleDarkMode}>
               {isDarkMode ? <FiSun size={22} /> : <FiMoon size={22} />}
             </button>

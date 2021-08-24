@@ -8,6 +8,7 @@ import ScholarPage from "./pages/ScholarPage";
 import ScrollToTop from "./components/ScrollToTop";
 import About from "./pages/About";
 import Donate from "./pages/Donate";
+import Settings from "./pages/Settings";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,16 @@ const App: React.FC = () => {
             <Route exact path="/search" component={Search} />
             <Route exact path="/about" component={About} />
             <Route exact path="/donate" component={Donate} />
+            <Route
+              path="/settings"
+              render={({ match: { path } }) => (
+                <>
+                  <Route path={`${path}/`} component={Settings} exact />
+                  {/* <Route path={`${path}/home`} component={Dashboard} />
+        <Route path={`${path}/users`} component={UserPage} /> */}
+                </>
+              )}
+            />
           </Switch>
         </Layout>
       </Router>
