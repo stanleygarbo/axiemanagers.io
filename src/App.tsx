@@ -35,7 +35,16 @@ const App: React.FC = () => {
                       component={SettingsBulkImport}
                       exact
                     />
-                    {/* <Route path={`${path}/users`} component={UserPage} /> */}
+                    <Route
+                      path={`${path}/interface`}
+                      component={SettingsBulkImport}
+                      exact
+                    />
+                    <Route
+                      path={`${path}/min-quota`}
+                      component={SettingsBulkImport}
+                      exact
+                    />
                   </>
                 )}
               />
