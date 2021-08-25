@@ -132,22 +132,27 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     {addCommaToNumber(scholarShare.converted)}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div>
-                      <img
-                        src="/slp.png"
-                        width={20}
-                        alt="slp"
-                        style={{ marginRight: 4 }}
-                      />
-                      {addCommaToNumber(data[i.ronin]?.today)}
-                    </div>
+                    {data[i.ronin]?.chart?.length > 0 ? (
+                      <div>
+                        <img
+                          src="/slp.png"
+                          width={20}
+                          alt="slp"
+                          style={{ marginRight: 4 }}
+                        />
+                        {addCommaToNumber(data[i.ronin]?.today)}
+                      </div>
+                    ) : (
+                      "---"
+                    )}
                     &nbsp;&#8776; &#8369;
-                    {SLPPrice?.data &&
-                      addCommaToNumber(
-                        Math.floor(
-                          data[i.ronin]?.today * SLPPrice.data?.current
+                    {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
+                      ? addCommaToNumber(
+                          Math.floor(
+                            data[i.ronin]?.today * SLPPrice.data?.current
+                          )
                         )
-                      )}
+                      : "---"}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                     {data[i.ronin]
