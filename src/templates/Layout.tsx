@@ -8,11 +8,14 @@ import { Helmet } from "react-helmet-async";
 import { useHistory, useLocation } from "react-router-dom";
 import SettingsNav from "../components/SettingsNav";
 import { IoClose } from "react-icons/io5";
+import { useScreenSize } from "../contexts/screenSizeContext";
 
 const Layout: React.FC<ILayout> = ({ children }) => {
   const { colors } = useTheme();
   const { pathname } = useLocation();
   const { push } = useHistory();
+
+  const { screenWidth } = useScreenSize();
 
   return (
     <Container colors={colors}>
@@ -22,7 +25,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
       </Helmet>
       {pathname.includes("/settings/") ? (
         <div className="settings-wrapper">
-          <SettingsNav />
+          {screenWidth > 718 && <SettingsNav />}
           {children}
 
           <button
@@ -75,6 +78,7 @@ const Container = styled.div<{ colors: IColors }>`
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      padding: 0 20px;
 
       &__back {
         position: sticky;
@@ -96,6 +100,17 @@ const Container = styled.div<{ colors: IColors }>`
 
         &:hover {
           background: ${colors.textIntense + 20};
+        }
+      }
+    }
+    @media (max-width: 718px) {
+      .settings-wrapper {
+        padding: 0;
+
+        &__back {
+          position: fixed;
+          top: 20px;
+          right: 20px;
         }
       }
     }
