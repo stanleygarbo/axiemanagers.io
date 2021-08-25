@@ -183,7 +183,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                         />
                       </div>
                     ) : (
-                      `Visible in ${3 - data[i.ronin]?.chart.length} days`
+                      `Visible in ${3 - data[i.ronin]?.chart?.length} day${
+                        3 - data[i.ronin]?.chart?.length > 1 ? "s" : ""
+                      }`
                     )}
                   </td>
                 </tr>
