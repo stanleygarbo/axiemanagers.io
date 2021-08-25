@@ -10,7 +10,7 @@ import { MdArrowBack } from "react-icons/md";
 const TopBar = () => {
   const { colors, toggleDarkMode, isDarkMode } = useTheme();
   const { pathname } = useLocation();
-  const { push } = useHistory();
+  const { goBack, push } = useHistory();
 
   const { screenWidth } = useScreenSize();
 
@@ -44,7 +44,7 @@ const TopBar = () => {
           {pathname === "/" ? (
             "axiemanagers.io"
           ) : (
-            <MdArrowBack className="icon" onClick={() => push("/")} size={30} />
+            <MdArrowBack className="icon" onClick={goBack} size={30} />
           )}
           {pathname === "/add-scholar"
             ? "Add Scholar"
