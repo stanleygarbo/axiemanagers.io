@@ -98,7 +98,7 @@ const AddScholar = ({ history }) => {
             <FormikField
               colors={colors}
               type="text"
-              placeholder="Manager's Share"
+              placeholder="Manager's %"
               autoComplete="off"
               name="managerShare"
               style={{
