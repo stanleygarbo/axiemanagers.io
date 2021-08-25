@@ -107,20 +107,8 @@ const HomeSection2: React.FC<{
                       .fromNow()}
                     color={i.color}
                     progress={
-                      scholarsStat[i.ronin]?.lastClaimed !== 0
-                        ? scholarsStat[i.ronin]?.total /
-                          Number(
-                            moment
-                              .duration(
-                                moment(new Date()).diff(
-                                  moment.unix(
-                                    scholarsStat[i.ronin]?.lastClaimed
-                                  )
-                                )
-                              )
-                              .asDays()
-                              .toFixed(0)
-                          )
+                      scholarsStat[i.ronin]?.chart?.length > 0
+                        ? scholarsStat[i.ronin]?.today
                         : null
                     }
                     chartData={scholarsStat[i.ronin]?.chart?.map((cd) =>
