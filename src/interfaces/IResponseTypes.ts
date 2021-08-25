@@ -12,6 +12,7 @@ export type Scholar = {
   lastClaimed: number;
   lastUpdated: number;
   lastClaimAmount: number;
+  today: number;
   chart: ChartObj[];
   axies: Axie[];
 };
