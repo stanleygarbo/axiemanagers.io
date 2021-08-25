@@ -144,7 +144,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     &nbsp;&#8776; &#8369;
                     {SLPPrice?.data &&
                       addCommaToNumber(
-                        data[i.ronin]?.today * SLPPrice.data?.current
+                        Math.floor(
+                          data[i.ronin]?.today * SLPPrice.data?.current
+                        )
                       )}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
