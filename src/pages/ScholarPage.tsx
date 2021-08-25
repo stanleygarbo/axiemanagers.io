@@ -237,6 +237,7 @@ const ScholarPage = () => {
                             <FormikField
                               onKeyUp={nameChangeHandler}
                               autoComplete="off"
+                              type="text"
                               name="nickname"
                               placeholder="Nickname"
                               colors={colors}
@@ -261,6 +262,7 @@ const ScholarPage = () => {
                               <FormikField
                                 onKeyUp={managerShareChangeHandler}
                                 autoComplete="off"
+                                type="number"
                                 name="managerShare"
                                 placeholder="%"
                                 colors={colors}
