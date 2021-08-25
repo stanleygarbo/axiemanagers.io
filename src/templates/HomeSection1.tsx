@@ -187,7 +187,10 @@ const HomeSection1: React.FC<{
             </div>
           </div>
         </div>
-        <div className="home-section1-wrapper__line-chart box">
+        <div
+          className="home-section1-wrapper__line-chart box"
+          onMouseLeave={() => setHoveredElement(null)}
+        >
           <div className="home-section1-wrapper__line-chart__price">
             &#8369;
             {hoveredElement ? hoveredElement.y : SLPPriceQuery.data?.current}
@@ -236,7 +239,7 @@ const Container = styled.div<{ colors: IColors }>`
           flex-direction: column;
 
           &__title {
-            font-size: 18px;
+            font-size: 17px;
             color: ${colors.textIntense};
           }
 
