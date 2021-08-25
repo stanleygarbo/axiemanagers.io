@@ -76,7 +76,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     {i.nickname}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div className="center">
+                    <div className="center-horizontal">
                       <img
                         src="/slp.png"
                         width={20}
@@ -106,7 +106,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     }
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div>
+                    <div className="center-horizontal">
                       <img
                         src="/slp.png"
                         width={20}
@@ -119,7 +119,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     {addCommaToNumber(managerShare.converted)}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div>
+                    <div className="center-horizontal">
                       <img
                         src="/slp.png"
                         width={20}
@@ -133,7 +133,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                     {data[i.ronin]?.chart?.length > 0 ? (
-                      <div>
+                      <div className="center-horizontal">
                         <img
                           src="/slp.png"
                           width={20}
@@ -227,7 +227,7 @@ const Container = styled.div<{ colors: IColors }>`
         & ~ td {
           cursor: pointer;
         }
-        .center {
+        .center-horizontal {
           display: flex;
           align-items: center;
         }
