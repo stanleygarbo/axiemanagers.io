@@ -28,7 +28,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
           {screenWidth > 718 && <SettingsNav />}
           {children}
 
-          <button onClick={() => goBack} className="settings-wrapper__back">
+          <button onClick={goBack} className="settings-wrapper__back">
             <IoClose size={30} />
           </button>
         </div>
