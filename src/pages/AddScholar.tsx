@@ -73,41 +73,56 @@ const AddScholar = ({ history }) => {
       >
         {({ errors, touched }) => (
           <Form>
-            <FormikField
-              colors={colors}
-              type="text"
-              placeholder="Ronin Address"
-              autoComplete="off"
-              name="ronin"
-              style={{
-                ...inputFieldStyles,
-                ...(errors.ronin && touched.ronin && errorFieldStyle),
-              }}
-            />
-            <FormikField
-              colors={colors}
-              type="text"
-              placeholder="Name"
-              autoComplete="off"
-              name="name"
-              style={{
-                ...inputFieldStyles,
-                ...(errors.name && touched.name && errorFieldStyle),
-              }}
-            />
-            <FormikField
-              colors={colors}
-              type="text"
-              placeholder="Manager's %"
-              autoComplete="off"
-              name="managerShare"
-              style={{
-                ...inputFieldStyles,
-                ...(errors.managerShare &&
-                  touched.managerShare &&
-                  errorFieldStyle),
-              }}
-            />
+            <section>
+              <FormikField
+                colors={colors}
+                type="text"
+                placeholder="Ronin Address"
+                autoComplete="off"
+                name="ronin"
+                style={{
+                  ...inputFieldStyles,
+                  ...(errors.ronin && touched.ronin && errorFieldStyle),
+                }}
+              />
+              {errors.ronin && touched.ronin ? (
+                <div className="error">{errors.ronin}</div>
+              ) : null}
+            </section>
+            <section>
+              <FormikField
+                colors={colors}
+                type="text"
+                placeholder="Name"
+                autoComplete="off"
+                name="name"
+                style={{
+                  ...inputFieldStyles,
+                  ...(errors.name && touched.name && errorFieldStyle),
+                }}
+              />
+              {errors.name && touched.name ? (
+                <div className="error">{errors.name}</div>
+              ) : null}
+            </section>
+            <section>
+              <FormikField
+                colors={colors}
+                type="text"
+                placeholder="Manager's %"
+                autoComplete="off"
+                name="managerShare"
+                style={{
+                  ...inputFieldStyles,
+                  ...(errors.managerShare &&
+                    touched.managerShare &&
+                    errorFieldStyle),
+                }}
+              />
+              {errors.managerShare && touched.managerShare ? (
+                <div className="error">{errors.managerShare}</div>
+              ) : null}
+            </section>
 
             <div className="floating">
               <div className="floating__buttons">
@@ -149,12 +164,19 @@ const Container = styled.div<{ colors: IColors }>`
       grid-template-columns: 1fr 1fr;
       gap: 10px;
 
-      input {
-        min-width: 100px;
-        padding: 12px 20px;
+      section {
+        input {
+          width: 100%;
+          min-width: 100px;
+          padding: 12px 20px;
+        }
+
+        .error {
+          color: ${colors.danger};
+        }
       }
 
-      input:nth-child(1) {
+      section:nth-child(1) {
         grid-column: span 2;
       }
 
