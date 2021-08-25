@@ -348,21 +348,7 @@ const ScholarPage = () => {
                         }}
                       />
                       {scholarQuery.data?.lastClaimed !== 0 ? (
-                        <Progress
-                          earned={
-                            scholarQuery.data?.total /
-                            Number(
-                              moment
-                                .duration(
-                                  moment(new Date()).diff(
-                                    moment.unix(scholarQuery?.data?.lastClaimed)
-                                  )
-                                )
-                                .asDays()
-                                .toFixed(0)
-                            )
-                          }
-                        />
+                        <Progress earned={scholarQuery?.data?.today} />
                       ) : (
                         <div className="wrapper__scholar-info__progress__na">
                           Progress
