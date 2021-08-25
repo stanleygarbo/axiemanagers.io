@@ -13,7 +13,7 @@ import { useScreenSize } from "../contexts/screenSizeContext";
 const Layout: React.FC<ILayout> = ({ children }) => {
   const { colors } = useTheme();
   const { pathname } = useLocation();
-  const { push } = useHistory();
+  const { goBack } = useHistory();
 
   const { screenWidth } = useScreenSize();
 
@@ -28,10 +28,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
           {screenWidth > 718 && <SettingsNav />}
           {children}
 
-          <button
-            onClick={() => push("/settings")}
-            className="settings-wrapper__back"
-          >
+          <button onClick={() => goBack} className="settings-wrapper__back">
             <IoClose size={30} />
           </button>
         </div>
