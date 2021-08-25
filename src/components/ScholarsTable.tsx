@@ -33,6 +33,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
             <th>Average</th>
             <th>Manager</th>
             <th>Scholar</th>
+            <th>Today</th>
             <th>Last Updated</th>
             <th>Last Claimed</th>
             <th>Claimable</th>
@@ -88,13 +89,24 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                     </div>
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    {getAverageSLP(
-                      data[i.ronin]?.lastClaimed,
-                      data[i.ronin]?.total
-                    )}
+                    {
+                      getAverageSLP(
+                        data[i.ronin]?.lastClaimed,
+                        data[i.ronin]?.total,
+                        SLPPrice?.data?.current
+                      ).slp
+                    }
+                    <br />
+                    {
+                      getAverageSLP(
+                        data[i.ronin]?.lastClaimed,
+                        data[i.ronin]?.total,
+                        SLPPrice?.data?.current
+                      ).converted
+                    }
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div className="center">
+                    <div>
                       <img
                         src="/slp.png"
                         width={20}
@@ -102,12 +114,12 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                         style={{ marginRight: 4 }}
                       />
                       {addCommaToNumber(managerShare.slp)}
-                      &nbsp;&#8776; &#8369;
-                      {addCommaToNumber(managerShare.converted)}
                     </div>
+                    &nbsp;&#8776; &#8369;
+                    {addCommaToNumber(managerShare.converted)}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                    <div className="center">
+                    <div>
                       <img
                         src="/slp.png"
                         width={20}
@@ -115,9 +127,25 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                         style={{ marginRight: 4 }}
                       />
                       {addCommaToNumber(scholarShare.slp)}
-                      &nbsp;&#8776; &#8369;
-                      {addCommaToNumber(scholarShare.converted)}
                     </div>
+                    &nbsp;&#8776; &#8369;
+                    {addCommaToNumber(scholarShare.converted)}
+                  </td>
+                  <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
+                    <div>
+                      <img
+                        src="/slp.png"
+                        width={20}
+                        alt="slp"
+                        style={{ marginRight: 4 }}
+                      />
+                      {addCommaToNumber(data[i.ronin]?.today)}
+                    </div>
+                    &nbsp;&#8776; &#8369;
+                    {SLPPrice?.data &&
+                      addCommaToNumber(
+                        data[i.ronin]?.today * SLPPrice.data?.current
+                      )}
                   </td>
                   <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                     {data[i.ronin]

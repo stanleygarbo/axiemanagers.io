@@ -1,27 +1,35 @@
 import moment from "moment";
 import { addCommaToNumber } from "./addCommaToNumber";
 
+type Average = { slp: number | string; converted: number | string };
+
 export const getAverageSLP = (
   lastClaimed?: number,
-  totalSLP?: number
-): string => {
-  if (!lastClaimed || totalSLP === undefined) return "---";
+  totalSLP?: number,
+  slpPrice?: number
+): Average => {
+  if (!lastClaimed || totalSLP === undefined || slpPrice === undefined)
+    return { slp: "---", converted: "---" };
 
-  return lastClaimed !== 0 &&
-    moment
-      .duration(moment(new Date()).diff(moment.unix(lastClaimed)))
-      .asDays()
-      .toFixed(0) !== "0"
-    ? addCommaToNumber(
-        Math.round(
-          totalSLP /
-            Number(
-              moment
-                .duration(moment(new Date()).diff(moment.unix(lastClaimed)))
-                .asDays()
-                .toFixed(0)
-            )
-        )
-      ) + " / day"
-    : "---";
+  const avgSLP = Math.floor(
+    totalSLP /
+      Number(
+        moment
+          .duration(moment(new Date()).diff(moment.unix(lastClaimed)))
+          .asDays()
+          .toFixed(0)
+      )
+  );
+
+  return {
+    slp:
+      lastClaimed !== 0 &&
+      moment
+        .duration(moment(new Date()).diff(moment.unix(lastClaimed)))
+        .asDays()
+        .toFixed(0) !== "0"
+        ? addCommaToNumber(avgSLP) + " / day"
+        : "---",
+    converted: "≈ ₱" + addCommaToNumber(Math.floor(avgSLP * slpPrice)),
+  };
 };
