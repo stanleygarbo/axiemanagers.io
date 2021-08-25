@@ -12,4 +12,5 @@ export interface IScholarCard {
   progress: number | null;
   chartData?: string[];
   chartLabels?: string[];
+  today?: string;
 }

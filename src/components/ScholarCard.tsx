@@ -30,6 +30,7 @@ const ScholarCard: React.FC<IScholarCard> = ({
   progress,
   chartData,
   chartLabels,
+  today,
 }) => {
   const { colors } = useTheme();
 
@@ -47,6 +48,10 @@ const ScholarCard: React.FC<IScholarCard> = ({
           <time>Last Claim: {lastClaim}</time>
           <time>Next Claim: {nextClaim}</time>
         </section>
+      </div>
+      <div className="today">
+        Today: <img src="/slp.png" alt="" width={20} />
+        {today}
       </div>
       <div className="row-split">
         <section>
@@ -98,6 +103,13 @@ const Container = styled.div<{ colors: IColors }>`
 
     &:active {
       transform: scale(0.99);
+    }
+
+    .today {
+      color: ${colors.textNotSoIntense};
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
     }
 
     .badge {

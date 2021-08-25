@@ -6,8 +6,8 @@ import { useState } from "react";
 import Sorters from "../components/Sorters";
 import ScholarsTable from "../components/ScholarsTable";
 import ScholarCard from "../components/ScholarCard";
-import { UseQueryResult } from "react-query";
-import { Scholars } from "../interfaces/IResponseTypes";
+import { useQueryClient, UseQueryResult } from "react-query";
+import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import moment from "moment";
 import { Link } from "react-router-dom";
@@ -22,6 +22,8 @@ const HomeSection2: React.FC<{
 }> = ({ scholarsQuery }) => {
   const { colors } = useTheme();
   const { scholars } = useScholars();
+  const queryClient = useQueryClient();
+  const SLPPrice = queryClient.getQueryState<SLPPrice>("SLPPrice");
 
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
@@ -89,6 +91,13 @@ const HomeSection2: React.FC<{
                     name={i.nickname}
                     badge={{ id: "topEarner", name: "Top Earner" }}
                     earned={scholarsStat[i.ronin]?.total}
+                    today={
+                      SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
+                        ? scholarsStat[i.ronin]?.today +
+                          " ≈ ₱" +
+                          scholarsStat[i.ronin]?.today * SLPPrice?.data?.current
+                        : "---"
+                    }
                     lastClaim={getLastClaimed(
                       scholarsStat[i.ronin]?.lastClaimed
                     )}
