@@ -74,14 +74,14 @@ const ScholarPage = () => {
     ["Axies", roninAddress],
     () => fetchScholarAxies(roninAddress),
     {
-      staleTime: 60000,
+      staleTime: Infinity,
     }
   );
 
   // console.log(axiesQuery);
 
   const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice, {
-    staleTime: 60000,
+    staleTime: Infinity,
   });
 
   const removeScholarFromCache = () => {

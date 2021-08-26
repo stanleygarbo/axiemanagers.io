@@ -28,7 +28,7 @@ const HomePage = () => {
 
   const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice, {
     keepPreviousData: true,
-    staleTime: 60000,
+    staleTime: Infinity,
   });
 
   return (

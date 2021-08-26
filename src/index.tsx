@@ -5,25 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import AllContextProviders from "./contexts";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HelmetProvider } from "react-helmet-async";
-import { persistQueryClient } from "react-query/persistQueryClient-experimental";
-import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 60000, // 2 minutes
-    },
-  },
-});
-
-const localStoragePersistor = createWebStoragePersistor({
-  storage: window.localStorage,
-});
-
-persistQueryClient({
-  queryClient,
-  persistor: localStoragePersistor,
-});
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
