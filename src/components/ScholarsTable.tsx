@@ -70,7 +70,6 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                         : "",
                   }}
                 >
-                  {console.log(data[i.ronin])}
                   <td className="color-picker">
                     <ColorPicker
                       color={i.color}
