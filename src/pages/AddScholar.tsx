@@ -20,7 +20,7 @@ const ScholarSchema = Yup.object().shape({
     .required("Required"),
   name: Yup.string().required("Required"),
   managerShare: Yup.number()
-    .min(1, "Too low")
+    .min(0, "Too low")
     .max(100, "Too high")
     .required("Required"),
 });
