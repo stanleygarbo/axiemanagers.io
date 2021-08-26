@@ -80,7 +80,9 @@ const ScholarPage = () => {
 
   // console.log(axiesQuery);
 
-  const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice);
+  const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice, {
+    staleTime: 60000,
+  });
 
   const removeScholarFromCache = () => {
     queryClient.setQueryData<Scholars>("Scholars", (old: any) => {
