@@ -13,7 +13,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { IColors } from "../interfaces/IColors";
 import { getLastClaimed, getNextClaim } from "../util/getClaimDates";
-import { DynamicSortObject } from "../util/DynamicSort";
+import { DynamicSortArray, DynamicSortObject } from "../util/DynamicSort";
 import { useScreenSize } from "../contexts/screenSizeContext";
 import { IScholars } from "../interfaces/IScholarsContext";
 
@@ -28,7 +28,7 @@ const HomeSection2: React.FC<{
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
   );
-  const [orderBy, setOrderBy] = useState<string>("total");
+  const [orderBy, setOrderBy] = useState<string>("name");
   const [order, setOrder] = useState<string>("desc");
 
   const { screenWidth } = useScreenSize();
@@ -42,17 +42,23 @@ const HomeSection2: React.FC<{
   }, [screenWidth]);
 
   let sortedScholarAddresses: string[] = [];
-  const sortedScholars: IScholars[] = [];
+  let sortedScholars: IScholars[] = [];
   const data = scholarsQuery.data?.list;
   if (data) {
-    sortedScholarAddresses = Object.keys(data).sort(
-      DynamicSortObject((order === "desc" ? "-" : "") + orderBy, data)
-    );
+    if (orderBy === "name") {
+      sortedScholars = scholars.sort(
+        DynamicSortArray((order === "desc" ? "-" : "") + orderBy)
+      );
+    } else {
+      sortedScholarAddresses = Object.keys(data).sort(
+        DynamicSortObject((order === "desc" ? "-" : "") + orderBy, data)
+      );
 
-    for (const address of sortedScholarAddresses) {
-      for (const scholar of scholars) {
-        if (scholar.ronin === address) {
-          sortedScholars.push(scholar);
+      for (const address of sortedScholarAddresses) {
+        for (const scholar of scholars) {
+          if (scholar.ronin === address) {
+            sortedScholars.push(scholar);
+          }
         }
       }
     }

@@ -16,6 +16,7 @@ const Sorters: React.FC<ISorters> = ({ setOrderBy, setOrder }) => {
         name="sort"
         id=""
       >
+        <option value="name">NAME</option>
         <option value="total">EARNED</option>
         <option value="lastClaimed">NEXT CLAIM</option>
       </select>
