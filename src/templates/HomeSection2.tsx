@@ -16,6 +16,7 @@ import { getLastClaimed, getNextClaim } from "../util/getClaimDates";
 import { DynamicSortArray, DynamicSortObject } from "../util/DynamicSort";
 import { useScreenSize } from "../contexts/screenSizeContext";
 import { IScholars } from "../interfaces/IScholarsContext";
+import { addCommaToNumber } from "../util/addCommaToNumber";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
@@ -110,9 +111,14 @@ const HomeSection2: React.FC<{
                     earned={scholarsStat[i.ronin]?.total}
                     today={
                       SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
-                        ? scholarsStat[i.ronin]?.today +
+                        ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
                           " ≈ ₱" +
-                          scholarsStat[i.ronin]?.today * SLPPrice?.data?.current
+                          addCommaToNumber(
+                            Math.floor(
+                              scholarsStat[i.ronin]?.today *
+                                SLPPrice?.data?.current
+                            )
+                          )
                         : "---"
                     }
                     lastClaim={getLastClaimed(
