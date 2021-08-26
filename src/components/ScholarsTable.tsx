@@ -14,6 +14,7 @@ import { getAverageSLP } from "../util/getAverageSLP";
 import { getManagerShare, getScholarShare } from "../util/getShare";
 import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
 import { LineChart } from "./LineChart";
+import { TiArrowSync } from "react-icons/ti";
 
 const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
   const { colors } = useTheme();
@@ -58,7 +59,18 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
               );
 
               return (
-                <tr key={idx}>
+                <tr
+                  key={idx}
+                  style={{
+                    border:
+                      data[i.ronin].today === 0 &&
+                      data[i.ronin].total === 0 &&
+                      data[i.ronin].lastClaimed === 0
+                        ? `1px solid ${colors.danger}`
+                        : "",
+                  }}
+                >
+                  {console.log(data[i.ronin])}
                   <td className="color-picker">
                     <ColorPicker
                       color={i.color}
@@ -188,6 +200,15 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                       }`
                     )}
                   </td>
+                  {data[i.ronin].today === 0 &&
+                  data[i.ronin].total === 0 &&
+                  data[i.ronin].lastClaimed === 0 ? (
+                    <td>
+                      <TiArrowSync size={25} />
+                    </td>
+                  ) : (
+                    <td></td>
+                  )}
                 </tr>
               );
             })}

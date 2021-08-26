@@ -31,13 +31,17 @@ const ScholarCard: React.FC<IScholarCard> = ({
   chartData,
   chartLabels,
   today,
+  error,
 }) => {
   const { colors } = useTheme();
 
   return (
-    <Container colors={colors}>
+    <Container
+      colors={colors}
+      style={{ border: error ? `1px solid ${colors.danger}` : "" }}
+    >
       <div className="name">{name}</div>
-      {/* {badge?.id && <div className="badge">{badge.name}</div>} */}
+      {badge?.id && <div className="badge">{badge.name}</div>}
       <div className="batch">Updated {lastUpdated}</div>
       <div className="earned">
         <section className="row">
@@ -119,7 +123,7 @@ const Container = styled.div<{ colors: IColors }>`
       top: 0px;
       padding: 2px 15px;
       border-radius: 0px 5px 0px 5px;
-      background-color: ${colors.accent2};
+      background-color: ${colors.danger};
       font-size: 12px;
       color: ${"#FFFFFF"};
     }

@@ -88,8 +88,19 @@ const HomeSection2: React.FC<{
               {sortedScholars.map((i, idx) => (
                 <Link key={idx} to={`scholar/${i.ronin}`}>
                   <ScholarCard
+                    error={
+                      scholarsStat[i.ronin]?.today === 0 &&
+                      scholarsStat[i.ronin]?.total === 0 &&
+                      scholarsStat[i.ronin]?.lastClaimed === 0
+                    }
                     name={i.nickname}
-                    badge={{ id: "topEarner", name: "Top Earner" }}
+                    badge={
+                      scholarsStat[i.ronin]?.today === 0 &&
+                      scholarsStat[i.ronin]?.total === 0 &&
+                      scholarsStat[i.ronin]?.lastClaimed === 0
+                        ? { id: "clickToRetry", name: "Click to Retry" }
+                        : { id: "", name: "" }
+                    }
                     earned={scholarsStat[i.ronin]?.total}
                     today={
                       SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0

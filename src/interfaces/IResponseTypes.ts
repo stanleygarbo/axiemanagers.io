@@ -15,6 +15,7 @@ export type Scholar = {
   today: number;
   chart: ChartObj[];
   axies: Axie[];
+  success: boolean;
 };
 
 export type Scholars = {

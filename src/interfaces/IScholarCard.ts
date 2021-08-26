@@ -13,4 +13,5 @@ export interface IScholarCard {
   chartData?: string[];
   chartLabels?: string[];
   today?: string;
+  error?: boolean;
 }
