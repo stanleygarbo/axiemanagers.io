@@ -82,7 +82,8 @@ const HomeSection1: React.FC<{
       <p>
         Please beware that the site has been getting a lot of unexpected
         traffic, I will be observing the site for some bugs. If you have any
-        questions please message me. Thank you for all of your donations :)
+        questions please message me. Thank you for all of your donations, I will
+        be using it to pay for the servers :)
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
