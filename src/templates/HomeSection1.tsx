@@ -79,6 +79,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
+      <p>
+        Please beware that the site has been getting a lot of unexpected
+        traffic, be cautious of the SLP price as we might hit coingecko's rate
+        limit which results into inaccurate data. I will be coming up with
+        another solution pretty soon. Thank you for all of your donations :)
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
@@ -226,6 +232,13 @@ const HomeSection1: React.FC<{
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     margin-top: 20px;
+    p {
+      color: ${colors.textNotSoIntense};
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0px 20px 20px 20px;
+      font-size: 12px;
+    }
     .home-section1-wrapper {
       max-width: 1200px;
       padding: 0 20px;
