@@ -22,12 +22,17 @@ const HomeSection1: React.FC<{
     y: string;
   } | null>(null);
 
-  const SLPPriceDate = SLPPriceQuery.data?.chart?.map((i) =>
-    moment.unix(i.date).format("MMMM D, YYYY hh:mm A")
+  let SLPPriceDate = SLPPriceQuery.data?.chart?.map((i) => {
+    return i.price !== 0
+      ? moment.unix(i.date).format("MMMM D, YYYY hh:mm A")
+      : "empty";
+  });
+  let SLPPriceValue = SLPPriceQuery.data?.chart?.map((i) =>
+    i.price !== 0 ? i.price.toString() : "empty"
   );
-  const SLPPriceValue = SLPPriceQuery.data?.chart?.map((i) =>
-    i.price.toString()
-  );
+
+  SLPPriceDate = SLPPriceDate?.filter((obj) => obj !== "empty");
+  SLPPriceValue = SLPPriceValue?.filter((obj) => obj !== "empty");
 
   let totalFarmed = 0;
   if (scholarsQuery.data) {
