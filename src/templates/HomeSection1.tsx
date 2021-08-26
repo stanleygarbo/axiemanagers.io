@@ -83,7 +83,8 @@ const HomeSection1: React.FC<{
         Please beware that the site has been getting a lot of unexpected
         traffic, be cautious of the SLP price as we might hit coingecko's rate
         limit which results into inaccurate data. I will be coming up with
-        another solution pretty soon. Thank you for all of your donations :)
+        another solution pretty soon. Hit me up on FB messenger to report some
+        possible bugs or questions.   Thank you for all of your donations :)
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
