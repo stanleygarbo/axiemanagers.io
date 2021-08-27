@@ -59,19 +59,20 @@ const ScholarCard: React.FC<IScholarCard> = ({
       </div>
       <div className="row-split">
         <section>
+          {console.log(chartData && chartData.length > 2)}
           <LineChart
-            data={chartData && chartData?.length > 3 ? chartData : dummyData}
+            data={chartData && chartData?.length > 2 ? chartData : dummyData}
             title="Stats"
             labels={
-              chartLabels && chartLabels?.length > 3 ? chartLabels : dummyData
+              chartLabels && chartLabels?.length > 2 ? chartLabels : dummyData
             }
             isMiniature
             color={color}
             showLabels={false}
           />
-          {(chartLabels && chartLabels?.length < 3) ||
+          {(chartLabels && chartLabels.length < 2) ||
           chartLabels === undefined ||
-          (chartData && chartData?.length > 3) ? (
+          (chartData && chartData?.length < 2) ? (
             <div style={{ background: color }}></div>
           ) : null}
         </section>
