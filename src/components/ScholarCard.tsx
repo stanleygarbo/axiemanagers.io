@@ -59,7 +59,6 @@ const ScholarCard: React.FC<IScholarCard> = ({
       </div>
       <div className="row-split">
         <section>
-          {console.log(chartData && chartData.length > 2)}
           <LineChart
             data={chartData && chartData?.length > 2 ? chartData : dummyData}
             title="Stats"
