@@ -81,10 +81,10 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        Please beware that the site has been getting a lot of unexpected
-        traffic, I will be observing the site for some bugs. If you have any
-        questions please message me. Thank you for all of your donations, I will
-        be using it to pay for the servers :)
+        Due to high traffic (People using the tracker at the same time) some
+        scholars on the list might not load, this is because we might be hitting
+        axie-infinity's rate limit. However I did set a manual refresh button as
+        a temporary solution, clicking this should load the scholar data.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
