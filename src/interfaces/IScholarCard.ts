@@ -1,4 +1,7 @@
+import { UseMutationResult } from "react-query";
+
 export interface IScholarCard {
+  ronin: string;
   name: string;
   earned: number;
   badge?: {
@@ -14,4 +17,6 @@ export interface IScholarCard {
   chartLabels?: string[];
   today?: string;
   error?: boolean;
+  refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
+  showRetry: boolean;
 }

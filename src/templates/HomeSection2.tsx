@@ -6,11 +6,10 @@ import { useState } from "react";
 import Sorters from "../components/Sorters";
 import ScholarsTable from "../components/ScholarsTable";
 import ScholarCard from "../components/ScholarCard";
-import { useQueryClient, UseQueryResult } from "react-query";
+import { UseMutationResult, useQueryClient, UseQueryResult } from "react-query";
 import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import moment from "moment";
-import { Link } from "react-router-dom";
 import { IColors } from "../interfaces/IColors";
 import { getLastClaimed, getNextClaim } from "../util/getClaimDates";
 import { DynamicSortArray, DynamicSortObject } from "../util/DynamicSort";
@@ -20,7 +19,8 @@ import { addCommaToNumber } from "../util/addCommaToNumber";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
-}> = ({ scholarsQuery }) => {
+  refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
+}> = ({ scholarsQuery, refetchScholarMutation }) => {
   const { colors } = useTheme();
   const { scholars } = useScholars();
   const queryClient = useQueryClient();
@@ -87,61 +87,66 @@ const HomeSection2: React.FC<{
           <ScholarsTable
             data={scholarsQuery.data.list}
             sortedScholars={sortedScholars}
+            refetchScholarMutation={refetchScholarMutation}
           />
         ) : (
           activeLayout === "cards" &&
           !scholarsQuery.isLoading && (
             <div className="scholar-cards">
               {sortedScholars.map((i, idx) => (
-                <Link key={idx} to={`scholar/${i.ronin}`}>
-                  <ScholarCard
-                    error={
-                      scholarsStat[i.ronin]?.today === 0 &&
-                      scholarsStat[i.ronin]?.total === 0 &&
-                      scholarsStat[i.ronin]?.lastClaimed === 0
-                    }
-                    name={i.nickname}
-                    badge={
-                      scholarsStat[i.ronin]?.today === 0 &&
-                      scholarsStat[i.ronin]?.total === 0 &&
-                      scholarsStat[i.ronin]?.lastClaimed === 0
-                        ? { id: "clickToRetry", name: "Click to Retry" }
-                        : { id: "", name: "" }
-                    }
-                    earned={scholarsStat[i.ronin]?.total}
-                    today={
-                      SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
-                        ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
-                          " ≈ ₱" +
-                          addCommaToNumber(
-                            Math.floor(
-                              scholarsStat[i.ronin]?.today *
-                                SLPPrice?.data?.current
-                            )
+                <ScholarCard
+                  key={idx}
+                  ronin={i.ronin}
+                  refetchScholarMutation={refetchScholarMutation}
+                  error={
+                    scholarsStat[i.ronin]?.today === 0 &&
+                    scholarsStat[i.ronin]?.total === 0 &&
+                    scholarsStat[i.ronin]?.lastClaimed === 0
+                  }
+                  name={i.nickname}
+                  badge={
+                    scholarsStat[i.ronin]?.today === 0 &&
+                    scholarsStat[i.ronin]?.total === 0 &&
+                    scholarsStat[i.ronin]?.lastClaimed === 0
+                      ? { id: "failedToFetch", name: "Failed to fetch" }
+                      : { id: "", name: "" }
+                  }
+                  earned={scholarsStat[i.ronin]?.total}
+                  today={
+                    SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
+                      ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
+                        " ≈ ₱" +
+                        addCommaToNumber(
+                          Math.floor(
+                            scholarsStat[i.ronin]?.today *
+                              SLPPrice?.data?.current
                           )
-                        : "---"
-                    }
-                    lastClaim={getLastClaimed(
-                      scholarsStat[i.ronin]?.lastClaimed
-                    )}
-                    nextClaim={getNextClaim(scholarsStat[i.ronin]?.lastClaimed)}
-                    lastUpdated={moment
-                      .unix(scholarsStat[i.ronin]?.lastUpdated)
-                      .fromNow()}
-                    color={i.color}
-                    progress={
-                      scholarsStat[i.ronin]?.chart?.length > 0
-                        ? scholarsStat[i.ronin]?.today
-                        : null
-                    }
-                    chartData={scholarsStat[i.ronin]?.chart?.map((cd) =>
-                      cd?.earned.toString()
-                    )}
-                    chartLabels={scholarsStat[i.ronin]?.chart?.map((cd) =>
-                      moment.unix(cd.date).format("DD")
-                    )}
-                  />
-                </Link>
+                        )
+                      : "---"
+                  }
+                  lastClaim={getLastClaimed(scholarsStat[i.ronin]?.lastClaimed)}
+                  nextClaim={getNextClaim(scholarsStat[i.ronin]?.lastClaimed)}
+                  lastUpdated={moment
+                    .unix(scholarsStat[i.ronin]?.lastUpdated)
+                    .fromNow()}
+                  color={i.color}
+                  progress={
+                    scholarsStat[i.ronin]?.chart?.length > 0
+                      ? scholarsStat[i.ronin]?.today
+                      : null
+                  }
+                  chartData={scholarsStat[i.ronin]?.chart?.map((cd) =>
+                    cd?.earned.toString()
+                  )}
+                  chartLabels={scholarsStat[i.ronin]?.chart?.map((cd) =>
+                    moment.unix(cd.date).format("DD")
+                  )}
+                  showRetry={
+                    scholarsStat[i.ronin]?.today === 0 &&
+                    scholarsStat[i.ronin]?.total === 0 &&
+                    scholarsStat[i.ronin]?.lastClaimed === 0
+                  }
+                />
               ))}
             </div>
           )

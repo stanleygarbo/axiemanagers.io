@@ -16,7 +16,11 @@ import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
 import { LineChart } from "./LineChart";
 import { TiArrowSync } from "react-icons/ti";
 
-const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
+const ScholarsTable: React.FC<IScholarsTable> = ({
+  data,
+  sortedScholars,
+  refetchScholarMutation,
+}) => {
   const { colors } = useTheme();
   const { updateScholar } = useScholars();
   const queryClient = useQueryClient();
@@ -202,7 +206,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                   {data[i.ronin]?.today === 0 &&
                   data[i.ronin]?.total === 0 &&
                   data[i.ronin]?.lastClaimed === 0 ? (
-                    <td>
+                    <td
+                      onClick={() =>
+                        refetchScholarMutation.mutate(
+                          i.ronin.replace("ronin:", "0x")
+                        )
+                      }
+                    >
                       <TiArrowSync size={25} />
                     </td>
                   ) : (

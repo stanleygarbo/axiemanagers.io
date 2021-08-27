@@ -2,9 +2,13 @@ import styled from "styled-components";
 import HomeSection1 from "../templates/HomeSection1";
 import HomeSection2 from "../templates/HomeSection2";
 import AddScholarForm from "../components/AddScholarForm";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useScholars } from "../contexts/scholarsContext";
-import { fetchAllScholars, fetchSLPPrice } from "../api/requests";
+import {
+  fetchAllScholars,
+  fetchSLPPrice,
+  refetchScholar,
+} from "../api/requests";
 import { Scholars } from "../interfaces/IResponseTypes";
 
 const Container = styled.div`
@@ -15,6 +19,8 @@ const HomePage = () => {
   const { scholars } = useScholars();
 
   const ids = scholars?.map((i) => i.ronin.replace("ronin:", "0x"));
+
+  const queryClient = useQueryClient();
 
   const scholarsQuery = useQuery<Scholars, any>(
     "Scholars",
@@ -31,6 +37,19 @@ const HomePage = () => {
     staleTime: Infinity,
   });
 
+  const refetchScholarMutation = useMutation(
+    (ronin: string) => refetchScholar(ronin),
+    {
+      onSuccess: async (variables) => {
+        queryClient.setQueryData<Scholars>("Scholars", (old: any) => {
+          old.list[variables.ronin] = variables;
+
+          return old;
+        });
+      },
+    }
+  );
+
   return (
     <Container>
       <div className="section1">
@@ -39,7 +58,7 @@ const HomePage = () => {
           SLPPriceQuery={SLPPriceQuery}
         />
         <AddScholarForm />
-        <HomeSection2 scholarsQuery={scholarsQuery} />
+        <HomeSection2 refetchScholarMutation={refetchScholarMutation} scholarsQuery={scholarsQuery} />
       </div>
     </Container>
   );

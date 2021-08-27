@@ -1,3 +1,4 @@
+import { UseMutationResult } from "react-query";
 import { Scholar } from "./IResponseTypes";
 import { IScholars } from "./IScholarsContext";
 
@@ -6,4 +7,5 @@ export interface IScholarsTable {
     [key: string]: Scholar;
   };
   sortedScholars: IScholars[];
+  refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
 }

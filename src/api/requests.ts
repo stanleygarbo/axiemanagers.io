@@ -46,3 +46,12 @@ export const fetchScholarAxies = async (address: string) => {
 
   return res.data?.data?.axies?.results;
 };
+
+export const refetchScholar = async (address: string) => {
+  const res = await axios({
+    method: "get",
+    url: `https://api.axiemanagers.io/scholar/${address}?clearCache=true`,
+  });
+
+  return res.data;
+};
