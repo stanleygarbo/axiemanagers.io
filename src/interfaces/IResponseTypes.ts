@@ -16,6 +16,7 @@ export type Scholar = {
   chart: ChartObj[];
   axies: Axie[];
   success: boolean;
+  totalClaimable: number;
 };
 
 export type Scholars = {

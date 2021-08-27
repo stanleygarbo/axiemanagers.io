@@ -67,7 +67,7 @@ const HomeSection1: React.FC<{
           totalAverage += scholarStat.total / daysAgoSinceClaimed;
         }
 
-        totalUnclaimed += scholarStat.total;
+        totalUnclaimed += scholarStat.totalClaimable;
 
         totalClaimed += scholarStat.lastClaimAmount;
       }
@@ -163,7 +163,7 @@ const HomeSection1: React.FC<{
           </div>
           <div className="home-section1-wrapper__grid__total-unclaimed box home-section1-wrapper__grid__item">
             <div className="home-section1-wrapper__grid__item__title">
-              Total Unclaimed
+              Total Claimable
             </div>
             <div className="home-section1-wrapper__grid__item__value">
               <div className="home-section1-wrapper__grid__item__value__slp">
