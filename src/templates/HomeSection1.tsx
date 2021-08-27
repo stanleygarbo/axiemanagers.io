@@ -214,7 +214,6 @@ const HomeSection1: React.FC<{
           <div className="home-section1-wrapper__line-chart__label">
             SLP Price
           </div>
-          {console.log(SLPPriceQuery.isFetching)}
           <button
             onClick={() => SLPPriceQuery.refetch()}
             className={SLPPriceQuery.isFetching ? `rotating` : ""}
