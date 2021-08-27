@@ -63,9 +63,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                   key={idx}
                   style={{
                     border:
-                      data[i.ronin].today === 0 &&
-                      data[i.ronin].total === 0 &&
-                      data[i.ronin].lastClaimed === 0
+                      data[i.ronin]?.today === 0 &&
+                      data[i.ronin]?.total === 0 &&
+                      data[i.ronin]?.lastClaimed === 0
                         ? `1px solid ${colors.danger}`
                         : "",
                   }}
@@ -199,9 +199,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({ data, sortedScholars }) => {
                       }`
                     )}
                   </td>
-                  {data[i.ronin].today === 0 &&
-                  data[i.ronin].total === 0 &&
-                  data[i.ronin].lastClaimed === 0 ? (
+                  {data[i.ronin]?.today === 0 &&
+                  data[i.ronin]?.total === 0 &&
+                  data[i.ronin]?.lastClaimed === 0 ? (
                     <td>
                       <TiArrowSync size={25} />
                     </td>
