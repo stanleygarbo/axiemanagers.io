@@ -29,8 +29,8 @@ const HomeSection2: React.FC<{
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
   );
-  const [orderBy, setOrderBy] = useState<string>("name");
-  const [order, setOrder] = useState<string>("desc");
+  const [orderBy, setOrderBy] = useState<string>("nickname");
+  const [order, setOrder] = useState<string>("asc");
 
   const { screenWidth } = useScreenSize();
 
@@ -46,7 +46,7 @@ const HomeSection2: React.FC<{
   let sortedScholars: IScholars[] = [];
   const data = scholarsQuery.data?.list;
   if (data) {
-    if (orderBy === "name") {
+    if (orderBy === "nickname") {
       sortedScholars = scholars.sort(
         DynamicSortArray((order === "desc" ? "-" : "") + orderBy)
       );

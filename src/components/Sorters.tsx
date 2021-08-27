@@ -16,13 +16,13 @@ const Sorters: React.FC<ISorters> = ({ setOrderBy, setOrder }) => {
         name="sort"
         id=""
       >
-        <option value="name">NAME</option>
+        <option value="nickname">NAME</option>
         <option value="total">EARNED</option>
         <option value="lastClaimed">NEXT CLAIM</option>
       </select>
       <select onChange={(e) => setOrder(e.target.value)} name="sort" id="">
-        <option value="desc">DESC</option>
         <option value="asc">ASC</option>
+        <option value="desc">DESC</option>
       </select>
     </Container>
   );
