@@ -249,7 +249,9 @@ const Container = styled.div<{ colors: IColors }>`
     }
 
     @media (max-width: 493px) {
-      padding: 10px;
+      .card__wrapper {
+        padding: 10px;
+      }
     }
   `}
 `;
