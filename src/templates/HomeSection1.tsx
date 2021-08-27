@@ -9,6 +9,7 @@ import { IColors } from "../interfaces/IColors";
 import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { addCommaToNumber } from "../util/addCommaToNumber";
+import { TiArrowSync } from "react-icons/ti";
 
 const HomeSection1: React.FC<{
   SLPPriceQuery: UseQueryResult<SLPPrice, unknown>;
@@ -213,6 +214,13 @@ const HomeSection1: React.FC<{
           <div className="home-section1-wrapper__line-chart__label">
             SLP Price
           </div>
+          {console.log(SLPPriceQuery.isFetching)}
+          <button
+            onClick={() => SLPPriceQuery.refetch()}
+            className={SLPPriceQuery.isFetching ? `rotating` : ""}
+          >
+            <TiArrowSync size={25} />
+          </button>
 
           {SLPPriceQuery.isLoading ? null : (
             <LineChart
@@ -319,6 +327,43 @@ const Container = styled.div<{ colors: IColors }>`
           font-size: 12px;
           font-weight: 600;
         }
+
+        button {
+          background-color: transparent;
+          color: ${colors.textIntense};
+
+          border: none;
+          border-radius: 100px;
+          width: 40px;
+          height: 40px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          cursor: pointer;
+
+          position: absolute;
+          top: 30px;
+          right: 15px;
+
+          &:hover {
+            background-color: ${colors.textIntense + 20};
+          }
+        }
+      }
+    }
+
+    .rotating {
+      animation: rotate 2s linear;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
       }
     }
 
