@@ -86,7 +86,6 @@ const ScholarPage = () => {
 
   const removeScholarFromCache = () => {
     queryClient.setQueryData<Scholars>("Scholars", (old: any) => {
-      console.log(old);
       // old.earnings.total -= old.list[roninAddress].total;
       // delete old.list[roninAddress];
 
