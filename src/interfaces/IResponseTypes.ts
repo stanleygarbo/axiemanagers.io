@@ -17,6 +17,8 @@ export type Scholar = {
   axies: Axie[];
   success: boolean;
   totalClaimable: number;
+  mmr: number;
+  rank: number;
 };
 
 export type Scholars = {

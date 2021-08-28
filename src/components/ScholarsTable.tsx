@@ -44,6 +44,8 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             <th>Claimable</th>
             {/* <td>Progress</td> */}
             <th>Chart</th>
+            <th>MMR</th>
+            <th>Rank</th>
           </tr>
         </thead>
         <tbody>
@@ -203,6 +205,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       }`
                     )}
                   </td>
+                  <td>{data[i.ronin]?.mmr}</td>
+                  <td>#{data[i.ronin]?.rank}</td>
+
                   {data[i.ronin]?.today === 0 &&
                   data[i.ronin]?.total === 0 &&
                   data[i.ronin]?.lastClaimed === 0 ? (
