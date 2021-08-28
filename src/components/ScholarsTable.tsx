@@ -45,7 +45,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {/* <td>Progress</td> */}
             <th>Chart</th>
             <th>MMR</th>
-            <th>Rank</th>
+            {/* <th>Rank</th> */}
           </tr>
         </thead>
         <tbody>
@@ -206,7 +206,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                     )}
                   </td>
                   <td>{data[i.ronin]?.mmr}</td>
-                  <td>#{data[i.ronin]?.rank}</td>
+                  {/* <td>#{data[i.ronin]?.rank}</td> */}
 
                   {data[i.ronin]?.today === 0 &&
                   data[i.ronin]?.total === 0 &&
@@ -250,6 +250,10 @@ const Container = styled.div<{ colors: IColors }>`
 
       tr:nth-child(even) {
         background-color: ${colors.BGLighter + 80};
+      }
+
+      tr:hover {
+        background-color: ${colors.accent + 20};
       }
 
       td,
