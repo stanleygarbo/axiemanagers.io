@@ -68,7 +68,7 @@ const About = () => {
           <p>
             I am currently a 1st year college student and I have been a
             consistent honor student when I was in senior highschool. I decided
-            to build axiemanagers.io hoping that we would get noticed by
+            to build axiemanagers.io hoping that this would get noticed by
             managers by providing value first.
           </p>
 
