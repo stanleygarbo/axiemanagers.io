@@ -10,6 +10,7 @@ import Donate from "./pages/Donate";
 import Settings from "./pages/Settings";
 import SettingsBulkImport from "./pages/SettingsBulkImport";
 import ScrollMemory from "react-router-scroll-memory";
+import SettingsInterface from "./pages/SettingsInterface";
 
 const App: React.FC = () => {
   return (
@@ -37,7 +38,7 @@ const App: React.FC = () => {
                     />
                     <Route
                       path={`${path}/interface`}
-                      component={SettingsBulkImport}
+                      component={SettingsInterface}
                       exact
                     />
                     <Route
