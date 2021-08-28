@@ -80,12 +80,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         Due to high traffic (People using the tracker at the same time) some
         scholars on the list might not load, this is because we might be hitting
         axie-infinity's rate limit. However I did set a manual refresh button as
         a temporary solution, clicking this should load the scholar data.
-      </p>
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
