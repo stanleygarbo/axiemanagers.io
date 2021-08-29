@@ -34,6 +34,8 @@ const ScholarCard: React.FC<IScholarCard> = ({
   chartLabels,
   today,
   error,
+  mmr,
+  rank,
   refetchScholarMutation,
   ronin,
   showRetry,
@@ -74,9 +76,22 @@ const ScholarCard: React.FC<IScholarCard> = ({
             <time>Next Claim: {nextClaim}</time>
           </section>
         </div>
-        <div className="today">
-          Today: <img src="/slp.png" alt="" width={20} />
-          {today}
+        <div className="stats-row">
+          <div className="stats-row__today">
+            <div className="stats-row__today__value">
+              <img src="/slp.png" alt="" width={20} />
+              {today}
+            </div>
+            <div className="stats-row__today__label">Today</div>
+          </div>
+          <div className="stats-row__today">
+            <div className="stats-row__today__value">{mmr}</div>
+            <div className="stats-row__today__label">MMR</div>
+          </div>
+          <div className="stats-row__today">
+            <div className="stats-row__today__value">#{rank}</div>
+            <div className="stats-row__today__label">Rank</div>
+          </div>
         </div>
         <div className="row-split">
           <section>
@@ -148,11 +163,28 @@ const Container = styled.div<{ colors: IColors }>`
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       -webkit-tap-highlight-color: transparent;
 
-      .today {
-        color: ${colors.textNotSoIntense};
+      .stats-row {
         display: flex;
-        align-items: center;
-        margin: 15px 0;
+        justify-content: space-between;
+
+        &__today {
+          color: ${colors.textNotSoIntense};
+          margin: 15px 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &__value {
+            display: flex;
+            align-items: center;
+          }
+
+          &__label {
+            margin-top: 5px;
+            font-size: 11px;
+            color: ${colors.textIntense + 75};
+          }
+        }
       }
 
       .badge {

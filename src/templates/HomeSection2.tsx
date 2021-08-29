@@ -141,6 +141,8 @@ const HomeSection2: React.FC<{
                   chartLabels={scholarsStat[i.ronin]?.chart?.map((cd) =>
                     moment.unix(cd.date).format("DD")
                   )}
+                  mmr={scholarsStat[i.ronin]?.mmr}
+                  rank={scholarsStat[i.ronin]?.rank}
                   showRetry={
                     scholarsStat[i.ronin]?.today === 0 &&
                     scholarsStat[i.ronin]?.total === 0 &&

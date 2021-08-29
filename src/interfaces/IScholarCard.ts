@@ -13,6 +13,8 @@ export interface IScholarCard {
   nextClaim: string;
   lastUpdated: string;
   progress: number | null;
+  mmr: number;
+  rank: number;
   chartData?: string[];
   chartLabels?: string[];
   today?: string;
