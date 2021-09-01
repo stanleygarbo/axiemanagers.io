@@ -22,7 +22,7 @@ const About = () => {
             ></div>
             <div className="dev__profile__name-img__name">
               <span className="dev__profile__name-img__name__first">
-                Stanley Garbo
+                Digital Mad Lad
               </span>{" "}
               <span className="dev__profile__name-img__name__last"></span>
               <div className="dev__profile__name-img__name__discord">
@@ -41,7 +41,7 @@ const About = () => {
               </a>
             </div> */}
 
-            <div className="dev__profile__socials__facebook">
+            {/* <div className="dev__profile__socials__facebook">
               <a
                 target="_blank"
                 href="https://facebook.com/stanley.garbo29"
@@ -49,7 +49,7 @@ const About = () => {
               >
                 <FaFacebookSquare size={25} />
               </a>
-            </div>
+            </div> */}
             <div className="dev__profile__socials__discord">
               <a
                 target="_blank"
@@ -80,8 +80,7 @@ const About = () => {
 
           <p>
             I made this tool hoping to be noticed by managers and get a
-            scholarship. If you want to hire me as a scholar please kindly add
-            me on facebook.
+            scholarship.
           </p>
 
           <p>
