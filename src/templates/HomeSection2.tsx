@@ -98,19 +98,9 @@ const HomeSection2: React.FC<{
                   key={idx}
                   ronin={i.ronin}
                   refetchScholarMutation={refetchScholarMutation}
-                  error={
-                    scholarsStat[i.ronin]?.today === 0 &&
-                    scholarsStat[i.ronin]?.total === 0 &&
-                    scholarsStat[i.ronin]?.lastClaimed === 0
-                  }
+                  error={false}
                   name={i.nickname}
-                  badge={
-                    scholarsStat[i.ronin]?.today === 0 &&
-                    scholarsStat[i.ronin]?.total === 0 &&
-                    scholarsStat[i.ronin]?.lastClaimed === 0
-                      ? { id: "failedToFetch", name: "Failed to fetch" }
-                      : { id: "", name: "" }
-                  }
+                  badge={{ id: "", name: "" }}
                   earned={scholarsStat[i.ronin]?.total}
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0

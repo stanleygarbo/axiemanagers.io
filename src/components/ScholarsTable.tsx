@@ -73,17 +73,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
               );
 
               return (
-                <tr
-                  key={idx}
-                  style={{
-                    border:
-                      data[i.ronin]?.today === 0 &&
-                      data[i.ronin]?.total === 0 &&
-                      data[i.ronin]?.lastClaimed === 0
-                        ? `1px solid ${colors.danger}`
-                        : "",
-                  }}
-                >
+                <tr key={idx}>
                   <td className="color-picker">
                     <ColorPicker
                       color={i.color}
