@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { FaDiscord, FaFacebookSquare } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa";
 // import { AiFillGithub } from "react-icons/ai";
 
 const About = () => {
