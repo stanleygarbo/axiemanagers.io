@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import SettingsBulkImport from "./pages/SettingsBulkImport";
 import ScrollMemory from "react-router-scroll-memory";
 import SettingsInterface from "./pages/SettingsInterface";
+import Announcement from "./pages/Announcement";
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
               <Route exact path="/search" component={Search} />
               <Route exact path="/about" component={About} />
               <Route exact path="/donate" component={Donate} />
+              <Route exact path="/announcement" component={Announcement} />
               <Route
                 path="/settings"
                 render={({ match: { path } }) => (

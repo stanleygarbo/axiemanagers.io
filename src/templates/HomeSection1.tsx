@@ -10,6 +10,7 @@ import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 const HomeSection1: React.FC<{
   SLPPriceQuery: UseQueryResult<SLPPrice, unknown>;
@@ -80,12 +81,11 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        Due to high traffic (People using the tracker at the same time) some
-        scholars on the list might not load, this is because we might be hitting
-        axie-infinity's rate limit. However I did set a manual refresh button as
-        a temporary solution, clicking this should load the scholar data.
-      </p> */}
+      <p>
+        <span>Notice:</span> Some addresses may or may not have accurate "Today
+        SLP" values and there's a good chance this feature will be temporarily
+        removed from our tracker, <Link to="/announcement">learn more</Link>.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
@@ -244,7 +244,16 @@ const Container = styled.div<{ colors: IColors }>`
       max-width: 1200px;
       margin: 0 auto;
       padding: 0px 20px 20px 20px;
-      font-size: 12px;
+      font-size: 13px;
+
+      span {
+        color: ${colors.accent2};
+      }
+
+      a {
+        color: ${colors.textNotSoIntense};
+        text-decoration: underline;
+      }
     }
     .home-section1-wrapper {
       max-width: 1200px;

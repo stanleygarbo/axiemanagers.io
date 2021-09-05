@@ -9,7 +9,7 @@ import moment from "moment";
 import { useQueryClient } from "react-query";
 import { SLPPrice } from "../interfaces/IResponseTypes";
 import { addCommaToNumber } from "../util/addCommaToNumber";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAverageSLP } from "../util/getAverageSLP";
 import { getManagerShare, getScholarShare } from "../util/getShare";
 import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
