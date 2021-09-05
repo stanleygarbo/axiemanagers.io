@@ -32,11 +32,12 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   return (
     <Container colors={colors}>
-      <p>
-        <span>Update:</span> You can now{" "}
-        <Link to="/settings/interface">customize what columns to show</Link>,
-        MMR and rank is now added.
-      </p>
+      {/* <p>
+        <span>Notice:</span> Some addresses may or may not have accurate "Today
+        SLP" values and there's a good chance this feature will be temporarily
+        removed from our tracker,{" "}
+        <Link to="/settings/interface">learn more</Link>.
+      </p> */}
       <table>
         <thead>
           <tr>
