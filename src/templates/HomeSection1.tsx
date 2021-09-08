@@ -10,7 +10,7 @@ import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const HomeSection1: React.FC<{
   SLPPriceQuery: UseQueryResult<SLPPrice, unknown>;
