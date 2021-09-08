@@ -82,9 +82,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> Some addresses may or may not have accurate "Today
-        SLP" values and there's a good chance this feature will be temporarily
-        removed from our tracker, <Link to="/announcement">learn more</Link>.
+        <span>Notice:</span> Today SLP temporarily removed.
+        {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
