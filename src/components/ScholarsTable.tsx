@@ -47,7 +47,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {scholarsTable?.average && <th>Average</th>}
             {scholarsTable?.manager && <th>Manager</th>}
             {scholarsTable?.scholar && <th>Scholar</th>}
-            {scholarsTable?.today && <th>Today</th>}
+            {/* {scholarsTable?.today && <th>Today</th>} */}
             {scholarsTable?.lastUpdated && <th>Last Updated</th>}
             {scholarsTable?.lastClaimed && <th>Last Claimed</th>}
             {scholarsTable?.nextClaim && <th>Claimable</th>}
@@ -157,7 +157,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       {addCommaToNumber(scholarShare.converted)}
                     </td>
                   )}
-                  {scholarsTable?.today && (
+                  {/* {scholarsTable?.today && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                       {data[i.ronin]?.chart?.length > 0 ? (
                         <div className="center-horizontal">
@@ -181,7 +181,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           )
                         : "---"}
                     </td>
-                  )}
+                  )} */}
                   {scholarsTable?.lastUpdated && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                       {data[i.ronin]

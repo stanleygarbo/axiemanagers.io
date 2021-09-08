@@ -11,7 +11,7 @@ const additionalFilters = [
   { id: "average", name: "AVERAGE" },
   { id: "manager", name: "MANAGER" },
   { id: "scholar", name: "SCHOLAR" },
-  { id: "today", name: "TODAY" },
+  // { id: "today", name: "TODAY" },
   // { id: "lastClaimedAmount", name: "TOTAL CLAIMED" },
   { id: "lastUpdated", name: "LAST UPDATED" },
   { id: "lastClaimed", name: "LAST CLAIMED" },
