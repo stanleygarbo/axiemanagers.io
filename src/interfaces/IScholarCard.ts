@@ -21,4 +21,5 @@ export interface IScholarCard {
   error?: boolean;
   refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
   showRetry: boolean;
+  average: string;
 }

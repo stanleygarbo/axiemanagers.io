@@ -15,7 +15,7 @@ import { getLastClaimed, getNextClaim } from "../util/getClaimDates";
 import { DynamicSortArray, DynamicSortObject } from "../util/DynamicSort";
 import { useScreenSize } from "../contexts/screenSizeContext";
 import { IScholars } from "../interfaces/IScholarsContext";
-import { addCommaToNumber } from "../util/addCommaToNumber";
+import { getAverageSLP } from "../util/getAverageSLP";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
@@ -102,17 +102,24 @@ const HomeSection2: React.FC<{
                   name={i.nickname}
                   badge={{ id: "", name: "" }}
                   earned={scholarsStat[i.ronin]?.total}
-                  today={
-                    SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
-                      ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
-                        " ≈ ₱" +
-                        addCommaToNumber(
-                          Math.floor(
-                            scholarsStat[i.ronin]?.today *
-                              SLPPrice?.data?.current
-                          )
-                        )
-                      : "---"
+                  // today={
+                  //   SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
+                  //     ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
+                  //       " ≈ ₱" +
+                  //       addCommaToNumber(
+                  //         Math.floor(
+                  //           scholarsStat[i.ronin]?.today *
+                  //             SLPPrice?.data?.current
+                  //         )
+                  //       )
+                  //     : "---"
+                  // }
+                  average={
+                    getAverageSLP(
+                      scholarsStat[i.ronin]?.lastClaimed,
+                      scholarsStat[i.ronin]?.total,
+                      SLPPrice?.data?.current
+                    ).slp
                   }
                   lastClaim={getLastClaimed(scholarsStat[i.ronin]?.lastClaimed)}
                   nextClaim={getNextClaim(scholarsStat[i.ronin]?.lastClaimed)}

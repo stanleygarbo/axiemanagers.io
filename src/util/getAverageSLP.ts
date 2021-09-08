@@ -1,7 +1,7 @@
 import moment from "moment";
 import { addCommaToNumber } from "./addCommaToNumber";
 
-type Average = { slp: number | string; converted: number | string };
+type Average = { slp: string; converted: number | string };
 
 export const getAverageSLP = (
   lastClaimed?: number,
