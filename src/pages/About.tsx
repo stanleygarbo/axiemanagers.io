@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaFacebookSquare } from "react-icons/fa";
 // import { AiFillGithub } from "react-icons/ai";
 
 const About = () => {
@@ -22,7 +22,7 @@ const About = () => {
             ></div>
             <div className="dev__profile__name-img__name">
               <span className="dev__profile__name-img__name__first">
-                Digital Mad Lad
+                Stanley Garbo
               </span>{" "}
               <span className="dev__profile__name-img__name__last"></span>
               <div className="dev__profile__name-img__name__discord">
@@ -41,7 +41,7 @@ const About = () => {
               </a>
             </div> */}
 
-            {/* <div className="dev__profile__socials__facebook">
+            <div className="dev__profile__socials__facebook">
               <a
                 target="_blank"
                 href="https://facebook.com/stanley.garbo29"
@@ -49,7 +49,7 @@ const About = () => {
               >
                 <FaFacebookSquare size={25} />
               </a>
-            </div> */}
+            </div>
             <div className="dev__profile__socials__discord">
               <a
                 target="_blank"
