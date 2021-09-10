@@ -342,6 +342,45 @@ const ScholarPage = () => {
                       </div>
                     </div>
 
+                    <div className="wrapper__scholar-info__stats">
+                      {/* <div
+                        className="wrapper__scholar-info__stats__today"
+                        style={{ marginRight: 20 }}
+                      >
+                        <div className="wrapper__scholar-info__stats__today__value">
+                          <img src="/slp.png" alt="" width={20} />
+                          {today}
+                        </div>
+                        <div className="wrapper__scholar-info__stats__today__label">Today</div>
+                      </div> */}
+                      {/* <div className="wrapper__scholar-info__stats__today" style={{ marginRight: 20 }}>
+            <div className="wrapper__scholar-info__stats__today__value">
+              <img src="/slp.png" alt="" width={20} />
+              {average}
+            </div>
+            <div className="wrapper__scholar-info__stats__today__label">Average</div>
+          </div> */}
+                      <div
+                        className="wrapper__scholar-info__stats__today"
+                        style={{ marginRight: 20 }}
+                      >
+                        <div className="wrapper__scholar-info__stats__today__value">
+                          {scholarQuery.data?.mmr}
+                        </div>
+                        <div className="wrapper__scholar-info__stats__today__label">
+                          MMR
+                        </div>
+                      </div>
+                      <div className="wrapper__scholar-info__stats__today">
+                        <div className="wrapper__scholar-info__stats__today__value">
+                          #{scholarQuery.data?.rank}
+                        </div>
+                        <div className="wrapper__scholar-info__stats__today__label">
+                          Rank
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="wrapper__scholar-info__progress">
                       <DeleteButton
                         onClick={() => {
@@ -474,6 +513,30 @@ const Container = styled.div<{ colors: IColors }>`
         background-color: ${colors.BGLight};
         position: relative;
         border: 1px solid ${colors.textIntense + 20};
+
+        &__stats {
+          display: flex;
+          justify-content: center;
+
+          &__today {
+            color: ${colors.textNotSoIntense};
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &__value {
+              display: flex;
+              align-items: center;
+            }
+
+            &__label {
+              margin-top: 5px;
+              font-size: 11px;
+              color: ${colors.textIntense + 75};
+            }
+          }
+        }
 
         &__form {
           align-items: center;
