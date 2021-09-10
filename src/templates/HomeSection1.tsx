@@ -82,7 +82,10 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> Today SLP temporarily removed.
+        <span>Notice:</span> Please take the 'Today SLP' data with a grain of
+        salt, for more accuracy look at the charts to see your scholars'
+        earnings along with a particular date. Thanks so much for your
+        donations, may pang load at pang bayad nako sa servers :)
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">

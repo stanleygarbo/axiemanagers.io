@@ -32,14 +32,14 @@ const ScholarCard: React.FC<IScholarCard> = ({
   progress,
   chartData,
   chartLabels,
-  // today,
+  today,
   error,
   mmr,
   rank,
   refetchScholarMutation,
   ronin,
   showRetry,
-  average,
+  // average,
 }) => {
   const { colors } = useTheme();
 
@@ -78,20 +78,20 @@ const ScholarCard: React.FC<IScholarCard> = ({
           </section>
         </div>
         <div className="stats-row">
-          {/* <div className="stats-row__today">
+          <div className="stats-row__today" style={{ marginRight: 20 }}>
             <div className="stats-row__today__value">
               <img src="/slp.png" alt="" width={20} />
               {today}
             </div>
             <div className="stats-row__today__label">Today</div>
-          </div> */}
-          <div className="stats-row__today" style={{ marginRight: 20 }}>
+          </div>
+          {/* <div className="stats-row__today" style={{ marginRight: 20 }}>
             <div className="stats-row__today__value">
               <img src="/slp.png" alt="" width={20} />
               {average}
             </div>
             <div className="stats-row__today__label">Average</div>
-          </div>
+          </div> */}
           <div className="stats-row__today" style={{ marginRight: 20 }}>
             <div className="stats-row__today__value">{mmr}</div>
             <div className="stats-row__today__label">MMR</div>
