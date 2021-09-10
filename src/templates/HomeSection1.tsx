@@ -85,7 +85,16 @@ const HomeSection1: React.FC<{
         <span>Notice:</span> Please take the 'Today SLP' data with a grain of
         salt, for more accuracy look at the charts to see your scholars'
         earnings along with a particular date. Thanks so much for your
-        donations, may pang load at pang bayad nako sa servers :)
+        donations, may pang load at pang bayad nako sa servers :) Hit me up on
+        &nbsp;
+        <a
+          href="https://facebook.com/stanley.garbo29"
+          rel="noreferrer"
+          target="_blank"
+        >
+          FB messenger
+        </a>
+        &nbsp; if you have any questions.
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">
