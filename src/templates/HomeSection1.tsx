@@ -92,8 +92,7 @@ const HomeSection1: React.FC<{
         >
           FB messenger
         </a>
-        &nbsp; if you have any questions. Thanks so much for your donations, may
-        pang load at pang bayad nako sa servers :)
+        &nbsp; if you have any questions. Thanks so much for your donations :)
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">
