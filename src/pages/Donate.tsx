@@ -76,7 +76,7 @@ const Donate = () => {
           >
             <BiClipboard size={25} />
           </Button>
-          <div className="field__content"> 0916 585 8589 (Stanley G.)</div>
+          <div className="field__content"> 0916 585 8589 (Stanley Garbo)</div>
         </section>
       </div>
       <div className="field">
@@ -115,14 +115,15 @@ const Donate = () => {
       </div>
 
       <p>
-        Further improvements will come to axiemanagers.io, I will be adding gas
-        fees, bulk import and much more! thank you so much! Want to get in
-        touch? Email me:{" "}
+        Further improvements will come to axiemanagers.io, I will be
+        {/* adding gas fees,  */}
+        bulk import and much more! thank you so much! Want to get in touch?
+        Email me:{" "}
         <a
           style={{ color: colors.accent2 }}
-          href="mailto:contact@axiemanagers.io"
+          href="mailto:digitalmadlad@gmail.com"
         >
-          contact@axiemanagers.io
+          digitalmadlad@gmail.com
         </a>
       </p>
     </Container>

@@ -38,7 +38,7 @@ import { useHistory, useParams } from "react-router-dom";
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
   managerShare: Yup.number()
-    .min(1, "Too low")
+    .min(0, "Too low")
     .max(100, "Too high")
     .required("Required"),
 });
