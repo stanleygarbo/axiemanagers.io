@@ -92,7 +92,8 @@ const HomeSection1: React.FC<{
         >
           FB messenger
         </a>
-        &nbsp; if you have any questions. Thanks so much for your donations :)
+        &nbsp; if you have any questions. Gcash: 0916 585 8589 [Stanley Garbo]
+        :)
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">
