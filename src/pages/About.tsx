@@ -66,16 +66,16 @@ const About = () => {
             18 y/o <span>With High Honors</span> Gamer/Programmer
           </div>
           <p>
-            I am currently a 1st year college student and I have been a
-            consistent honor student when I was in senior highschool. I decided
-            to build axiemanagers.io hoping that this would get noticed by
-            managers by providing value first.
+            I am currently a 1st-year college student, and I was a consistent
+            honor student when I was in senior high school. I decided to build
+            axiemanagers.io, hoping that this would get noticed by managers by
+            providing value first.
           </p>
 
           <p>
             Why must I be your next scholar? Aside from being a well-performing
-            student, I'm good at managing my time, I can also provide value and
-            be your voluntary community developer/programmer.
+            student, I'm good at managing my time, and I can also provide value
+            and be your voluntary community developer/programmer.
           </p>
 
           <p>
@@ -84,8 +84,8 @@ const About = () => {
           </p>
 
           <p>
-            EDIT: I am no longer looking for a manager, I hope you like the site
-            :)
+            EDIT: I am no longer looking for a manager. I hope you like the site
+            🙂
           </p>
         </div>
       </div>
