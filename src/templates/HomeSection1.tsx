@@ -91,7 +91,7 @@ const HomeSection1: React.FC<{
         >
           FB messenger
         </a>
-        &nbsp; to report some possible bugs so that I can fix them after my
+        &nbsp; to report some possible bugs so that I can fix them after our
         online classes.
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
