@@ -82,9 +82,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> Please take the "Today SLP" data with a grain of
-        salt. For more accurate data, look at the charts to see your scholars'
-        earnings mapped to a particular date. Hit me up on &nbsp;
+        <span>Notice:</span> Fixed total farmed from doubling on the pre-cached
+        data, my apologies. Hit me up on &nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
@@ -92,8 +91,8 @@ const HomeSection1: React.FC<{
         >
           FB messenger
         </a>
-        &nbsp; if you have any questions. Gcash: 0916 585 8589 [Stanley Garbo]
-        :)
+        &nbsp; to report some possible bugs so that I can fix them after my
+        online classes.
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
       <div className="home-section1-wrapper">
