@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import SettingsNav from "../components/SettingsNav";
 import { IoClose } from "react-icons/io5";
 import { useScreenSize } from "../contexts/screenSizeContext";
+import FooterTemplate from "./FooterTemplate";
 
 const Layout: React.FC<ILayout> = ({ children }) => {
   const { colors } = useTheme();
@@ -39,6 +40,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
         <TopBar />
       )}
       {!pathname.includes("/settings/") && children}
+      {/* <FooterTemplate /> */}
       <GlobalStyles colors={colors} />
     </Container>
   );
