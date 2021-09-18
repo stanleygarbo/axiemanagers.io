@@ -82,8 +82,9 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> Fixed total farmed from doubling on the pre-cached
-        data, my apologies. Hit me up on &nbsp;
+        <span>Notice:</span> When MMR is not showing properly, a temporary
+        solution is to hit the refresh button associated to that scholar. Hit me
+        up on &nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
