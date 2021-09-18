@@ -142,9 +142,10 @@ const HomeSection2: React.FC<{
                   mmr={scholarsStat[i.ronin]?.mmr}
                   rank={scholarsStat[i.ronin]?.rank}
                   showRetry={
-                    scholarsStat[i.ronin]?.today === 0 &&
-                    scholarsStat[i.ronin]?.total === 0 &&
-                    scholarsStat[i.ronin]?.lastClaimed === 0
+                    (scholarsStat[i.ronin]?.today === 0 &&
+                      scholarsStat[i.ronin]?.total === 0 &&
+                      scholarsStat[i.ronin]?.lastClaimed === 0) ||
+                    scholarsStat[i.ronin]?.mmr === 0
                   }
                 />
               ))}

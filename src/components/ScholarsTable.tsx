@@ -235,9 +235,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                     </td>
                   )}
 
-                  {data[i.ronin]?.today === 0 &&
-                  data[i.ronin]?.total === 0 &&
-                  data[i.ronin]?.lastClaimed === 0 ? (
+                  {(data[i.ronin]?.today === 0 &&
+                    data[i.ronin]?.total === 0 &&
+                    data[i.ronin]?.lastClaimed === 0) ||
+                  data[i.ronin]?.mmr === 0 ? (
                     <td
                       onClick={() =>
                         refetchScholarMutation.mutate(
