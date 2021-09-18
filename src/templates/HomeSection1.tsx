@@ -82,9 +82,9 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> When MMR is not showing properly, a temporary
-        solution is to hit the refresh button associated to that scholar. Hit me
-        up on &nbsp;
+        <span>Notice:</span> I added two ad components, if you don't like how
+        they look please let me know immediately so that I can provide a better
+        user experience. Hit me up on &nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
