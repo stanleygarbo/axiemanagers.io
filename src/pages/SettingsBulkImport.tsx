@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropzone from "react-dropzone";
 import styled, { css } from "styled-components";
 import { useScholars } from "../contexts/scholarsContext";
@@ -10,21 +10,21 @@ const scholarObjProperties = ["ronin", "color", "nickname", "managerShare"];
 
 const SettingsBulkImport = () => {
   const { colors } = useTheme();
-  const { scholars, addScholar } = useScholars();
+  const { scholars } = useScholars();
 
   const [scholarFileURL, setScholarFileURL] = useState<string>("");
 
-  // useEffect(() => {
-  //   async function createBlob() {
-  //     const json = JSON.stringify(scholars);
-  //     const blob = new Blob([json], { type: "application/json" });
-  //     const href = await URL.createObjectURL(blob);
+  useEffect(() => {
+    async function createBlob() {
+      const json = JSON.stringify(scholars);
+      const blob = new Blob([json], { type: "application/json" });
+      const href = await URL.createObjectURL(blob);
 
-  //     setScholarFileURL(href);
-  //   }
+      setScholarFileURL(href);
+    }
 
-  //   createBlob();
-  // }, [scholars]);
+    createBlob();
+  }, [scholars]);
 
   const onDrop = async (selectedFile: File[]) => {
     var reader = new FileReader();
