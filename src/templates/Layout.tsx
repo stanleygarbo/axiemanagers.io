@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ILayout } from "../interfaces/ILayout";
 import styled, { createGlobalStyle, css } from "styled-components";
 import TopBar from "../components/TopBar";
@@ -9,7 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import SettingsNav from "../components/SettingsNav";
 import { IoClose } from "react-icons/io5";
 import { useScreenSize } from "../contexts/screenSizeContext";
-import FooterTemplate from "./FooterTemplate";
+// import FooterTemplate from "./FooterTemplate";
 
 const Layout: React.FC<ILayout> = ({ children }) => {
   const { colors } = useTheme();
@@ -17,6 +17,17 @@ const Layout: React.FC<ILayout> = ({ children }) => {
   const { goBack, push } = useHistory();
 
   const { screenWidth } = useScreenSize();
+
+  useEffect(() => {
+    const ads = document.querySelector<HTMLElement>(".ads");
+    console.log(pathname, pathname !== "/" || !pathname.includes("/scholar"));
+    if (pathname !== "/") {
+      console.log(ads);
+      ads!.style.display = "none";
+    } else {
+      ads!.style.display = "flex";
+    }
+  }, [pathname]);
 
   return (
     <Container colors={colors}>
