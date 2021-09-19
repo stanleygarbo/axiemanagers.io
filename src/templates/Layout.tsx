@@ -20,9 +20,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
 
   useEffect(() => {
     const ads = document.querySelector<HTMLElement>(".ads");
-    console.log(pathname, pathname !== "/" || !pathname.includes("/scholar"));
     if (pathname !== "/") {
-      console.log(ads);
       ads!.style.display = "none";
     } else {
       ads!.style.display = "flex";
