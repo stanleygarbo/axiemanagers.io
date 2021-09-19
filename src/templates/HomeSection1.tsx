@@ -82,10 +82,9 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> I will prioritize adding export and import feature
-        for the list of your scholars due to reports of them disappearing (this
-        might be because you are clearing the cache of your browser) . Hit me up
-        on &nbsp;
+        <span>Notice:</span> You can now export your list of scholars, and you
+        can import them back if you clear your browser's cache. Hit me up on
+        &nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
