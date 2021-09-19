@@ -82,9 +82,10 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> I added two ad components, if you don't like how
-        they look please let me know immediately so that I can provide a better
-        user experience. Hit me up on &nbsp;
+        <span>Notice:</span> I will prioritize adding export and import feature
+        for the list of your scholars due to reports of them disappearing (this
+        might be because you are clearing the cache of your browser) . Hit me up
+        on &nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
