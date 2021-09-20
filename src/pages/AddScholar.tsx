@@ -155,6 +155,7 @@ const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     max-width: 500px;
     margin: 0px auto;
+    height: calc(100vh - 88px);
 
     form {
       width: 100%;

@@ -11,6 +11,8 @@ const Container = styled.div<{ colors: IColors }>`
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    height: calc(100vh - 88px);
+
     p {
       max-width: 700px;
       font-size: 1rem;
@@ -115,10 +117,10 @@ const Donate = () => {
       </div>
 
       <p>
-        Further improvements will come to axiemanagers.io, I will be
+        Further improvements will come to axiemanagers.io, I will be&nbsp;
         {/* adding gas fees,  */}
-        bulk import and much more! thank you so much! Want to get in touch?
-        Email me:{" "}
+        adding bulk import and much more! thank you so much! Want to get in
+        touch? Email me:{" "}
         <a
           style={{ color: colors.accent2 }}
           href="mailto:digitalmadlad@gmail.com"

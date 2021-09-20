@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ILayout } from "../interfaces/ILayout";
 import styled, { createGlobalStyle, css } from "styled-components";
 import TopBar from "../components/TopBar";
@@ -18,14 +18,14 @@ const Layout: React.FC<ILayout> = ({ children }) => {
 
   const { screenWidth } = useScreenSize();
 
-  useEffect(() => {
-    const ads = document.querySelector<HTMLElement>(".ads");
-    if (pathname !== "/") {
-      ads!.style.display = "none";
-    } else {
-      ads!.style.display = "flex";
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   const ads = document.querySelector<HTMLElement>(".ads");
+  //   if (pathname !== "/") {
+  //     ads!.style.display = "none";
+  //   } else {
+  //     ads!.style.display = "flex";
+  //   }
+  // }, [pathname]);
 
   return (
     <Container colors={colors}>

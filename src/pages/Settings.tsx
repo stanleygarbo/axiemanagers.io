@@ -26,6 +26,7 @@ const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     color: ${colors.textNotSoIntense};
     margin-top: 40px;
+    height: calc(100vh - 88px);
   `}
 `;
 
