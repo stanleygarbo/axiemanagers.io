@@ -82,10 +82,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> The app is currently experiencing some issues, this
-        might be due to the new season. You can now export your list of
-        scholars, and you can import them back if you clear your browser's
-        cache. Hit me up on &nbsp;
+        <span>Notice:</span> I'm currently doing some experiments to the
+        tracker, I will be observing it for a couple of days.&nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
