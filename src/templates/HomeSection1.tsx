@@ -82,8 +82,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> I'm currently doing some experiments to the
-        tracker, I will be observing it for a couple of days.&nbsp;
+        <span>Notice:</span> Take the "Today SLP" data with a grain of salt,
+        take a look the chart instead for more accurate data. Hit me up on&nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
@@ -91,7 +91,7 @@ const HomeSection1: React.FC<{
         >
           FB messenger
         </a>
-        &nbsp; to report some possible bugs so that I can fix them after our
+        &nbsp;to report some possible bugs so that I can fix them after our
         online classes.
         {/* <Link to="/announcement">learn more</Link>. */}
       </p>
