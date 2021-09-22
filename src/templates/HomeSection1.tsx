@@ -44,7 +44,7 @@ const HomeSection1: React.FC<{
   let totalManager = 0;
   let totalScholars = 0;
   let totalAverage = 0;
-  let totalUnclaimed = 0;
+  let totalToday = 0;
   let totalClaimed = 0;
 
   if (scholarsQuery.data && scholars) {
@@ -68,7 +68,7 @@ const HomeSection1: React.FC<{
           totalAverage += scholarStat.total / daysAgoSinceClaimed;
         }
 
-        totalUnclaimed += scholarStat.totalClaimable;
+        totalToday += scholarStat.today;
 
         totalClaimed += scholarStat.lastClaimAmount;
       }
@@ -172,19 +172,19 @@ const HomeSection1: React.FC<{
           </div>
           <div className="home-section1-wrapper__grid__total-unclaimed box home-section1-wrapper__grid__item">
             <div className="home-section1-wrapper__grid__item__title">
-              Total Claimable
+              Total Today
             </div>
             <div className="home-section1-wrapper__grid__item__value">
               <div className="home-section1-wrapper__grid__item__value__slp">
                 <img src="/slp.png" alt="slp" width={35} />
-                {addCommaToNumber(totalUnclaimed)}
+                {addCommaToNumber(totalToday)}
               </div>
 
               <div className="home-section1-wrapper__grid__item__value__currency">
                 &#8776; &#8369;
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalUnclaimed * SLPPriceQuery.data?.current)
+                    Math.floor(totalToday * SLPPriceQuery.data?.current)
                   )}
               </div>
             </div>
