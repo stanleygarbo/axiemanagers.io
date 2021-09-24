@@ -82,8 +82,9 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice:</span> Take the "Today SLP" data with a grain of salt,
-        take a look the chart instead for more accurate data. Hit me up on&nbsp;
+        <span>Notice:</span> I added an experimental feature, so there might be
+        some data inaccuracies, at the mean time some API issues are currently
+        being worked out. Hit me up on&nbsp;
         <a
           href="https://facebook.com/stanley.garbo29"
           rel="noreferrer"
@@ -198,13 +199,13 @@ const HomeSection1: React.FC<{
                 <img src="/slp.png" alt="slp" width={35} />
                 {addCommaToNumber(totalClaimed)}
               </div>
-              <div className="home-section1-wrapper__grid__item__value__currency">
+              {/* <div className="home-section1-wrapper__grid__item__value__currency">
                 &#8776; &#8369;
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalClaimed * SLPPriceQuery.data?.current)
                   )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
