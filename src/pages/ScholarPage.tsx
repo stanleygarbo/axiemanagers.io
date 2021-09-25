@@ -33,7 +33,7 @@ import {
 } from "../api/requests";
 import { Scholar, Scholars } from "../interfaces/IResponseTypes";
 import ErrorMessage from "../components/ErrorMessage";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -57,6 +57,11 @@ const ScholarPage = () => {
     x: string;
     y: string;
   } | null>(null);
+  const queryParams = new URLSearchParams(useLocation().search);
+  const queries = {
+    referrer: queryParams.get("referrer"),
+    name: queryParams.get("name"),
+  };
 
   const queryClient = useQueryClient();
 
@@ -148,7 +153,7 @@ const ScholarPage = () => {
               activate={isDeleted}
             />
 
-            {!scholar ? (
+            {!scholar && !queries.referrer && !queries.name ? (
               <NotFoundMessage />
             ) : (
               <>
@@ -173,17 +178,19 @@ const ScholarPage = () => {
                       )}
                     </div>
                     <div className="wrapper__data__color">
-                      <ColorPicker
-                        color={scholar.color}
-                        setActiveColor={(selectedHex: string) =>
-                          updateScholar({
-                            ronin: scholar.ronin,
-                            color: selectedHex,
-                            nickname: scholar.nickname,
-                            managerShare: scholar.managerShare,
-                          })
-                        }
-                      />
+                      {scholar && (
+                        <ColorPicker
+                          color={scholar ? scholar.color : colors.accent}
+                          setActiveColor={(selectedHex: string) =>
+                            updateScholar({
+                              ronin: scholar.ronin,
+                              color: selectedHex,
+                              nickname: scholar.nickname,
+                              managerShare: scholar.managerShare,
+                            })
+                          }
+                        />
+                      )}
                     </div>
                     <div className="wrapper__data__date">
                       {scholarQuery?.data.chart !== null && earnedHoveredElement
@@ -202,28 +209,28 @@ const ScholarPage = () => {
                           </h3>
                         </div>
                       ) : null}
-                      {scholar?.color && (
-                        <LineChart
-                          data={chartEarnings}
-                          color={scholar.color}
-                          title={`${scholar.nickname}'s performance`}
-                          labels={chartDate}
-                          showLabels={true}
-                          maintainAspectRatio={false}
-                          setHoveredElements={setEarnedHoveredElement}
-                        />
-                      )}
+                      <LineChart
+                        data={chartEarnings}
+                        color={scholar ? scholar.color : colors.accent}
+                        title={`${
+                          scholar ? scholar.nickname : queries.name
+                        }'s performance`}
+                        labels={chartDate}
+                        showLabels={true}
+                        maintainAspectRatio={false}
+                        setHoveredElements={setEarnedHoveredElement}
+                      />
                     </div>
                   </div>
                   <div className="wrapper__scholar-info">
-                    {scholar?.color && (
-                      <Formik
-                        validationSchema={ValidationSchema}
-                        initialValues={{
-                          nickname: scholar.nickname,
-                          managerShare: scholar.managerShare,
-                        }}
-                        onSubmit={(values) => {
+                    <Formik
+                      validationSchema={ValidationSchema}
+                      initialValues={{
+                        nickname: scholar ? scholar.nickname : queries.name,
+                        managerShare: scholar ? scholar.managerShare : 0,
+                      }}
+                      onSubmit={(values) => {
+                        if (scholar && values.nickname) {
                           updateScholar({
                             ronin: scholar.ronin,
                             color: scholar.color,
@@ -231,88 +238,96 @@ const ScholarPage = () => {
                             managerShare: values.managerShare,
                           });
                           setIsSaveable(false);
-                        }}
-                      >
-                        {({ touched, errors }) => (
-                          <Form className="wrapper__scholar-info__form">
-                            <FormikField
-                              onKeyUp={nameChangeHandler}
-                              autoComplete="off"
-                              type="text"
-                              name="nickname"
-                              placeholder="Nickname"
-                              colors={colors}
-                              style={{
-                                background: colors.BGDark,
-                                gridColumn: "span 2",
-                                border:
-                                  touched.nickname &&
-                                  errors.nickname &&
-                                  `1px solid ${colors.danger}`,
-                              }}
-                            />
+                        }
+                      }}
+                    >
+                      {({ touched, errors }) => (
+                        <Form className="wrapper__scholar-info__form">
+                          <FormikField
+                            onKeyUp={nameChangeHandler}
+                            autoComplete="off"
+                            type="text"
+                            name="nickname"
+                            placeholder="Nickname"
+                            colors={colors}
+                            style={{
+                              background: colors.BGDark,
+                              gridColumn: "span 2",
+                              border:
+                                touched.nickname &&
+                                errors.nickname &&
+                                `1px solid ${colors.danger}`,
+                            }}
+                          />
 
-                            <div
-                              className="wrapper__scholar-info__form__ronin"
-                              style={{ gridColumn: "span 2" }}
-                            >
-                              {scholar?.ronin && truncate(scholar.ronin, 29)}
-                            </div>
-                            <section className="wrapper__scholar-info__form__manager-share">
-                              Manager&apos;s Share:
-                              <FormikField
-                                onKeyUp={managerShareChangeHandler}
-                                autoComplete="off"
-                                type="number"
-                                name="managerShare"
-                                placeholder="%"
-                                colors={colors}
+                          <div
+                            className="wrapper__scholar-info__form__ronin"
+                            style={{ gridColumn: "span 2" }}
+                          >
+                            {ronin && truncate(ronin, 29)}
+                          </div>
+                          {scholar && (
+                            <>
+                              <section className="wrapper__scholar-info__form__manager-share">
+                                Manager&apos;s Share:
+                                <FormikField
+                                  onKeyUp={managerShareChangeHandler}
+                                  autoComplete="off"
+                                  type="number"
+                                  name="managerShare"
+                                  placeholder="%"
+                                  colors={colors}
+                                  style={{
+                                    background: colors.BGDark,
+                                    minWidth: 50,
+                                    maxWidth: 50,
+                                    border:
+                                      touched.managerShare &&
+                                      errors.managerShare &&
+                                      `1px solid ${colors.danger}`,
+                                  }}
+                                />
+                              </section>
+                              <Button
+                                disabled={
+                                  !isSaveable ||
+                                  !!(touched.nickname && errors.nickname) ||
+                                  !!(
+                                    touched.managerShare && errors.managerShare
+                                  )
+                                }
+                                bgColor={
+                                  isSaveable &&
+                                  !(touched.nickname && errors.nickname) &&
+                                  !(touched.managerShare && errors.managerShare)
+                                    ? colors.accent
+                                    : colors.BGDark
+                                }
+                                type="submit"
+                                foreground={
+                                  isSaveable &&
+                                  !(touched.nickname && errors.nickname) &&
+                                  !(touched.managerShare && errors.managerShare)
+                                    ? "#ffffff"
+                                    : colors.textNotSoIntense
+                                }
                                 style={{
-                                  background: colors.BGDark,
-                                  minWidth: 50,
-                                  maxWidth: 50,
-                                  border:
-                                    touched.managerShare &&
-                                    errors.managerShare &&
-                                    `1px solid ${colors.danger}`,
+                                  padding: 6,
+                                  borderRadius: 6,
+                                  border: `1px solid ${
+                                    colors.textIntense + 20
+                                  }`,
+                                  height: 47,
+                                  width: 47,
                                 }}
-                              />
-                            </section>
-                            <Button
-                              disabled={
-                                !isSaveable ||
-                                !!(touched.nickname && errors.nickname) ||
-                                !!(touched.managerShare && errors.managerShare)
-                              }
-                              bgColor={
-                                isSaveable &&
-                                !(touched.nickname && errors.nickname) &&
-                                !(touched.managerShare && errors.managerShare)
-                                  ? colors.accent
-                                  : colors.BGDark
-                              }
-                              type="submit"
-                              foreground={
-                                isSaveable &&
-                                !(touched.nickname && errors.nickname) &&
-                                !(touched.managerShare && errors.managerShare)
-                                  ? "#ffffff"
-                                  : colors.textNotSoIntense
-                              }
-                              style={{
-                                padding: 6,
-                                borderRadius: 6,
-                                border: `1px solid ${colors.textIntense + 20}`,
-                                height: 47,
-                                width: 47,
-                              }}
-                            >
-                              <BiSave size={32} />
-                            </Button>
-                          </Form>
-                        )}
-                      </Formik>
-                    )}
+                              >
+                                <BiSave size={32} />
+                              </Button>
+                            </>
+                          )}
+                        </Form>
+                      )}
+                    </Formik>
 
                     <div className="wrapper__scholar-info__wrapper">
                       <div className="wrapper__scholar-info__wrapper__total">
@@ -382,13 +397,15 @@ const ScholarPage = () => {
                     </div>
 
                     <div className="wrapper__scholar-info__progress">
-                      <DeleteButton
-                        onClick={() => {
-                          removeScholarFromCache();
-                          setIsDeleted(true);
-                          deleteScholar({ ronin: scholar.ronin });
-                        }}
-                      />
+                      {scholar && (
+                        <DeleteButton
+                          onClick={() => {
+                            removeScholarFromCache();
+                            setIsDeleted(true);
+                            deleteScholar({ ronin: scholar.ronin });
+                          }}
+                        />
+                      )}
                       {scholarQuery.data?.lastClaimed !== 0 ? (
                         <Progress earned={scholarQuery?.data?.today} />
                       ) : (
