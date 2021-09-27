@@ -81,7 +81,7 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>Notice:</span> I added an experimental feature, so there might be
         some data inaccuracies, at the mean time some API issues are currently
         being worked out. Hit me up on&nbsp;
@@ -94,8 +94,8 @@ const HomeSection1: React.FC<{
         </a>
         &nbsp;to report some possible bugs so that I can fix them after our
         online classes.
-        {/* <Link to="/announcement">learn more</Link>. */}
-      </p>
+        <Link to="/announcement">learn more</Link>.
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
