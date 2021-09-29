@@ -5,8 +5,15 @@ import { useScholars } from "../contexts/scholarsContext";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { IScholars } from "../interfaces/IScholarsContext";
+import { randomColor } from "../util/randomColor";
 
 const scholarObjProperties = ["ronin", "color", "nickname", "managerShare"];
+const axieschotracker_xyzObjProperties = [
+  "name",
+  "eth",
+  "managerShare",
+  "iskoShare",
+];
 
 const SettingsBulkImport = () => {
   const { colors } = useTheme();
@@ -66,6 +73,53 @@ const SettingsBulkImport = () => {
     reader.readAsText(selectedFile[0]);
   };
 
+  const externalOnDrop1 = (selectedFile: File[]) => {
+    var reader = new FileReader();
+    reader.onload = async function (e) {
+      var contents = e!.target!.result;
+      // displayContents(contents);
+      if (typeof contents === "string") {
+        const json = JSON.parse(contents);
+        const newListOfScholars: IScholars[] = [];
+        if (json.length) {
+          for (const i of json) {
+            for (const key of Object.keys(i)) {
+              if (axieschotracker_xyzObjProperties.includes(key)) {
+                console.log("included");
+              } else {
+                alert(
+                  `JSON File structure is incompatible with axiemanagers.io, maybe this is from another tracker. \n\nLet me know what tracker you were previously using so that I can add that data structure to our system.`
+                );
+                return;
+              }
+            }
+
+            if (scholars.find((obj) => obj.ronin === i.eth)) {
+              console.log("exists");
+            } else {
+              console.log("does not exists");
+              const newObj = {
+                ronin: i.eth,
+                managerShare: i.managerShare,
+                nickname: i.name,
+                color: randomColor(),
+              };
+
+              newListOfScholars.push(newObj);
+            }
+            // await new Promise((resolve) => setTimeout(resolve, 3000));
+          }
+          localStorage.setItem(
+            "scholars",
+            JSON.stringify([...scholars, ...newListOfScholars])
+          );
+          // console.log([...scholars, ...newListOfScholars]);
+        }
+      }
+    };
+    reader.readAsText(selectedFile[0]);
+  };
+
   return (
     <Container colors={colors}>
       <div className="wrapper">
@@ -87,6 +141,26 @@ const SettingsBulkImport = () => {
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
                   <p>Import</p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
+        </div>
+        <br />
+        Import .json file from other trackers
+        <br />
+        <br />
+        <div className="wrapper__buttons">
+          <Dropzone
+            onDrop={externalOnDrop1}
+            multiple={false}
+            accept="application/json"
+          >
+            {({ getRootProps, getInputProps }) => (
+              <section>
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <p>Import from axie-scho-tracker.xyz</p>
                 </div>
               </section>
             )}
