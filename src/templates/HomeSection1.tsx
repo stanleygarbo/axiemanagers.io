@@ -81,6 +81,7 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
+<p><span>Notice:</span> If you don't see don't see any data, that maybe because of an ongoing maintenance on the server. </p>
       {/* <p>
         <span>Notice:</span> I added an experimental feature, so there might be
         some data inaccuracies, at the mean time some API issues are currently
