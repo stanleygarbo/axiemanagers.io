@@ -159,7 +159,7 @@ const SettingsBulkImport = () => {
               <section>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <p>Import from axie-scho-tracker.xyz</p>
+                  <p>Import from External Tracker</p>
                 </div>
               </section>
             )}
