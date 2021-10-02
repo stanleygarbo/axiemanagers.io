@@ -8,12 +8,7 @@ import { IScholars } from "../interfaces/IScholarsContext";
 import { randomColor } from "../util/randomColor";
 
 const scholarObjProperties = ["ronin", "color", "nickname", "managerShare"];
-const axieschotracker_xyzObjProperties = [
-  "name",
-  "eth",
-  "managerShare",
-  "iskoShare",
-];
+const externalListObjProperties = ["name", "eth", "managerShare"];
 
 const SettingsBulkImport = () => {
   const { colors } = useTheme();
@@ -83,29 +78,33 @@ const SettingsBulkImport = () => {
         const newListOfScholars: IScholars[] = [];
         if (json.length) {
           for (const i of json) {
+            let included = 0;
             for (const key of Object.keys(i)) {
-              if (axieschotracker_xyzObjProperties.includes(key)) {
+              if (externalListObjProperties.includes(key)) {
+                included++;
                 console.log("included");
-              } else {
-                alert(
-                  `JSON File structure is incompatible with axiemanagers.io, maybe this is from another tracker. \n\nLet me know what tracker you were previously using so that I can add that data structure to our system.`
-                );
-                return;
               }
             }
 
-            if (scholars.find((obj) => obj.ronin === i.eth)) {
-              console.log("exists");
-            } else {
-              console.log("does not exists");
-              const newObj = {
-                ronin: i.eth,
-                managerShare: i.managerShare,
-                nickname: i.name,
-                color: randomColor(),
-              };
+            if (included === 3) {
+              if (scholars.find((obj) => obj.ronin === i.eth)) {
+                console.log("exists");
+              } else {
+                console.log("does not exists");
+                const newObj = {
+                  ronin: i.eth,
+                  managerShare: i.managerShare,
+                  nickname: i.name,
+                  color: randomColor(),
+                };
 
-              newListOfScholars.push(newObj);
+                newListOfScholars.push(newObj);
+              }
+            } else {
+              alert(
+                `JSON File structure is incompatible with axiemanagers.io, maybe this is from another tracker. \n\nLet me know what tracker you were previously using so that I can add that data structure to our system.`
+              );
+              return;
             }
             // await new Promise((resolve) => setTimeout(resolve, 3000));
           }
