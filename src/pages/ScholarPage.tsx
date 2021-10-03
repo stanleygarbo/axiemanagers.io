@@ -34,6 +34,7 @@ import {
 import { Scholar, Scholars } from "../interfaces/IResponseTypes";
 import ErrorMessage from "../components/ErrorMessage";
 import { useHistory, useParams, useLocation } from "react-router-dom";
+import { useUserPreferences } from "../contexts/userPreferences";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -62,6 +63,7 @@ const ScholarPage = () => {
     referrer: queryParams.get("referrer"),
     name: queryParams.get("name"),
   };
+  const { currency } = useUserPreferences();
 
   const queryClient = useQueryClient();
 
@@ -85,7 +87,7 @@ const ScholarPage = () => {
 
   // console.log(axiesQuery);
 
-  const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice, {
+  const SLPPriceQuery = useQuery("SLPPrice", () => fetchSLPPrice(currency), {
     staleTime: Infinity,
   });
 
