@@ -12,6 +12,7 @@ import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
 import { getCurrencySign } from "../util/getCurrencySign";
 import { useUserPreferences } from "../contexts/userPreferences";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const HomeSection1: React.FC<{
@@ -84,21 +85,11 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Notice:</span> I added an experimental feature, so there might be
-        some data inaccuracies, at the mean time some API issues are currently
-        being worked out. Hit me up on&nbsp;
-        <a
-          href="https://facebook.com/stanley.garbo29"
-          rel="noreferrer"
-          target="_blank"
-        >
-          FB messenger
-        </a>
-        &nbsp;to report some possible bugs so that I can fix them after our
-        online classes.
-        <Link to="/announcement">learn more</Link>.
-      </p> */}
+      <p>
+        <span>Update:</span> You can now select a currency. The data should also
+        now update every ten minutes, if you find this app useful please{" "}
+        <Link to="/donate">consider donating</Link>.&nbsp;
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
