@@ -31,7 +31,7 @@ const TopBar = () => {
           </div>
           <ul className="announcement__content__links">
             <li>
-              <a href="mailto:contact@axiemanagers.io">Contact</a>
+              <a href="mailto:digitalmadlad@gmail.com">Contact</a>
             </li>
             <li>
               <Link to="/about">About</Link>
