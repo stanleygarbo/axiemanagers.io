@@ -10,7 +10,7 @@ import Donate from "./pages/Donate";
 import Settings from "./pages/Settings";
 import SettingsBulkImport from "./pages/SettingsBulkImport";
 import ScrollMemory from "react-router-scroll-memory";
-import SettingsInterface from "./pages/SettingsInterface";
+import SettingsInterface from "./pages/SettingsPreferences";
 import Announcement from "./pages/Announcement";
 
 const App: React.FC = () => {

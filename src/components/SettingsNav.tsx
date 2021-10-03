@@ -21,7 +21,7 @@ const SettingsNav = () => {
         to="/settings/interface"
         className={pathname === "/settings/interface" ? `active-tab` : ""}
       >
-        Interface
+        Preferences
       </Link>
       {/* <Link
         to="/settings/min-quota"
@@ -47,6 +47,8 @@ const Container = styled.div<{ colors: IColors }>`
       margin-bottom: 10px;
       padding: 7px 20px;
       border-radius: 5px;
+      width: 100%;
+
       &.active-tab {
         background-color: ${colors.BGLighter};
       }
@@ -60,6 +62,10 @@ const Container = styled.div<{ colors: IColors }>`
 
       margin-bottom: 10px;
       color: ${colors.textIntense + 60};
+    }
+
+    @media (max-width: 1000px) {
+      max-width: 100%;
     }
   `}
 `;

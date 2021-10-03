@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const fetchSLPPrice = async () => {
-  const { data } = await axios.get("https://api.axiemanagers.io/slp_price");
+export const fetchSLPPrice = async (currency: string) => {
+  const { data } = await axios.get(
+    `https://api.axiemanagers.io/slp_price?currency=${
+      currency ? currency : "php"
+    }`
+  );
 
   return data;
 };

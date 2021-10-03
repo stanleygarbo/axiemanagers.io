@@ -10,6 +10,8 @@ import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
+import { getCurrencySign } from "../util/getCurrencySign";
+import { useUserPreferences } from "../contexts/userPreferences";
 // import { Link } from "react-router-dom";
 
 const HomeSection1: React.FC<{
@@ -18,6 +20,7 @@ const HomeSection1: React.FC<{
 }> = ({ SLPPriceQuery, scholarsQuery }) => {
   const { colors } = useTheme();
   const { scholars } = useScholars();
+  const { currency } = useUserPreferences();
 
   const [hoveredElement, setHoveredElement] = useState<{
     x: string;
@@ -108,7 +111,7 @@ const HomeSection1: React.FC<{
                 {addCommaToNumber(totalFarmed)}
               </div>
               <div className="home-section1-wrapper__grid__item__value__currency">
-                &#8776; &#8369;
+                &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalFarmed * SLPPriceQuery.data?.current)
@@ -126,7 +129,7 @@ const HomeSection1: React.FC<{
                 {addCommaToNumber(Math.floor(totalManager))}
               </div>
               <div className="home-section1-wrapper__grid__item__value__currency">
-                &#8776; &#8369;
+                &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalManager * SLPPriceQuery.data?.current)
@@ -144,7 +147,7 @@ const HomeSection1: React.FC<{
                 {addCommaToNumber(Math.floor(totalScholars))}
               </div>
               <div className="home-section1-wrapper__grid__item__value__currency">
-                &#8776; &#8369;
+                &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalScholars * SLPPriceQuery.data?.current)
@@ -163,7 +166,7 @@ const HomeSection1: React.FC<{
                 {addCommaToNumber(Math.floor(totalAverage))}
               </div>
               <div className="home-section1-wrapper__grid__item__value__currency">
-                &#8776; &#8369;
+                &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalAverage * SLPPriceQuery.data?.current)
@@ -182,7 +185,7 @@ const HomeSection1: React.FC<{
               </div>
 
               <div className="home-section1-wrapper__grid__item__value__currency">
-                &#8776; &#8369;
+                &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
                     Math.floor(totalToday * SLPPriceQuery.data?.current)
@@ -214,7 +217,7 @@ const HomeSection1: React.FC<{
           onMouseLeave={() => setHoveredElement(null)}
         >
           <div className="home-section1-wrapper__line-chart__price">
-            &#8369;
+            {getCurrencySign(currency)}
             {hoveredElement ? hoveredElement.y : SLPPriceQuery.data?.current}
             {SLPPriceQuery.isLoading && "---"}
           </div>

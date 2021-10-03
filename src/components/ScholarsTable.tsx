@@ -12,6 +12,7 @@ import { addCommaToNumber } from "../util/addCommaToNumber";
 import { useHistory } from "react-router-dom";
 import { getAverageSLP } from "../util/getAverageSLP";
 import { getManagerShare, getScholarShare } from "../util/getShare";
+import { getCurrencySign } from "../util/getCurrencySign";
 import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
 import { LineChart } from "./LineChart";
 import { TiArrowSync } from "react-icons/ti";
@@ -25,8 +26,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
   const { colors } = useTheme();
   const { updateScholar } = useScholars();
   const queryClient = useQueryClient();
-  const SLPPrice = queryClient.getQueryState<SLPPrice>("SLPPrice");
   const history = useHistory();
+  const { currency } = useUserPreferences();
+  const SLPPrice = queryClient.getQueryState<SLPPrice>(["SLPPrice", currency]);
 
   const { scholarsTable } = useUserPreferences();
 
@@ -122,7 +124,8 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
                           data[i.ronin]?.total,
-                          SLPPrice?.data?.current
+                          SLPPrice?.data?.current,
+                          getCurrencySign(currency)
                         ).converted
                       }
                     </td>
@@ -138,7 +141,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         />
                         {addCommaToNumber(managerShare.slp)}
                       </div>
-                      &nbsp;&#8776; &#8369;
+                      &nbsp;&#8776; {getCurrencySign(currency)}
                       {addCommaToNumber(managerShare.converted)}
                     </td>
                   )}
@@ -153,7 +156,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         />
                         {addCommaToNumber(scholarShare.slp)}
                       </div>
-                      &nbsp;&#8776; &#8369;
+                      &nbsp;&#8776; {getCurrencySign(currency)}
                       {addCommaToNumber(scholarShare.converted)}
                     </td>
                   )}
@@ -172,7 +175,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       ) : (
                         "---"
                       )}
-                      &nbsp;&#8776; &#8369;
+                      &nbsp;&#8776; {getCurrencySign(currency)}
                       {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
                         ? addCommaToNumber(
                             Math.floor(

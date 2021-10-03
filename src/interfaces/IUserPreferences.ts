@@ -14,8 +14,11 @@ export type IScholarsTableColumns = {
   today: boolean;
 };
 
+export type ICurrency = "eur" | "sgd" | "inr" | "vnd" | "php" | "usd" | "";
+
 export interface IUserPreferences {
   scholarsTable: IScholarsTableColumns;
+  currency: ICurrency;
   setScholarsTable: ({
     name,
     total,
@@ -31,4 +34,5 @@ export interface IUserPreferences {
     rank,
     chart,
   }: IScholarsTableColumns) => void;
+  setCurrency: (currency: ICurrency) => void;
 }

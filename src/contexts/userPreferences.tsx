@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 import {
   IUserPreferences,
   IScholarsTableColumns,
+  ICurrency,
 } from "../interfaces/IUserPreferences";
 
 const userPreferencesContext = createContext<IUserPreferences>({
@@ -20,32 +21,37 @@ const userPreferencesContext = createContext<IUserPreferences>({
     today: true,
     average: true,
   },
+  currency: "",
   setScholarsTable: () => {},
+  setCurrency: () => {},
 });
 
 const useUserPreferencesContext = () => {
-  const [userPreferences, setUserPreferences] = useState({
-    scholarsTable: {
-      name: true,
-      total: true,
-      manager: true,
-      scholar: true,
-      lastClaimedAmount: false,
-      lastUpdated: true,
-      lastClaimed: true,
-      nextClaim: true,
-      mmr: true,
-      rank: false,
-      chart: true,
-      today: true,
-      average: true,
-    },
+  const [scholarsTablePreferences, setScholarsTablePreferences] = useState({
+    name: true,
+    total: true,
+    manager: true,
+    scholar: true,
+    lastClaimedAmount: false,
+    lastUpdated: true,
+    lastClaimed: true,
+    nextClaim: true,
+    mmr: true,
+    rank: false,
+    chart: true,
+    today: true,
+    average: true,
   });
+
+  const [selectedCurrency, setselectedCurrency] = useState<ICurrency>("");
 
   useEffect(() => {
     const stringifiedUserPreferences = localStorage.getItem("userPreferences");
 
-    let parsedUserPreferences = {
+    let parsedUserPreferences: {
+      scholarsTable: IScholarsTableColumns;
+      currency: ICurrency;
+    } = {
       scholarsTable: {
         name: true,
         total: true,
@@ -61,37 +67,44 @@ const useUserPreferencesContext = () => {
         today: true,
         average: true,
       },
+      currency: "",
     };
     if (stringifiedUserPreferences) {
       parsedUserPreferences = JSON.parse(stringifiedUserPreferences);
     }
 
     if (parsedUserPreferences === null || parsedUserPreferences === undefined) {
-      setUserPreferences({
-        scholarsTable: {
-          name: true,
-          total: true,
-          manager: true,
-          scholar: true,
-          lastClaimedAmount: false,
-          lastUpdated: true,
-          lastClaimed: true,
-          nextClaim: true,
-          mmr: true,
-          rank: false,
-          chart: true,
-          today: true,
-          average: true,
-        },
+      setScholarsTablePreferences({
+        name: true,
+        total: true,
+        manager: true,
+        scholar: true,
+        lastClaimedAmount: false,
+        lastUpdated: true,
+        lastClaimed: true,
+        nextClaim: true,
+        mmr: true,
+        rank: false,
+        chart: true,
+        today: true,
+        average: true,
       });
+      setCurrency("");
     } else {
-      setUserPreferences(parsedUserPreferences);
+      setScholarsTablePreferences(parsedUserPreferences.scholarsTable);
+      setCurrency(parsedUserPreferences.currency);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("userPreferences", JSON.stringify(userPreferences));
-  }, [userPreferences]);
+    localStorage.setItem(
+      "userPreferences",
+      JSON.stringify({
+        scholarsTable: scholarsTablePreferences,
+        currency: selectedCurrency,
+      })
+    );
+  }, [scholarsTablePreferences, selectedCurrency]);
 
   const setScholarsTable = ({
     name,
@@ -108,28 +121,32 @@ const useUserPreferencesContext = () => {
     today,
     average,
   }: IScholarsTableColumns) => {
-    setUserPreferences({
-      scholarsTable: {
-        name,
-        total,
-        manager,
-        scholar,
-        lastClaimedAmount,
-        lastUpdated,
-        lastClaimed,
-        nextClaim,
-        rank,
-        mmr,
-        chart,
-        today,
-        average,
-      },
+    setScholarsTablePreferences({
+      name,
+      total,
+      manager,
+      scholar,
+      lastClaimedAmount,
+      lastUpdated,
+      lastClaimed,
+      nextClaim,
+      rank,
+      mmr,
+      chart,
+      today,
+      average,
     });
   };
 
+  const setCurrency = (currency: ICurrency) => {
+    setselectedCurrency(currency);
+  };
+
   return {
-    scholarsTable: userPreferences.scholarsTable,
+    scholarsTable: scholarsTablePreferences,
     setScholarsTable,
+    setCurrency,
+    currency: selectedCurrency,
   };
 };
 

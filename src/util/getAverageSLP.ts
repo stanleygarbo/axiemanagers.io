@@ -6,7 +6,8 @@ type Average = { slp: string; converted: number | string };
 export const getAverageSLP = (
   lastClaimed?: number,
   totalSLP?: number,
-  slpPrice?: number
+  slpPrice?: number,
+  currencySign?: string
 ): Average => {
   if (!lastClaimed || totalSLP === undefined || slpPrice === undefined)
     return { slp: "---", converted: "---" };
@@ -30,6 +31,7 @@ export const getAverageSLP = (
         .toFixed(0) !== "0"
         ? addCommaToNumber(avgSLP) + " / day"
         : "---",
-    converted: "≈ ₱" + addCommaToNumber(Math.floor(avgSLP * slpPrice)),
+    converted:
+      `≈ ${currencySign}` + addCommaToNumber(Math.floor(avgSLP * slpPrice)),
   };
 };

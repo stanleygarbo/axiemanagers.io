@@ -17,6 +17,8 @@ import { useScreenSize } from "../contexts/screenSizeContext";
 import { IScholars } from "../interfaces/IScholarsContext";
 import { getAverageSLP } from "../util/getAverageSLP";
 import { addCommaToNumber } from "../util/addCommaToNumber";
+import { getCurrencySign } from "../util/getCurrencySign";
+import { useUserPreferences } from "../contexts/userPreferences";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
@@ -25,7 +27,8 @@ const HomeSection2: React.FC<{
   const { colors } = useTheme();
   const { scholars } = useScholars();
   const queryClient = useQueryClient();
-  const SLPPrice = queryClient.getQueryState<SLPPrice>("SLPPrice");
+  const { currency } = useUserPreferences();
+  const SLPPrice = queryClient.getQueryState<SLPPrice>(["SLPPrice", currency]);
 
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
@@ -106,7 +109,7 @@ const HomeSection2: React.FC<{
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
                       ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
-                        " ≈ ₱" +
+                        ` ≈ ${getCurrencySign(currency)}` +
                         addCommaToNumber(
                           Math.floor(
                             scholarsStat[i.ronin]?.today *

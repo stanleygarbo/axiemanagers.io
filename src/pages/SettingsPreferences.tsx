@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import { useTheme } from "../contexts/themeContext";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { IColors } from "../interfaces/IColors";
+import { ICurrency } from "../interfaces/IUserPreferences";
 
 const additionalFilters = [
   { id: "name", name: "NAME" },
@@ -22,10 +23,20 @@ const additionalFilters = [
   { id: "rank", name: "RANK" },
 ];
 
-const SettingsInterface = () => {
+const currencies: { id: ICurrency; name: string }[] = [
+  { id: "php", name: "PHP" },
+  { id: "usd", name: "USD" },
+  { id: "inr", name: "INR" },
+  { id: "vnd", name: "VND" },
+  { id: "eur", name: "EUR" },
+  { id: "sgd", name: "SGD" },
+];
+
+const SettingsPreferences = () => {
   const { colors } = useTheme();
 
-  const { scholarsTable, setScholarsTable } = useUserPreferences();
+  const { scholarsTable, setScholarsTable, setCurrency, currency } =
+    useUserPreferences();
 
   const filterButtonStyles = {
     borderRadius: 7,
@@ -67,6 +78,23 @@ const SettingsInterface = () => {
           {i.name}
         </Button>
       ))}
+      <br />
+      <br />
+      <div className="title">Currency</div>
+      {currencies.map((i, idx) => (
+        <Button
+          key={idx}
+          onClick={() => setCurrency(i.id)}
+          style={{
+            ...filterButtonStyles,
+            ...(currency === i.id
+              ? activeFilterButtonStyles
+              : inactiveFilterButtonStyles),
+          }}
+        >
+          {i.name}
+        </Button>
+      ))}
     </Container>
   );
 };
@@ -82,4 +110,4 @@ const Container = styled.div<{ colors: IColors }>`
   `}
 `;
 
-export default SettingsInterface;
+export default SettingsPreferences;

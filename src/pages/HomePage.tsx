@@ -10,6 +10,7 @@ import {
   refetchScholar,
 } from "../api/requests";
 import { Scholars } from "../interfaces/IResponseTypes";
+import { useUserPreferences } from "../contexts/userPreferences";
 
 const Container = styled.div`
   padding-bottom: 100px;
@@ -17,6 +18,7 @@ const Container = styled.div`
 
 const HomePage = () => {
   const { scholars } = useScholars();
+  const { currency } = useUserPreferences();
 
   const ids = scholars?.map((i) => i.ronin.replace("ronin:", "0x"));
 
@@ -32,10 +34,14 @@ const HomePage = () => {
     }
   );
 
-  const SLPPriceQuery = useQuery("SLPPrice", fetchSLPPrice, {
-    keepPreviousData: true,
-    staleTime: Infinity,
-  });
+  const SLPPriceQuery = useQuery(
+    ["SLPPrice", currency],
+    async () => await fetchSLPPrice(currency),
+    {
+      keepPreviousData: true,
+      staleTime: Infinity,
+    }
+  );
 
   const refetchScholarMutation = useMutation(
     (ronin: string) => refetchScholar(ronin),
@@ -58,7 +64,10 @@ const HomePage = () => {
           SLPPriceQuery={SLPPriceQuery}
         />
         <AddScholarForm />
-        <HomeSection2 refetchScholarMutation={refetchScholarMutation} scholarsQuery={scholarsQuery} />
+        <HomeSection2
+          refetchScholarMutation={refetchScholarMutation}
+          scholarsQuery={scholarsQuery}
+        />
       </div>
     </Container>
   );
