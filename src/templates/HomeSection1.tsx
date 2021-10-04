@@ -208,7 +208,7 @@ const HomeSection1: React.FC<{
           onMouseLeave={() => setHoveredElement(null)}
         >
           <div className="home-section1-wrapper__line-chart__price">
-            {getCurrencySign(currency)}
+            {!hoveredElement ? getCurrencySign(currency) : "₱"}
             {hoveredElement ? hoveredElement.y : SLPPriceQuery.data?.current}
             {SLPPriceQuery.isLoading && "---"}
           </div>

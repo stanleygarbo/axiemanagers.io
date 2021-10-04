@@ -35,6 +35,7 @@ import { Scholar, Scholars } from "../interfaces/IResponseTypes";
 import ErrorMessage from "../components/ErrorMessage";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useUserPreferences } from "../contexts/userPreferences";
+import { getCurrencySign } from "../util/getCurrencySign";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -87,9 +88,13 @@ const ScholarPage = () => {
 
   // console.log(axiesQuery);
 
-  const SLPPriceQuery = useQuery("SLPPrice", () => fetchSLPPrice(currency), {
-    staleTime: Infinity,
-  });
+  const SLPPriceQuery = useQuery(
+    ["SLPPrice", currency],
+    () => fetchSLPPrice(currency),
+    {
+      staleTime: Infinity,
+    }
+  );
 
   const removeScholarFromCache = () => {
     queryClient.setQueryData<Scholars>("Scholars", (old: any) => {
@@ -168,7 +173,7 @@ const ScholarPage = () => {
                           ? earnedHoveredElement.y
                           : scholarQuery.data?.total
                       )}{" "}
-                      ≈ &#8369;
+                      ≈ {getCurrencySign(currency)}
                       {addCommaToNumber(
                         Math.round(
                           earnedHoveredElement
