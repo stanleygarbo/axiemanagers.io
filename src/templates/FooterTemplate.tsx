@@ -50,7 +50,7 @@ const Container = styled.footer<{ colors: IColors }>`
 
         &__message {
           border-radius: 5px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
+          border: 1px dashed ${colors.textIntense + 30};
           padding: 15px;
 
           &__title {
