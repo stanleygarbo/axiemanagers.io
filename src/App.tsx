@@ -12,6 +12,7 @@ import SettingsBulkImport from "./pages/SettingsBulkImport";
 import ScrollMemory from "react-router-scroll-memory";
 import SettingsInterface from "./pages/SettingsPreferences";
 import Announcement from "./pages/Announcement";
+import FooterTemplate from "./templates/FooterTemplate";
 
 const App: React.FC = () => {
   return (
@@ -54,6 +55,7 @@ const App: React.FC = () => {
             </Switch>
           </>
         </Layout>
+        <FooterTemplate />
       </Router>
     </div>
   );

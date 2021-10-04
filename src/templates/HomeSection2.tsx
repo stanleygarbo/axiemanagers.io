@@ -170,7 +170,7 @@ const HomeSection2: React.FC<{
 const Message = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
     color: ${colors.textNotSoIntense};
   `}
 `;

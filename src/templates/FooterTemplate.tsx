@@ -11,22 +11,21 @@ const FooterTemplate = () => {
       <div className="footer-wrapper">
         <div className="footer-wrapper__notice">
           <div className="footer-wrapper__notice__message">
-            axiemanagers.io is not affiliated with Axie Infinity, this is a
-            fan-made site
+            <div className="footer-wrapper__notice__message__title">
+              How daily SLP is calculated
+            </div>
+            <div className="footer-wrapper__notice__message__description">
+              This feature needs historical data for it to function, that is why
+              during the first day prior to adding your scholar there is no data
+              shown for the daily SLP.
+            </div>
           </div>
-          <div className="footer-wrapper__notice__stats">
-            axiemanagers.io is not affiliated with Axie Infinity, this is a
-            fan-made site
-          </div>
-        </div>
-        <div className="footer-wrapper__important">
-          <div className="footer-wrapper__important__price">
-            <img src="/slp.png" alt="slp" width={30} />
-            P4.11
-          </div>
-          <div className="footer-wrapper__important__price">
-            <img src="/eth.svg" alt="eth" width={30} />
-            P150,300.21
+          <div className="footer-wrapper__notice__message">
+            <div className="footer-wrapper__notice__message__title">About</div>
+            <div className="footer-wrapper__notice__message__description">
+              axiemanagers.io is a fan-made tracking tool for the community.
+              axiemanagers.io is not affiliated with axie infinity.
+            </div>
           </div>
         </div>
       </div>
@@ -36,7 +35,6 @@ const FooterTemplate = () => {
 
 const Container = styled.footer<{ colors: IColors }>`
   ${({ colors }) => css`
-    min-height: 200px;
     background-color: ${colors.BGLight};
 
     .footer-wrapper {
@@ -44,6 +42,29 @@ const Container = styled.footer<{ colors: IColors }>`
       margin: 0 auto;
       padding: 20px;
       color: ${colors.textNotSoIntense};
+
+      &__notice {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 20px;
+
+        &__message {
+          border-radius: 5px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          padding: 15px;
+
+          &__title {
+            color: ${colors.textNotSoIntense};
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+          &__description {
+            font-size: 14px;
+            color: ${colors.textIntense + 90};
+          }
+        }
+      }
     }
   `}
 `;

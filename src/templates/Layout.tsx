@@ -83,6 +83,8 @@ const GlobalStyles = createGlobalStyle<{ colors: IColors }>`
 
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
+    min-height: calc(100vh - 230px);
+
     .settings-wrapper {
       max-width: 900px;
       margin: 0 auto;
