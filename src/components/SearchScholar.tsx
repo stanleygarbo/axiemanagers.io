@@ -8,16 +8,22 @@ import { BsSearch } from "react-icons/bs";
 import { useQueryClient } from "react-query";
 import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
 import { addCommaToNumber } from "../util/addCommaToNumber";
+import { useUserPreferences } from "../contexts/userPreferences";
+import { getCurrencySign } from "../util/getCurrencySign";
 
 const SearchScholar = () => {
   const { colors } = useTheme();
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const { scholars } = useScholars();
   const [searchText, setSearchText] = useState<string>("");
+  const { currency } = useUserPreferences();
 
   const queryClient = useQueryClient();
   const scholarsQuery = queryClient.getQueryState<Scholars, any>("Scholars");
-  const SLPPriceQuery = queryClient.getQueryState<SLPPrice, any>("SLPPrice");
+  const SLPPriceQuery = queryClient.getQueryState<SLPPrice, any>([
+    "SLPPrice",
+    currency,
+  ]);
 
   const searchTextChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
     e: ChangeEvent<HTMLInputElement>
@@ -75,7 +81,8 @@ const SearchScholar = () => {
                       </div>
 
                       <div>
-                        &#8776; &#8369;{addCommaToNumber(conversionRate)}
+                        {getCurrencySign(currency)}
+                        {addCommaToNumber(conversionRate)}
                       </div>
 
                       <div style={{ color: i.color }}>{i.color}</div>
