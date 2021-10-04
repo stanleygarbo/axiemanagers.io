@@ -20,14 +20,16 @@ const TopBar = () => {
         <div className="announcement__content">
           <div className="announcement__content__text">
             <span>
-              <Link to="/donate">PLEASE DONATE</Link>
+              {/* <Link to="/donate">PLEASE DONATE</Link> */}
+              NOTICE
             </span>
-            {screenWidth > 708 && (
-              <div>
-                If you find this app useful, please consider
-                <Link to="/donate"> donating</Link>
-              </div>
-            )}
+            <div
+              className="announcement__content__text__moving"
+              dangerouslySetInnerHTML={{
+                __html:
+                  '<marquee behavior="scroll" scrollamount="2" direction="left">Daily SLP data will be more accurate if players play 1hr after reset</marquee>',
+              }}
+            ></div>
           </div>
           <ul className="announcement__content__links">
             <li>
@@ -109,6 +111,12 @@ const Container = styled.nav<{ colors: IColors }>`
 
         &__text {
           display: flex;
+          align-items: center;
+
+          &__moving {
+            display: flex;
+            align-items: center;
+          }
 
           span {
             font-size: 11px;
