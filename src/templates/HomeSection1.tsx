@@ -12,7 +12,7 @@ import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
 import { getCurrencySign } from "../util/getCurrencySign";
 import { useUserPreferences } from "../contexts/userPreferences";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const HomeSection1: React.FC<{
@@ -85,11 +85,11 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>Update:</span> You can now select a currency. The data should also
         now update every ten minutes, if you find this app useful please{" "}
         <Link to="/donate">consider donating</Link>.&nbsp;
-      </p>
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
