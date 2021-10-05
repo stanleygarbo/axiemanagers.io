@@ -1,14 +1,16 @@
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { FiSun, FiMoon, FiSearch, FiSettings } from "react-icons/fi";
+import { FiSearch, FiSettings } from "react-icons/fi";
+import { CgArrowsExchangeV } from "react-icons/cg";
+
 import { useScreenSize } from "../contexts/screenSizeContext";
 import SearchScholar from "./SearchScholar";
 import { Link, useHistory, useLocation, withRouter } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 
 const TopBar = () => {
-  const { colors, toggleDarkMode, isDarkMode } = useTheme();
+  const { colors } = useTheme();
   const { pathname } = useLocation();
   const { goBack, push } = useHistory();
 
@@ -54,6 +56,8 @@ const TopBar = () => {
             ? "Donate"
             : pathname === "/about"
             ? "About"
+            : pathname === "/converter"
+            ? "Converter"
             : pathname.includes("/scholar")
             ? "Account details"
             : pathname.includes("/settings") && "Settings"}
@@ -68,8 +72,8 @@ const TopBar = () => {
               <FiSettings size={22} />
             </button>
 
-            <button onClick={toggleDarkMode}>
-              {isDarkMode ? <FiSun size={22} /> : <FiMoon size={22} />}
+            <button onClick={() => push("/converter")}>
+              <CgArrowsExchangeV size={22} />
             </button>
             {screenWidth > 708 ? (
               <SearchScholar />

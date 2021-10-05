@@ -13,6 +13,7 @@ import ScrollMemory from "react-router-scroll-memory";
 import SettingsInterface from "./pages/SettingsPreferences";
 import Announcement from "./pages/Announcement";
 import FooterTemplate from "./templates/FooterTemplate";
+import ConverterPage from "./pages/ConverterPage";
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/donate" component={Donate} />
               <Route exact path="/announcement" component={Announcement} />
+              <Route exact path="/converter" component={ConverterPage} />
               <Route
                 path="/settings"
                 render={({ match: { path } }) => (
