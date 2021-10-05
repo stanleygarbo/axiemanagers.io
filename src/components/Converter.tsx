@@ -58,7 +58,6 @@ const Container = styled.div<{ colors: IColors }>`
     max-width: 400px;
     margin: auto;
     border-radius: 20px;
-    margin-top: 20px;
 
     .from {
       /* border: 1px solid ${colors.textIntense + 10}; */

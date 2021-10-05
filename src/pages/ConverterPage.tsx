@@ -9,6 +9,8 @@ const ConverterPage = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-top: 20px;
+`;
 
 export default ConverterPage;
