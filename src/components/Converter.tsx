@@ -105,6 +105,10 @@ const Container = styled.div<{ colors: IColors }>`
           &::-webkit-outer-spin-button {
             display: none;
           }
+
+          &::placeholder {
+            color: ${colors.textNotSoIntense};
+          }
         }
       }
 
@@ -115,6 +119,10 @@ const Container = styled.div<{ colors: IColors }>`
         font-size: 13px;
         padding-left: 5px;
       }
+    }
+
+    @media (max-width: 440px) {
+      margin: 20px;
     }
   `}
 `;
