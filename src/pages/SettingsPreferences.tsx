@@ -33,7 +33,7 @@ const currencies: { id: ICurrency; name: string }[] = [
 ];
 
 const SettingsPreferences = () => {
-  const { colors } = useTheme();
+  const { colors, isDarkMode, toggleDarkMode } = useTheme();
 
   const { scholarsTable, setScholarsTable, setCurrency, currency } =
     useUserPreferences();
@@ -95,6 +95,33 @@ const SettingsPreferences = () => {
           {i.name}
         </Button>
       ))}
+
+      <br />
+      <br />
+      <div className="title">User interface</div>
+
+      <Button
+        onClick={toggleDarkMode}
+        style={{
+          ...filterButtonStyles,
+          ...(isDarkMode
+            ? activeFilterButtonStyles
+            : inactiveFilterButtonStyles),
+        }}
+      >
+        Dark Mode
+      </Button>
+      <Button
+        onClick={toggleDarkMode}
+        style={{
+          ...filterButtonStyles,
+          ...(!isDarkMode
+            ? activeFilterButtonStyles
+            : inactiveFilterButtonStyles),
+        }}
+      >
+        Light Mode
+      </Button>
     </Container>
   );
 };
