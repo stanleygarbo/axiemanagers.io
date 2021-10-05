@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import styled, { css } from "styled-components";
 
 import { useTheme } from "../contexts/themeContext";
@@ -5,6 +6,10 @@ import { IColors } from "../interfaces/IColors";
 
 const FooterTemplate = () => {
   const { colors } = useTheme();
+
+  const { pathname } = useLocation();
+
+  if (pathname !== "/") return null;
 
   return (
     <Container colors={colors}>
