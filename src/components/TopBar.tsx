@@ -37,9 +37,9 @@ const TopBar = () => {
             <li>
               <a href="mailto:digitalmadlad@gmail.com">Contact</a>
             </li>
-            <li>
+            {/* <li>
               <Link to="/about">About</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
