@@ -123,9 +123,9 @@ const SettingsBulkImport = () => {
     <Container colors={colors}>
       <div className="wrapper">
         <div className="wrapper__title">
-          You can only import/export your list of scholars that is in .json
-          format. this will be useful when you clear your browser cache so that
-          you don't have to re-enter everything all over again.
+          You can only import/export your list of scholars in .json format. This
+          will be useful when you clear your browser cache so that you don't
+          have to re-enter everything all over again.
           <br />
           <br />
           Make sure to refresh after importing.
