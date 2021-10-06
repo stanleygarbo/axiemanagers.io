@@ -5,6 +5,7 @@ import { fetchSLPPrice } from "../api/requests";
 import { useTheme } from "../contexts/themeContext";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { IColors } from "../interfaces/IColors";
+import { addCommaToNumber } from "../util/addCommaToNumber";
 import { getCurrencySign } from "../util/getCurrencySign";
 
 const Converter = () => {
@@ -42,7 +43,7 @@ const Converter = () => {
         </div>
         <div className="from__conversion-rate">
           ~ {getCurrencySign(currency)}
-          {conversion.toFixed(2)}
+          {addCommaToNumber(conversion.toFixed(2))}
         </div>
       </div>
     </Container>
