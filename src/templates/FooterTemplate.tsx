@@ -40,7 +40,7 @@ const FooterTemplate = () => {
 
 const Container = styled.footer<{ colors: IColors }>`
   ${({ colors }) => css`
-    background-color: ${colors.BGLight};
+    /* background-color: ${colors.BGLight}; */
 
     .footer-wrapper {
       max-width: 1200px;
@@ -69,6 +69,12 @@ const Container = styled.footer<{ colors: IColors }>`
             color: ${colors.textIntense + 90};
           }
         }
+      }
+    }
+
+    @media (max-width: 492px) {
+      .footer-wrapper {
+        padding: 10px;
       }
     }
   `}
