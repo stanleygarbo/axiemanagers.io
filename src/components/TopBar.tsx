@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { FiSearch, FiSettings } from "react-icons/fi";
-import { CgArrowsExchangeV } from "react-icons/cg";
+// import { CgArrowsExchangeV } from "react-icons/cg";
 
 import { useScreenSize } from "../contexts/screenSizeContext";
 import SearchScholar from "./SearchScholar";
