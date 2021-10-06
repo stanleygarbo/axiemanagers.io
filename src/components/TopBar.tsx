@@ -34,12 +34,17 @@ const TopBar = () => {
             ></div>
           </div>
           <ul className="announcement__content__links">
-            <li>
-              <a href="mailto:digitalmadlad@gmail.com">Contact</a>
-            </li>
+            {screenWidth > 500 && (
+              <li>
+                <a href="mailto:digitalmadlad@gmail.com">Contact</a>
+              </li>
+            )}
             {/* <li>
               <Link to="/about">About</Link>
             </li> */}
+            <li>
+              <Link to="/converter">Converter</Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -72,9 +77,9 @@ const TopBar = () => {
               <FiSettings size={22} />
             </button>
 
-            <button onClick={() => push("/converter")}>
+            {/* <button onClick={() => push("/converter")}>
               <CgArrowsExchangeV size={22} />
-            </button>
+            </button> */}
             {screenWidth > 708 ? (
               <SearchScholar />
             ) : (
