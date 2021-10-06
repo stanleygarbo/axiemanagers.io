@@ -131,6 +131,7 @@ const Container = styled.nav<{ colors: IColors }>`
 
             a {
               color: #fff;
+              text-decoration: underline;
             }
           }
           a {
