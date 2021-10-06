@@ -29,7 +29,7 @@ const FooterTemplate = () => {
                 facebook
               </a>{" "}
               or send me a message via FB messenger so that I can assist you
-              with any concerns.
+              with any concerns you have.
             </div>
           </div>
           <div className="footer-wrapper__notice__message">
