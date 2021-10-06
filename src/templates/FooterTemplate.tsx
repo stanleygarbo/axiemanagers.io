@@ -17,6 +17,23 @@ const FooterTemplate = () => {
         <div className="footer-wrapper__notice">
           <div className="footer-wrapper__notice__message">
             <div className="footer-wrapper__notice__message__title">
+              Got any questions?
+            </div>
+            <div className="footer-wrapper__notice__message__description">
+              Follow me on{" "}
+              <a
+                target="_blank"
+                href="https://facebook.com/stanley.garbo29"
+                rel="noreferrer"
+              >
+                facebook
+              </a>{" "}
+              or send me a message via FB messenger so that I can assist you
+              with any concerns.
+            </div>
+          </div>
+          <div className="footer-wrapper__notice__message">
+            <div className="footer-wrapper__notice__message__title">
               How daily SLP is calculated
             </div>
             <div className="footer-wrapper__notice__message__description">
@@ -46,7 +63,10 @@ const Container = styled.footer<{ colors: IColors }>`
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
-      color: ${colors.textNotSoIntense};
+      a {
+        color: ${colors.textNotSoIntense};
+        text-decoration: underline;
+      }
 
       &__notice {
         display: grid;
