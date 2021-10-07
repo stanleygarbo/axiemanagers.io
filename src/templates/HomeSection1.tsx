@@ -85,11 +85,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Update:</span> You can now select a currency. The data should also
-        now update every ten minutes, if you find this app useful please{" "}
-        <Link to="/donate">consider donating</Link>.&nbsp;
-      </p> */}
+      <p>
+        <span>Caution:</span> Due to an unnoticed networking issue on my server
+        yesterday, the daily slp for today will be inaccurate. It should work
+        fine tomorrow.
+        {/* <Link to="/donate">consider donating</Link>.&nbsp; */}
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
@@ -251,7 +252,7 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        color: ${colors.accent2};
+        color: ${colors.warning};
       }
 
       a {
