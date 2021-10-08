@@ -14,6 +14,14 @@ import { useUserPreferences } from "../contexts/userPreferences";
 
 const Container = styled.div`
   padding-bottom: 50px;
+
+  .ad {
+    padding: 0 10px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const HomePage = () => {
@@ -63,6 +71,10 @@ const HomePage = () => {
           scholarsQuery={scholarsQuery}
           SLPPriceQuery={SLPPriceQuery}
         />
+
+        <div className="ad">
+          <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
+        </div>
         <AddScholarForm />
         <HomeSection2
           refetchScholarMutation={refetchScholarMutation}
