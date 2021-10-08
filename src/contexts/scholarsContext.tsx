@@ -21,24 +21,7 @@ const useScholarsContext = () => {
     if (stringifiedScholars) {
       parsedScholars = JSON.parse(stringifiedScholars);
     }
-    setScholars(
-      parsedScholars.length > 0
-        ? parsedScholars
-        : [
-            {
-              ronin: "ronin:94d2cd95c8b15f8869ad671b5b31fe4b5e4d844d",
-              color: "#8bf48a",
-              nickname: "Sample 1",
-              managerShare: 50,
-            },
-            {
-              ronin: "ronin:a6362a3f08cef6565ff584f1fa0b98a5ace78e89",
-              color: "#e91e63",
-              nickname: "Sample 2",
-              managerShare: 50,
-            },
-          ]
-    );
+    setScholars(parsedScholars.length > 0 ? parsedScholars : []);
     setMinQuota(parsedMinQuota);
   }, []);
 
