@@ -85,12 +85,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>Caution:</span> Due to an unnoticed networking issue on my server
         yesterday, the daily slp for today will be inaccurate. It should work
         fine tomorrow.
-        {/* <Link to="/donate">consider donating</Link>.&nbsp; */}
-      </p>
+        <Link to="/donate">consider donating</Link>.&nbsp;
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
