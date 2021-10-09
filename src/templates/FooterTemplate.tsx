@@ -17,7 +17,7 @@ const FooterTemplate = () => {
         <div className="footer-wrapper__notice">
           <div className="footer-wrapper__notice__message">
             <div className="footer-wrapper__notice__message__title">
-              Got any questions?
+              Got any questions or suggestions?
             </div>
             <div className="footer-wrapper__notice__message__description">
               Follow me on{" "}
