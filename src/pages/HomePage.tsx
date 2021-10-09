@@ -118,6 +118,14 @@ const HomePage = () => {
     }
   );
 
+  const messages = [
+    `Please export your list of scholars just in case of data loss. This will save you the hassle if your scholars "disappear".`,
+    `For the daily SLP to be accurate, it is recommended for your
+    players to play 1hr after reset.`,
+  ];
+
+  const random = Math.random() * (1 - 0) + 0;
+
   return (
     <Container colors={colors}>
       <div className="section1">
@@ -129,10 +137,7 @@ const HomePage = () => {
         <div className="ad">
           <div className="notice">
             <div className="notice__title">Notice</div>
-            <p>
-              For the daily SLP to be accurate, it is recommended for your
-              players to play 1hr after reset.
-            </p>
+            <p>{messages[Math.round(random)]}</p>
           </div>
           <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
         </div>
