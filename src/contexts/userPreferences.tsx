@@ -21,9 +21,11 @@ const userPreferencesContext = createContext<IUserPreferences>({
     today: true,
     average: true,
   },
+  didAcceptCookiePolicy: false,
   currency: "",
   setScholarsTable: () => {},
   setCurrency: () => {},
+  acceptCookiePolicy: () => {},
 });
 
 const useUserPreferencesContext = () => {
@@ -44,6 +46,8 @@ const useUserPreferencesContext = () => {
   });
 
   const [selectedCurrency, setselectedCurrency] = useState<ICurrency>("");
+  const [acceptedCookiePolicy, setAcceptedCookiePolicy] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const stringifiedUserPreferences = localStorage.getItem("userPreferences");
@@ -51,6 +55,7 @@ const useUserPreferencesContext = () => {
     let parsedUserPreferences: {
       scholarsTable: IScholarsTableColumns;
       currency: ICurrency;
+      didAcceptCookiePolicy: boolean;
     } = {
       scholarsTable: {
         name: true,
@@ -68,6 +73,7 @@ const useUserPreferencesContext = () => {
         average: true,
       },
       currency: "",
+      didAcceptCookiePolicy: false,
     };
     if (stringifiedUserPreferences) {
       parsedUserPreferences = JSON.parse(stringifiedUserPreferences);
@@ -90,9 +96,11 @@ const useUserPreferencesContext = () => {
         average: true,
       });
       setCurrency("");
+      setAcceptedCookiePolicy(false);
     } else {
       setScholarsTablePreferences(parsedUserPreferences.scholarsTable);
       setCurrency(parsedUserPreferences.currency);
+      setAcceptedCookiePolicy(parsedUserPreferences.didAcceptCookiePolicy);
     }
   }, []);
 
@@ -102,9 +110,10 @@ const useUserPreferencesContext = () => {
       JSON.stringify({
         scholarsTable: scholarsTablePreferences,
         currency: selectedCurrency,
+        didAcceptCookiePolicy: acceptedCookiePolicy,
       })
     );
-  }, [scholarsTablePreferences, selectedCurrency]);
+  }, [scholarsTablePreferences, selectedCurrency, acceptedCookiePolicy]);
 
   const setScholarsTable = ({
     name,
@@ -142,11 +151,17 @@ const useUserPreferencesContext = () => {
     setselectedCurrency(currency);
   };
 
+  function acceptCookiePolicy() {
+    setAcceptedCookiePolicy(true);
+  }
+
   return {
     scholarsTable: scholarsTablePreferences,
     setScholarsTable,
     setCurrency,
     currency: selectedCurrency,
+    didAcceptCookiePolicy: acceptedCookiePolicy,
+    acceptCookiePolicy,
   };
 };
 

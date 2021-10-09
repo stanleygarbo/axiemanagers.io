@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 70 49" style="enable-background:new 0 0 70 49;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.75;fill:#7189DA;fill-opacity:0.1576;enable-background:new    ;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:url(#Oval_6_);}
+	.st2{opacity:0.7046;}
+	.st3{filter:url(#filter-3);}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;}
+	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#B1791D;}
+	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#E2A975;}
+	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:url(#Oval_8_);}
+	.st8{opacity:0.2257;fill-rule:evenodd;clip-rule:evenodd;fill:#DC8035;enable-background:new    ;}
+	.st9{opacity:0.7391;}
+	.st10{filter:url(#filter-6);}
+	.st11{fill-rule:evenodd;clip-rule:evenodd;fill:#6E4848;}
+	.st12{filter:url(#filter-8);}
+	.st13{filter:url(#filter-10);}
+	.st14{filter:url(#filter-12);}
+	.st15{filter:url(#filter-14);}
+	.st16{filter:url(#filter-16);}
+</style>
+<filter  filterUnits="objectBoundingBox" height="308.4%" id="filter-8" width="308.3%" x="-133.9%" y="-104.2%">
+	<feOffset  dx="-2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.853422619   0 0 0 0 0.498551437   0 0 0 0 0.232398051  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="308.4%" id="filter-6" width="308.3%" x="-133.9%" y="-104.2%">
+	<feOffset  dx="-2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.853422619   0 0 0 0 0.498551437   0 0 0 0 0.232398051  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="487.0%" id="filter-3" width="357.9%" x="-148.8%" y="-163.7%">
+	<feOffset  dx="-1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.729411765   0 0 0 0 0.541176471   0 0 0 0 0.243137255  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="358.0%" id="filter-16" width="357.9%" x="-148.8%" y="-109.1%">
+	<feOffset  dx="-1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.729411765   0 0 0 0 0.541176471   0 0 0 0 0.243137255  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="358.0%" id="filter-14" width="357.9%" x="-148.8%" y="-109.1%">
+	<feOffset  dx="-1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.729411765   0 0 0 0 0.541176471   0 0 0 0 0.243137255  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="377.8%" id="filter-12" width="377.8%" x="-178.6%" y="-138.9%">
+	<feOffset  dx="-2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.853422619   0 0 0 0 0.498551437   0 0 0 0 0.232398051  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<filter  filterUnits="objectBoundingBox" height="377.8%" id="filter-10" width="377.8%" x="-178.6%" y="-138.9%">
+	<feOffset  dx="-2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.853422619   0 0 0 0 0.498551437   0 0 0 0 0.232398051  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<desc>Created with Sketch.</desc>
+<g id="V2">
+	<g id="landing-page-banner-copy-2" transform="translate(-70.000000, -1425.000000)">
+		<g id="Group-29-Copy" transform="translate(0.000000, 1359.000000)">
+			<g id="Group-4" transform="translate(64.000000, 41.000000)">
+				<g id="cookie-img" transform="translate(0.000000, 18.000000)">
+					<g id="Group-30">
+						<ellipse id="Oval" class="st0" cx="41.3" cy="50.5" rx="34.7" ry="4.6"/>
+						<g id="Group-29">
+							
+								<linearGradient id="Oval_6_" gradientUnits="userSpaceOnUse" x1="-256.0253" y1="417.9222" x2="-256.3573" y2="417.0203" gradientTransform="matrix(36.9621 0 0 -36.9546 9522.9131 15459.3828)">
+								<stop  offset="0" style="stop-color:#F7E0B9"/>
+								<stop  offset="1" style="stop-color:#ECBD83"/>
+							</linearGradient>
+							<ellipse id="Oval_1_" class="st1" cx="53.4" cy="32.3" rx="18.5" ry="18.5"/>
+							<g id="Path" class="st2">
+								<g class="st3">
+									<path id="path-2_2_" class="st4" d="M53.4,25.6h-1.7c-0.9,0-1.7-0.8-1.7-1.7c0-0.9,0.8-1.7,1.7-1.7h1.7
+										c0.9,0,1.7,0.8,1.7,1.7C55.1,24.8,54.3,25.6,53.4,25.6z"/>
+								</g>
+								<g>
+									<path id="path-2_1_" class="st5" d="M53.4,25.6h-1.7c-0.9,0-1.7-0.8-1.7-1.7c0-0.9,0.8-1.7,1.7-1.7h1.7
+										c0.9,0,1.7,0.8,1.7,1.7C55.1,24.8,54.3,25.6,53.4,25.6z"/>
+								</g>
+							</g>
+							<path id="Path_1_" class="st6" d="M56.8,47.4c-10.2,0-18.5-8.3-18.5-18.5c0-4.2,1.4-8.1,3.9-11.3c-4.4,3.4-7.2,8.7-7.2,14.6
+								c0,10.2,8.3,18.5,18.5,18.5c6,0,11.3-2.8,14.6-7.2C64.9,46,61,47.4,56.8,47.4z"/>
+							
+								<g id="Group-32" transform="translate(29.866850, 29.181276) rotate(-66.000000) translate(-29.866850, -29.181276) translate(7.866850, 7.181276)">
+								
+									<linearGradient id="Oval_8_" gradientUnits="userSpaceOnUse" x1="-455.0447" y1="-92.0025" x2="-455.9289" y2="-92.445" gradientTransform="matrix(17.7673 39.8977 39.9058 -17.7637 11797.2959 16533.5859)">
+									<stop  offset="0" style="stop-color:#F9CB90"/>
+									<stop  offset="1" style="stop-color:#F09C57"/>
+								</linearGradient>
+								<path id="Oval_2_" class="st7" d="M22,0.3c12.1,0,21.8,9.8,21.8,21.8c0,12.1-9.8,21.8-21.8,21.8S0.2,34.2,0.2,22.1
+									S10,0.3,22,0.3z"/>
+								<g id="Group-31" transform="translate(0.000000, 1.304348)">
+									<path id="Path_2_" class="st8" d="M13.6,41c-3-9-4.5-15.7-4.5-20.2c0-4.5,1.5-11.2,4.4-20.2C5.7,3.9,0.2,11.7,0.2,20.8
+										C0.2,29.9,5.7,37.7,13.6,41z"/>
+									<g id="Oval_3_" class="st9">
+										<g class="st10">
+											
+												<ellipse id="path-5_2_" transform="matrix(-1 3.037616e-06 -3.037616e-06 -1 30.6051 55.05)" class="st4" cx="15.3" cy="27.5" rx="3.4" ry="3.4"/>
+										</g>
+										<g>
+											
+												<ellipse id="path-5_1_" transform="matrix(-1 3.037616e-06 -3.037616e-06 -1 30.6051 55.05)" class="st11" cx="15.3" cy="27.5" rx="3.4" ry="3.4"/>
+										</g>
+									</g>
+									<g id="Oval_4_" class="st9">
+										<g class="st12">
+											
+												<ellipse id="path-7_2_" transform="matrix(-1 3.036882e-06 -3.036882e-06 -1 57.4867 28.1742)" class="st4" cx="28.7" cy="14.1" rx="3.4" ry="3.4"/>
+										</g>
+										<g>
+											
+												<ellipse id="path-7_1_" transform="matrix(-1 3.036882e-06 -3.036882e-06 -1 57.4867 28.1742)" class="st11" cx="28.7" cy="14.1" rx="3.4" ry="3.4"/>
+										</g>
+									</g>
+									<g id="Path_3_" class="st9">
+										<g class="st13">
+											<path id="path-9_2_" class="st4" d="M28.7,30.9c-0.4,0-0.9-0.2-1.2-0.5l-1.7-1.7c-0.7-0.7-0.7-1.7,0-2.4
+												c0.7-0.7,1.7-0.7,2.4,0l1.7,1.7c0.7,0.7,0.7,1.7,0,2.4C29.6,30.7,29.2,30.9,28.7,30.9z"/>
+										</g>
+										<g>
+											<path id="path-9_1_" class="st11" d="M28.7,30.9c-0.4,0-0.9-0.2-1.2-0.5l-1.7-1.7c-0.7-0.7-0.7-1.7,0-2.4
+												c0.7-0.7,1.7-0.7,2.4,0l1.7,1.7c0.7,0.7,0.7,1.7,0,2.4C29.6,30.7,29.2,30.9,28.7,30.9z"/>
+										</g>
+									</g>
+									<g id="Path_4_" class="st9">
+										<g class="st14">
+											<path id="path-11_2_" class="st4" d="M13.6,14.1c-1.4,0-2.5-1.1-2.5-2.5S12.2,9,13.6,9s2.5,1.1,2.5,2.5
+												C16.1,13,15,14.1,13.6,14.1z"/>
+										</g>
+										<g>
+											<path id="path-11_1_" class="st11" d="M13.6,14.1c-1.4,0-2.5-1.1-2.5-2.5S12.2,9,13.6,9s2.5,1.1,2.5,2.5
+												C16.1,13,15,14.1,13.6,14.1z"/>
+										</g>
+									</g>
+								</g>
+							</g>
+							<g id="Oval_5_" class="st2">
+								<g class="st15">
+									<ellipse id="path-13_2_" class="st4" cx="54.2" cy="39.9" rx="2.5" ry="2.5"/>
+								</g>
+								<g>
+									<ellipse id="path-13_1_" class="st5" cx="54.2" cy="39.9" rx="2.5" ry="2.5"/>
+								</g>
+							</g>
+							<g id="Path_5_" class="st2">
+								<g class="st16">
+									<path id="path-15_2_" class="st4" d="M61,31.5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S62.4,31.5,61,31.5z
+										"/>
+								</g>
+								<g>
+									<path id="path-15_1_" class="st5" d="M61,31.5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S62.4,31.5,61,31.5z
+										"/>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<div  id="divScriptsUsed" style="display: none" xmlns=""></div>
+<script  id="globalVarsDetection" src="chrome-extension://cmkdbmfndkfgebldhnkbfhlneefdaaip/js/wrs_env.js" xmlns=""></script>
+</svg>

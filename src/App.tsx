@@ -14,6 +14,7 @@ import SettingsInterface from "./pages/SettingsPreferences";
 import Announcement from "./pages/Announcement";
 import FooterTemplate from "./templates/FooterTemplate";
 import ConverterPage from "./pages/ConverterPage";
+import CookiePopup from "./components/CookiePopup";
 
 const App: React.FC = () => {
   return (
@@ -59,6 +60,7 @@ const App: React.FC = () => {
         </Layout>
         <FooterTemplate />
       </Router>
+      <CookiePopup />
     </div>
   );
 };
