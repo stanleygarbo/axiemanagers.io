@@ -29,7 +29,7 @@ const TopBar = () => {
               className="announcement__content__text__moving"
               dangerouslySetInnerHTML={{
                 __html:
-                  '<marquee behavior="scroll" scrollamount="2" direction="left">If you find this app useful please consider donating.</marquee>',
+                  '<marquee behavior="scroll" scrollamount="2" direction="left">If you find this app useful, please consider donating.</marquee>',
               }}
             ></div>
           </div>
