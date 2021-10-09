@@ -79,6 +79,7 @@ const Container = styled.div<{ colors: IColors }>`
 
       background-color: ${colors.BGLight};
       color: ${colors.textNotSoIntense};
+      cursor: pointer;
     }
 
     @media (max-width: 400px) {
