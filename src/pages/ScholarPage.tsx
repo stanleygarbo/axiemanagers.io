@@ -606,7 +606,6 @@ const Container = styled.div<{ colors: IColors }>`
 
     .layout-selector {
       margin-bottom: 20px;
-      padding: 0 16px;
     }
 
     @media (max-width: 1152px) {
@@ -885,6 +884,10 @@ const Container = styled.div<{ colors: IColors }>`
         margin-top: 0;
         padding: 1rem;
         gap: 1rem;
+      }
+
+      .layout-selector {
+        padding: 0 16px;
       }
     }
   `}
