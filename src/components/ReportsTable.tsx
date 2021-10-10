@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { IReportsTable } from "../interfaces/IReportsTable";
+import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
 import moment from "moment";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";

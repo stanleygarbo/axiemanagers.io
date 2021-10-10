@@ -1,4 +1,4 @@
-import { ChartObj } from "./IResponseTypes";
+import { ChartObj } from ".././IResponseTypes";
 
 export interface IReportsTable {
   reports: ChartObj[];
