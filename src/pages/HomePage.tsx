@@ -13,6 +13,7 @@ import { Scholars } from "../interfaces/IResponseTypes";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
+import { useEffect } from "react";
 
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
@@ -117,6 +118,18 @@ const HomePage = () => {
       },
     }
   );
+
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src = "/coinzilla.js";
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const messages = [
     `Please export your list of scholars just in case of data loss. This will save you the hassle if your scholars "disappear".`,
