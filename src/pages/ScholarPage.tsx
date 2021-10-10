@@ -159,16 +159,6 @@ const ScholarPage = () => {
   if (scholarQuery.data)
     return (
       <Container colors={colors}>
-        <div className="ad">
-          <div className="notice">
-            <div className="notice__title">Notice</div>
-            <p>
-              A feature where you will be able to see and download reports will
-              be coming soon.
-            </p>
-          </div>
-          <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
-        </div>
         {scholarQuery.error ? (
           <ErrorMessage
             title={scholarQuery.error?.message}
@@ -448,6 +438,20 @@ const ScholarPage = () => {
                   </div>
                 </div>
 
+                <div className="ad">
+                  <div className="notice">
+                    <div className="notice__title">Notice</div>
+                    <p>
+                      A feature where you will be able to see and download
+                      reports will be coming soon.
+                    </p>
+                  </div>
+                  <div
+                    className="coinzilla"
+                    data-zone="C-8615a9fd1747a828"
+                  ></div>
+                </div>
+
                 <h2>{scholar?.nickname}&apos;s Axies</h2>
                 {/* {ScholarAxies.error} */}
                 {axiesQuery.isLoading && (
@@ -546,6 +550,7 @@ const Container = styled.div<{ colors: IColors }>`
     .ad {
       margin: 0 auto;
       margin-bottom: 20px;
+      margin-top: 20px;
       max-width: 1200px;
       display: flex;
       justify-content: center;
@@ -586,10 +591,16 @@ const Container = styled.div<{ colors: IColors }>`
     @media (max-width: 1091px) {
       .ad {
         display: flex;
+        flex-direction: column-reverse;
         justify-content: center;
+        align-items: center;
+        gap: 0;
+        margin-left: 16px;
+        margin-right: 16px;
 
         .notice {
-          display: none;
+          /* display: none; */
+          margin-top: 20px;
         }
       }
     }
