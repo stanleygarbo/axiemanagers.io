@@ -4,12 +4,55 @@ import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
 import moment from "moment";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
+import { addCommaToNumber } from "../util/addCommaToNumber";
 
-const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
+const ReportsTable: React.FC<IReportsTable> = ({
+  reports,
+  totalSLP,
+  totalToday,
+  dailyAverage,
+  mmr,
+  rank,
+}) => {
   const { colors } = useTheme();
 
   return (
     <Container colors={colors}>
+      <div className="main-stats">
+        <div className="main-stats__container">
+          <div className="main-stats__container__label">Total SLP</div>
+          <div className="main-stats__container__value">
+            <img src="/slp.png" alt="slp" width={30} />
+            {addCommaToNumber(totalSLP)}
+          </div>
+        </div>
+        <div className="main-stats__container">
+          <div className="main-stats__container__label">Total Today</div>
+          <div className="main-stats__container__value">
+            <img src="/slp.png" alt="slp" width={30} />
+            {addCommaToNumber(totalToday)}
+          </div>
+        </div>
+        <div className="main-stats__container">
+          <div className="main-stats__container__label">Daily Average</div>
+          <div className="main-stats__container__value">
+            <img src="/slp.png" alt="slp" width={30} />
+            {dailyAverage.slp}
+          </div>
+        </div>
+        <div className="main-stats__container">
+          <div className="main-stats__container__label">MMR</div>
+          <div className="main-stats__container__value">
+            {" "}
+            <span style={{ fontSize: 23 }}> 🏆</span>
+            {mmr}
+          </div>
+        </div>
+        <div className="main-stats__container">
+          <div className="main-stats__container__label">Rank</div>
+          <div className="main-stats__container__value">#{rank}</div>
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
@@ -59,6 +102,32 @@ const Container = styled.div<{ colors: IColors }>`
     display: block;
     border: 1px solid ${colors.textIntense + 20};
     border-radius: 5px;
+
+    .main-stats {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 70px;
+      background-color: ${colors.BGLight};
+      border-bottom: 1px solid ${colors.textIntense + 30};
+
+      &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        &__label {
+          color: ${colors.textNotSoIntense};
+        }
+        &__value {
+          color: ${colors.textNotSoIntense};
+          font-size: 30px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
 
     table {
       color: ${colors.textNotSoIntense};

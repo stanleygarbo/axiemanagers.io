@@ -38,6 +38,7 @@ import { useUserPreferences } from "../contexts/userPreferences";
 import { getCurrencySign } from "../util/getCurrencySign";
 import ReportsTable from "../components/ReportsTable";
 import TabSelector from "../components/scholar-page/TabSelector";
+import { getAverageSLP } from "../util/getAverageSLP";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -455,13 +456,26 @@ const ScholarPage = () => {
                   ></div>
                 </div>
 
-                <TabSelector
-                  setActiveTab={setActiveTab}
-                  activeTab={activeTab}
-                />
+                <div className="layout-selector">
+                  <TabSelector
+                    setActiveTab={setActiveTab}
+                    activeTab={activeTab}
+                  />
+                </div>
 
                 {activeTab === "reports" ? (
-                  <ReportsTable reports={scholarQuery.data?.chart} />
+                  <ReportsTable
+                    reports={scholarQuery.data?.chart}
+                    mmr={scholarQuery.data?.mmr}
+                    rank={scholarQuery.data?.rank}
+                    totalSLP={scholarQuery.data?.total}
+                    totalToday={scholarQuery.data?.today}
+                    dailyAverage={getAverageSLP(
+                      scholarQuery.data?.lastClaimed,
+                      scholarQuery.data?.total,
+                      SLPPriceQuery.data?.current
+                    )}
+                  />
                 ) : (
                   <>
                     <h2>{scholar?.nickname}&apos;s Axies</h2>
@@ -588,6 +602,10 @@ const Container = styled.div<{ colors: IColors }>`
           margin-top: 3px;
         }
       }
+    }
+
+    .layout-selector {
+      margin-bottom: 20px;
     }
 
     @media (max-width: 1152px) {
