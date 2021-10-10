@@ -85,12 +85,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Caution:</span> Due to an unnoticed networking issue on my server
-        yesterday, the daily slp for today will be inaccurate. It should work
-        fine tomorrow.
-        <Link to="/donate">consider donating</Link>.&nbsp;
-      </p> */}
+      <p>
+        <span>Update:</span> You can now view your scholars' daily SLP reports
+        from the past 14 days, just tap/click your scholar to view. Side note:
+        if you dont like the randomly selected color of your scholar you can
+        change it.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
