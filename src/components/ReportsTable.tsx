@@ -23,12 +23,21 @@ const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
             return (
               <tr key={idx}>
                 <td>
-                  {moment
-                    .unix(i.date)
-                    .subtract(1, "days")
-                    .format("MMM D, YYYY hh:mma")}
+                  {reports[idx - 1]
+                    ? moment
+                        .unix(reports[idx - 1]?.date)
+                        // .subtract(1, "days")
+                        .format("MMM D, YYYY hh:mma")
+                    : moment
+                        .unix(reports[idx]?.date)
+                        .subtract(1, "days")
+                        .format("MMM D, YYYY hh:mma")}
                 </td>
-                <td>{moment.unix(i.date).format("MMM D, YYYY hh:mm a")}</td>
+                <td>
+                  {moment
+                    .unix(reports[idx]?.date)
+                    .format("MMM D, YYYY hh:mm a")}
+                </td>
                 <td>
                   <div className="center">
                     <img src="/slp.png" width={20} alt="slp" /> {i.earned}
