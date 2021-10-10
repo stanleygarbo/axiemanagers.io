@@ -36,6 +36,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { getCurrencySign } from "../util/getCurrencySign";
+import ReportsTable from "../components/ReportsTable";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -451,6 +452,8 @@ const ScholarPage = () => {
                     data-zone="C-8615a9fd1747a828"
                   ></div>
                 </div>
+
+                <ReportsTable reports={scholarQuery.data?.chart} />
 
                 <h2>{scholar?.nickname}&apos;s Axies</h2>
                 {/* {ScholarAxies.error} */}
