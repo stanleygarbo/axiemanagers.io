@@ -37,6 +37,7 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { getCurrencySign } from "../util/getCurrencySign";
 import ReportsTable from "../components/ReportsTable";
+import TabSelector from "../components/scholar-page/TabSelector";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -56,6 +57,7 @@ const ScholarPage = () => {
   // const [scholar, setScholar] = useState();
   const scholar = scholars?.find((obj) => obj.ronin === ronin);
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<"reports" | "axies">("reports");
   const [earnedHoveredElement, setEarnedHoveredElement] = useState<{
     x: string;
     y: string;
@@ -453,88 +455,97 @@ const ScholarPage = () => {
                   ></div>
                 </div>
 
-                <ReportsTable reports={scholarQuery.data?.chart} />
+                <TabSelector
+                  setActiveTab={setActiveTab}
+                  activeTab={activeTab}
+                />
 
-                <h2>{scholar?.nickname}&apos;s Axies</h2>
-                {/* {ScholarAxies.error} */}
-                {axiesQuery.isLoading && (
-                  <div className="axie-loader">
-                    <CircularLoader />
-                  </div>
-                )}
-                <div className="team">
-                  {axiesQuery.data?.map((i) => (
-                    <div key={i.id} className="team__axie">
-                      <div className="team__axie__class">{i.class}</div>
-                      <img height={"100%"} src={i.image} alt="" />
-                      <div className="team__axie__info">
-                        <div
-                          className="team__axie__info__name"
-                          style={{
-                            background:
-                              i.class === "Aquatic"
-                                ? axieColors.aquatic
-                                : i.class === "Beast"
-                                ? axieColors.beast
-                                : i.class === "Bug"
-                                ? axieColors.bug
-                                : i.class === "Bird"
-                                ? axieColors.bird
-                                : i.class === "Plant"
-                                ? axieColors.plant
-                                : i.class === "Reptile"
-                                ? axieColors.reptile
-                                : "",
-                          }}
-                        >
-                          Axie #{i.id}
-                        </div>
-                        <div className="team__axie__info__stat">
-                          Breed Count: {i.breedCount}
-                          <br />
-                          <div className="team__axie__info__stat__grid">
-                            <section>
-                              <AiFillHeart
-                                style={{
-                                  color: colors.success,
-                                  marginBottom: -3,
-                                }}
-                              />{" "}
-                              {i.stats.hp}
-                            </section>
-                            <section>
-                              <BiRun
-                                style={{
-                                  color: colors.warning,
-                                  marginBottom: -3,
-                                }}
-                              />{" "}
-                              {i.stats.speed}
-                            </section>
-                            <section>
-                              <GiRoundStar
-                                style={{
-                                  color: colors.accent,
-                                  marginBottom: -3,
-                                }}
-                              />{" "}
-                              {i.stats.skill}
-                            </section>
-                            <section>
-                              <AiFillFire
-                                style={{
-                                  color: colors.danger,
-                                  marginBottom: -3,
-                                }}
-                              />{" "}
-                              {i.stats.morale}
-                            </section>
+                {activeTab === "reports" ? (
+                  <ReportsTable reports={scholarQuery.data?.chart} />
+                ) : (
+                  <>
+                    <h2>{scholar?.nickname}&apos;s Axies</h2>
+                    {/* {ScholarAxies.error} */}
+                    {axiesQuery.isLoading && (
+                      <div className="axie-loader">
+                        <CircularLoader />
+                      </div>
+                    )}
+                    <div className="team">
+                      {axiesQuery.data?.map((i) => (
+                        <div key={i.id} className="team__axie">
+                          <div className="team__axie__class">{i.class}</div>
+                          <img height={"100%"} src={i.image} alt="" />
+                          <div className="team__axie__info">
+                            <div
+                              className="team__axie__info__name"
+                              style={{
+                                background:
+                                  i.class === "Aquatic"
+                                    ? axieColors.aquatic
+                                    : i.class === "Beast"
+                                    ? axieColors.beast
+                                    : i.class === "Bug"
+                                    ? axieColors.bug
+                                    : i.class === "Bird"
+                                    ? axieColors.bird
+                                    : i.class === "Plant"
+                                    ? axieColors.plant
+                                    : i.class === "Reptile"
+                                    ? axieColors.reptile
+                                    : "",
+                              }}
+                            >
+                              Axie #{i.id}
+                            </div>
+                            <div className="team__axie__info__stat">
+                              Breed Count: {i.breedCount}
+                              <br />
+                              <div className="team__axie__info__stat__grid">
+                                <section>
+                                  <AiFillHeart
+                                    style={{
+                                      color: colors.success,
+                                      marginBottom: -3,
+                                    }}
+                                  />{" "}
+                                  {i.stats.hp}
+                                </section>
+                                <section>
+                                  <BiRun
+                                    style={{
+                                      color: colors.warning,
+                                      marginBottom: -3,
+                                    }}
+                                  />{" "}
+                                  {i.stats.speed}
+                                </section>
+                                <section>
+                                  <GiRoundStar
+                                    style={{
+                                      color: colors.accent,
+                                      marginBottom: -3,
+                                    }}
+                                  />{" "}
+                                  {i.stats.skill}
+                                </section>
+                                <section>
+                                  <AiFillFire
+                                    style={{
+                                      color: colors.danger,
+                                      marginBottom: -3,
+                                    }}
+                                  />{" "}
+                                  {i.stats.morale}
+                                </section>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
               </>
             )}
           </>
@@ -762,7 +773,6 @@ const Container = styled.div<{ colors: IColors }>`
     }
     h2 {
       color: ${colors.textNotSoIntense};
-      margin-top: 20px;
     }
     .axie-loader {
       width: 100%;
