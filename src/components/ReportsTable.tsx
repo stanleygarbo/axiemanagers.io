@@ -53,55 +53,62 @@ const ReportsTable: React.FC<IReportsTable> = ({
           <div className="main-stats__container__value">#{rank}</div>
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Earned</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reports?.map((i, idx) => {
-            return (
-              <tr key={idx}>
-                <td>
-                  {reports[idx - 1]
-                    ? moment
-                        .unix(reports[idx - 1]?.date)
-                        // .subtract(1, "days")
-                        .format("MMM D, YYYY hh:mma")
-                    : moment
-                        .unix(reports[idx]?.date)
-                        .subtract(1, "days")
-                        .format("MMM D, YYYY hh:mma")}
-                </td>
-                <td>
-                  {moment
-                    .unix(reports[idx]?.date)
-                    .format("MMM D, YYYY hh:mm a")}
-                </td>
-                <td>
-                  <div className="center">
-                    <img src="/slp.png" width={20} alt="slp" /> {i.earned}
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+
+      <div className="table-container">
+        {" "}
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Earned</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reports?.map((i, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>
+                    {reports[idx - 1]
+                      ? moment
+                          .unix(reports[idx - 1]?.date)
+                          // .subtract(1, "days")
+                          .format("MMM D, YYYY hh:mma")
+                      : moment
+                          .unix(reports[idx]?.date)
+                          .subtract(1, "days")
+                          .format("MMM D, YYYY hh:mma")}
+                  </td>
+                  <td>
+                    {moment
+                      .unix(reports[idx]?.date)
+                      .format("MMM D, YYYY hh:mm a")}
+                  </td>
+                  <td>
+                    <div className="center">
+                      <img src="/slp.png" width={20} alt="slp" /> {i.earned}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </Container>
   );
 };
 
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
-    overflow-x: auto;
-    white-space: nowrap;
-    display: block;
     border: 1px solid ${colors.textIntense + 20};
     border-radius: 5px;
+
+    .table-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      display: block;
+    }
 
     .main-stats {
       display: flex;
@@ -174,6 +181,32 @@ const Container = styled.div<{ colors: IColors }>`
             color: ${colors.textIntense};
           }
         }
+      }
+    }
+
+    @media (max-width: 911px) {
+      .main-stats {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 777px) {
+      .main-stats {
+        &__container {
+          &__label {
+            font-size: 13px;
+          }
+          &__value {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 557px) {
+      .main-stats {
+        flex-wrap: wrap;
+        gap: 15px;
       }
     }
   `}
