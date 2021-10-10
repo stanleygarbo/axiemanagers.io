@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import Button from "../components/Button";
 import { FormikField } from "../components/FormikField";
@@ -136,6 +136,18 @@ const ScholarPage = () => {
     }
   };
 
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src = "/coinzilla.js";
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   if (scholarQuery.isLoading) {
     return (
       <FullScreenLoader>
@@ -147,6 +159,16 @@ const ScholarPage = () => {
   if (scholarQuery.data)
     return (
       <Container colors={colors}>
+        <div className="ad">
+          <div className="notice">
+            <div className="notice__title">Notice</div>
+            <p>
+              A feature where you will be able to see and download reports will
+              be coming soon.
+            </p>
+          </div>
+          <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
+        </div>
         {scholarQuery.error ? (
           <ErrorMessage
             title={scholarQuery.error?.message}
@@ -520,6 +542,58 @@ const Container = styled.div<{ colors: IColors }>`
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+
+    .ad {
+      margin: 0 auto;
+      margin-bottom: 20px;
+      max-width: 1200px;
+      display: flex;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 728px;
+      gap: 10px;
+
+      .notice {
+        border: 1px dashed ${colors.textIntense + 30};
+        padding: 10px;
+        border-radius: 5px;
+
+        &__title {
+          color: ${colors.textNotSoIntense};
+          font-size: 16px;
+          font-weight: 500;
+        }
+        p {
+          color: ${colors.textIntense + 90};
+          font-size: 13px;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    @media (max-width: 1152px) {
+      .ad {
+        .notice {
+          &__title {
+            font-size: 14px;
+          }
+          p {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    @media (max-width: 1091px) {
+      .ad {
+        display: flex;
+        justify-content: center;
+
+        .notice {
+          display: none;
+        }
+      }
+    }
+
     .wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 360px;
