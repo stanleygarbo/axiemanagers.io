@@ -57,6 +57,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {scholarsTable?.chart && <th>Chart</th>}
             {scholarsTable?.mmr && <th>MMR</th>}
             {scholarsTable?.rank && <th>Rank</th>}
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -267,7 +268,6 @@ const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     width: 100%;
     display: block;
-    overflow-x: auto;
     white-space: nowrap;
 
     p {
@@ -294,6 +294,13 @@ const Container = styled.div<{ colors: IColors }>`
 
       tr:nth-child(even) {
         background-color: ${colors.BGLighter + 80};
+      }
+
+      th {
+        position: sticky;
+        top: 85px;
+        z-index: 100;
+        background-color: ${colors.BGLight};
       }
 
       tbody {
@@ -325,6 +332,18 @@ const Container = styled.div<{ colors: IColors }>`
       .color-picker {
         position: relative;
         padding: 8px 0 8px 8px;
+      }
+    }
+
+    @media (max-width: 1025px) {
+      overflow-y: auto;
+
+      table {
+        th {
+          position: relative;
+          top: 0;
+          z-index: 100;
+        }
       }
     }
   `}
