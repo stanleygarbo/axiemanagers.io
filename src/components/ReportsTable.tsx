@@ -4,21 +4,21 @@ import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
 import moment from "moment";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { addCommaToNumber } from "../util/addCommaToNumber";
+// import { addCommaToNumber } from "../util/addCommaToNumber";
 
 const ReportsTable: React.FC<IReportsTable> = ({
   reports,
-  totalSLP,
-  totalToday,
-  dailyAverage,
-  mmr,
-  rank,
+  // totalSLP,
+  // totalToday,
+  // dailyAverage,
+  // mmr,
+  // rank,
 }) => {
   const { colors } = useTheme();
 
   return (
     <Container colors={colors}>
-      <div className="main-stats">
+      {/* <div className="main-stats">
         <div className="main-stats__container">
           <div className="main-stats__container__label">Total SLP</div>
           <div className="main-stats__container__value">
@@ -52,7 +52,7 @@ const ReportsTable: React.FC<IReportsTable> = ({
           <div className="main-stats__container__label">Rank</div>
           <div className="main-stats__container__value">#{rank}</div>
         </div>
-      </div>
+      </div> */}
 
       <div className="table-container">
         {" "}
@@ -203,10 +203,40 @@ const Container = styled.div<{ colors: IColors }>`
       }
     }
 
+    @media (max-width: 700px) {
+      margin: 16px;
+    }
+
+    @media (max-width: 595px) {
+      table {
+        td,
+        th {
+          font-size: 13px;
+        }
+      }
+    }
     @media (max-width: 557px) {
       .main-stats {
         flex-wrap: wrap;
         gap: 15px;
+      }
+    }
+
+    @media (max-width: 465px) {
+      table {
+        td,
+        th {
+          padding: 3px 7px;
+          font-size: 10px;
+        }
+
+        tbody {
+          tr {
+            td:nth-child(1) {
+              width: 120px;
+            }
+          }
+        }
       }
     }
   `}
