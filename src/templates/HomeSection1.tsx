@@ -85,12 +85,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Update:</span> You can now view your scholars' daily SLP reports
-        from the past 14 days, just tap/click your scholar to view. Side note:
-        if you dont like the randomly selected color of your scholar you can
-        change it.
-      </p> */}
+      <p>
+        <span>Update:</span> Yesterday SLP is now added. You can choose what
+        columns to show/hide on the table under settings &#8594; preferences.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
