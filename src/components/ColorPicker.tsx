@@ -49,7 +49,7 @@ const Container = styled.div<{ colors: IColors }>`
       position: fixed;
       left: 0px;
       bottom: 0px;
-      z-index: 5;
+      z-index: 105;
       width: 100%;
       height: 100vh;
       display: grid;
