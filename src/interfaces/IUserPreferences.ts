@@ -12,6 +12,7 @@ export type IScholarsTableColumns = {
   rank: boolean;
   average: boolean;
   today: boolean;
+  yesterday: boolean;
 };
 
 export type ICurrency = "eur" | "sgd" | "inr" | "vnd" | "php" | "usd" | "";
@@ -26,6 +27,7 @@ export interface IUserPreferences {
     total,
     average,
     today,
+    yesterday,
     manager,
     scholar,
     lastClaimedAmount,

@@ -50,7 +50,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {scholarsTable?.manager && <th>Manager</th>}
             {scholarsTable?.scholar && <th>Scholar</th>}
             {scholarsTable?.today && <th>Today</th>}
-            {scholarsTable?.today && <th>Yesterday</th>}
+            {scholarsTable?.yesterday && <th>Yesterday</th>}
             {scholarsTable?.lastUpdated && <th>Last Updated</th>}
             {scholarsTable?.lastClaimed && <th>Last Claimed</th>}
             {scholarsTable?.nextClaim && <th>Claimable</th>}
@@ -187,7 +187,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         : "---"}
                     </td>
                   )}
-                  {scholarsTable?.today && (
+                  {scholarsTable?.yesterday && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                       {data[i.ronin]?.chart?.length > 0 ? (
                         <div className="center-horizontal">

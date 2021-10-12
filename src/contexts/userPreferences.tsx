@@ -19,6 +19,7 @@ const userPreferencesContext = createContext<IUserPreferences>({
     rank: false,
     chart: true,
     today: true,
+    yesterday: true,
     average: true,
   },
   didAcceptCookiePolicy: false,
@@ -42,6 +43,7 @@ const useUserPreferencesContext = () => {
     rank: false,
     chart: true,
     today: true,
+    yesterday: true,
     average: true,
   });
 
@@ -70,6 +72,7 @@ const useUserPreferencesContext = () => {
         rank: false,
         chart: true,
         today: true,
+        yesterday: true,
         average: true,
       },
       currency: "",
@@ -93,6 +96,7 @@ const useUserPreferencesContext = () => {
         rank: false,
         chart: true,
         today: true,
+        yesterday: true,
         average: true,
       });
       setCurrency("");
@@ -128,6 +132,7 @@ const useUserPreferencesContext = () => {
     rank,
     chart,
     today,
+    yesterday,
     average,
   }: IScholarsTableColumns) => {
     setScholarsTablePreferences({
@@ -143,6 +148,7 @@ const useUserPreferencesContext = () => {
       mmr,
       chart,
       today,
+      yesterday,
       average,
     });
   };
