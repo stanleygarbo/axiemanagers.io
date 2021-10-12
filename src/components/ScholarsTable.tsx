@@ -34,8 +34,6 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   const { minQuota } = useScholars();
 
-  console.log(minQuota);
-
   return (
     <Container colors={colors}>
       {/* <p>
