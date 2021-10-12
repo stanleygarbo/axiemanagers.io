@@ -4,6 +4,7 @@ import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
 import moment from "moment";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
+import { useScholars } from "../contexts/scholarsContext";
 // import { addCommaToNumber } from "../util/addCommaToNumber";
 
 const ReportsTable: React.FC<IReportsTable> = ({
@@ -15,6 +16,8 @@ const ReportsTable: React.FC<IReportsTable> = ({
   // rank,
 }) => {
   const { colors } = useTheme();
+
+  const { minQuota } = useScholars();
 
   return (
     <Container colors={colors}>
@@ -86,7 +89,17 @@ const ReportsTable: React.FC<IReportsTable> = ({
                   </td>
                   <td>
                     <div className="center">
-                      <img src="/slp.png" width={20} alt="slp" /> {i.earned}
+                      <img src="/slp.png" width={20} alt="slp" />
+                      <span
+                        style={{
+                          color:
+                            minQuota > i.earned
+                              ? colors.danger
+                              : colors.success,
+                        }}
+                      >
+                        {i.earned}
+                      </span>
                     </div>
                   </td>
                 </tr>
