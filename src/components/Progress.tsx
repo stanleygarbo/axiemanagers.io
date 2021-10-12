@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-// import { useScholars } from "../contexts/scholarsContext";
+import { useScholars } from "../contexts/scholarsContext";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { IProgress } from "../interfaces/IProgress";
@@ -49,11 +49,13 @@ const Container = styled.div<{ colors: IColors; percentage: number }>`
 `;
 
 const Progress: React.FC<IProgress> = ({ earned, showText = true }) => {
-  // const { minQuota } = useScholars();
+  const { minQuota } = useScholars();
   const { colors } = useTheme();
 
   const progress =
-    Number(earned) <= 75 ? Number(((earned / 75) * 100).toFixed(2)) : 100;
+    Number(earned) <= minQuota
+      ? Number(((earned / minQuota) * 100).toFixed(2))
+      : 100;
 
   return (
     <Container colors={colors} percentage={progress}>

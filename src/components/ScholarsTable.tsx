@@ -32,6 +32,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   const { scholarsTable } = useUserPreferences();
 
+  const { minQuota } = useScholars();
+
+  console.log(minQuota);
+
   return (
     <Container colors={colors}>
       {/* <p>
@@ -164,48 +168,73 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                   )}
                   {scholarsTable?.today && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      {data[i.ronin]?.chart?.length > 0 ? (
-                        <div className="center-horizontal">
-                          <img
-                            src="/slp.png"
-                            width={20}
-                            alt="slp"
-                            style={{ marginRight: 4 }}
-                          />
-                          {addCommaToNumber(data[i.ronin]?.today)}
-                        </div>
-                      ) : (
-                        "---"
-                      )}
-                      &nbsp;&#8776; {getCurrencySign(currency)}
-                      {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
-                        ? addCommaToNumber(
-                            Math.floor(
-                              data[i.ronin]?.today * SLPPrice.data?.current
+                      <div className="center-horizontal">
+                        <img
+                          src="/slp.png"
+                          width={20}
+                          alt="slp"
+                          style={{ marginRight: 4 }}
+                        />
+                        {data[i.ronin]?.chart?.length > 0 ? (
+                          <span
+                            className="quota"
+                            style={{
+                              background:
+                                data[i.ronin]?.today < minQuota
+                                  ? colors.danger
+                                  : colors.success,
+                            }}
+                          >
+                            {addCommaToNumber(data[i.ronin]?.today)}
+                          </span>
+                        ) : (
+                          "---"
+                        )}
+                      </div>
+                      <div>
+                        &nbsp;&#8776; {getCurrencySign(currency)}
+                        {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
+                          ? addCommaToNumber(
+                              Math.floor(
+                                data[i.ronin]?.today * SLPPrice.data?.current
+                              )
                             )
-                          )
-                        : "---"}
+                          : "---"}
+                      </div>
                     </td>
                   )}
                   {scholarsTable?.yesterday && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      {data[i.ronin]?.chart?.length > 0 ? (
-                        <div className="center-horizontal">
-                          <img
-                            src="/slp.png"
-                            width={20}
-                            alt="slp"
-                            style={{ marginRight: 4 }}
-                          />
-                          {addCommaToNumber(
-                            data[i.ronin]?.chart[
-                              data[i.ronin]?.chart.length - 1
-                            ].earned
-                          )}
-                        </div>
-                      ) : (
-                        "---"
-                      )}
+                      <div className="center-horizontal">
+                        <img
+                          src="/slp.png"
+                          width={20}
+                          alt="slp"
+                          style={{ marginRight: 4 }}
+                        />
+
+                        {data[i.ronin]?.chart?.length > 0 ? (
+                          <span
+                            className="quota"
+                            style={{
+                              background:
+                                data[i.ronin]?.chart[
+                                  data[i.ronin]?.chart.length - 1
+                                ].earned < minQuota
+                                  ? colors.danger
+                                  : colors.success,
+                            }}
+                          >
+                            {addCommaToNumber(
+                              data[i.ronin]?.chart[
+                                data[i.ronin]?.chart.length - 1
+                              ].earned
+                            )}
+                          </span>
+                        ) : (
+                          "---"
+                        )}
+                      </div>
                       &nbsp;&#8776; {getCurrencySign(currency)}
                       {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
                         ? addCommaToNumber(
@@ -331,7 +360,7 @@ const Container = styled.div<{ colors: IColors }>`
       th {
         position: sticky;
         top: 85px;
-        z-index: 100;
+        z-index: 2;
         background-color: ${colors.BGLight};
       }
 
@@ -359,6 +388,15 @@ const Container = styled.div<{ colors: IColors }>`
         }
         .chart {
           width: 100px;
+        }
+        .quota {
+          color: #fff;
+          border-radius: 5px;
+          padding: 0.5px 5px;
+          min-width: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
       .color-picker {

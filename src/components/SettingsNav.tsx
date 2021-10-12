@@ -23,12 +23,12 @@ const SettingsNav = () => {
       >
         Preferences
       </Link>
-      {/* <Link
+      <Link
         to="/settings/min-quota"
         className={pathname === "/settings/min-quota" ? `active-tab` : ""}
       >
         Minimum Quota
-      </Link> */}
+      </Link>
     </Container>
   );
 };

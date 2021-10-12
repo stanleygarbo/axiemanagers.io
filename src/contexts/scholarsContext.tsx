@@ -22,7 +22,11 @@ const useScholarsContext = () => {
       parsedScholars = JSON.parse(stringifiedScholars);
     }
     setScholars(parsedScholars.length > 0 ? parsedScholars : []);
-    setMinQuota(parsedMinQuota);
+    if (parsedMinQuota) {
+      setMinQuota(parsedMinQuota);
+    } else {
+      setMinQuota(75);
+    }
   }, []);
 
   useEffect(() => {
