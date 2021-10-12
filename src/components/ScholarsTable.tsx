@@ -50,6 +50,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {scholarsTable?.manager && <th>Manager</th>}
             {scholarsTable?.scholar && <th>Scholar</th>}
             {scholarsTable?.today && <th>Today</th>}
+            {scholarsTable?.today && <th>Yesterday</th>}
             {scholarsTable?.lastUpdated && <th>Last Updated</th>}
             {scholarsTable?.lastClaimed && <th>Last Claimed</th>}
             {scholarsTable?.nextClaim && <th>Claimable</th>}
@@ -181,6 +182,37 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         ? addCommaToNumber(
                             Math.floor(
                               data[i.ronin]?.today * SLPPrice.data?.current
+                            )
+                          )
+                        : "---"}
+                    </td>
+                  )}
+                  {scholarsTable?.today && (
+                    <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
+                      {data[i.ronin]?.chart?.length > 0 ? (
+                        <div className="center-horizontal">
+                          <img
+                            src="/slp.png"
+                            width={20}
+                            alt="slp"
+                            style={{ marginRight: 4 }}
+                          />
+                          {addCommaToNumber(
+                            data[i.ronin]?.chart[
+                              data[i.ronin]?.chart.length - 1
+                            ].earned
+                          )}
+                        </div>
+                      ) : (
+                        "---"
+                      )}
+                      &nbsp;&#8776; {getCurrencySign(currency)}
+                      {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
+                        ? addCommaToNumber(
+                            Math.floor(
+                              data[i.ronin]?.chart[
+                                data[i.ronin]?.chart.length - 1
+                              ].earned * SLPPrice.data?.current
                             )
                           )
                         : "---"}
