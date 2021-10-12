@@ -132,12 +132,24 @@ const HomePage = () => {
   }, []);
 
   const messages = [
-    `Please export your list of scholars just in case of data loss. This will save you the hassle if your scholars "disappear".`,
-    `For the daily SLP to be accurate, it is recommended for your
-    players to play 1hr after reset.`,
+    {
+      title: "Notice",
+      message: `Please export your list of scholars just in case of data loss. This will save you the hassle if your scholars "disappear".`,
+    },
+    {
+      title: "Notice",
+      message: `For the daily SLP to be accurate, it is recommended for your
+      players to play 1hr after reset.".`,
+    },
+    {
+      title: "Update",
+      message: `Yesterday SLP is now added. You can choose what columns to show/hide on the table 
+      under settings > preferences.`,
+    },
   ];
 
-  const random = Math.random() * (1 - 0) + 0;
+  const random = Math.random() * (2 - 0) + 0;
+  const randomMessage = messages[Math.round(random)];
 
   return (
     <Container colors={colors}>
@@ -149,8 +161,8 @@ const HomePage = () => {
 
         <div className="ad">
           <div className="notice">
-            <div className="notice__title">Notice</div>
-            <p>{messages[Math.round(random)]}</p>
+            <div className="notice__title">{randomMessage.title}</div>
+            <p>{randomMessage.message}</p>
           </div>
           <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
         </div>
