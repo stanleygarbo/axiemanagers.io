@@ -403,14 +403,13 @@ const Container = styled.div<{ colors: IColors }>`
       }
     }
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1133px) {
       overflow-y: auto;
 
       table {
         th {
           position: relative;
           top: 0;
-          z-index: 100;
         }
       }
     }
