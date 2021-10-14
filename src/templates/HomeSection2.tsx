@@ -92,7 +92,7 @@ const HomeSection2: React.FC<{
         const obj = {
           name: scholar.nickname,
           totalSLP: data[scholar.ronin].total,
-          today: data[scholar.ronin].today,
+          today: data[scholar.ronin]?.today,
           yesterday:
             data[scholar.ronin].chart[data[scholar.ronin].chart.length - 1]
               ?.earned,
