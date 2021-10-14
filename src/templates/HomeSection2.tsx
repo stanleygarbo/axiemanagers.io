@@ -95,7 +95,7 @@ const HomeSection2: React.FC<{
           today: data[scholar.ronin].today,
           yesterday:
             data[scholar.ronin].chart[data[scholar.ronin].chart.length - 1]
-              .earned,
+              ?.earned,
           mmr: data[scholar.ronin].mmr,
           rank: data[scholar.ronin].rank,
           last_claimed: moment
