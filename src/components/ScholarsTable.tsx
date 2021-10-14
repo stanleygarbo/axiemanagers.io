@@ -9,7 +9,7 @@ import moment from "moment";
 import { useQueryClient } from "react-query";
 import { SLPPrice } from "../interfaces/IResponseTypes";
 import { addCommaToNumber } from "../util/addCommaToNumber";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getAverageSLP } from "../util/getAverageSLP";
 import { getManagerShare, getScholarShare } from "../util/getShare";
 import { getCurrencySign } from "../util/getCurrencySign";
@@ -36,12 +36,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Notice:</span> Some addresses may or may not have accurate "Today
-        SLP" values and there's a good chance this feature will be temporarily
-        removed from our tracker,{" "}
-        <Link to="/settings/interface">learn more</Link>.
-      </p> */}
+      <p>
+        <span>Tip:</span> {"To hide/show columns check "}
+        <Link to="/settings/interface">{"settings > preferences"}</Link>.
+      </p>
       <table>
         <thead>
           <tr>
@@ -327,7 +325,6 @@ const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
     width: 100%;
     display: block;
-    white-space: nowrap;
 
     p {
       color: ${colors.textNotSoIntense};
