@@ -19,22 +19,26 @@ import { getAverageSLP } from "../util/getAverageSLP";
 import { addCommaToNumber } from "../util/addCommaToNumber";
 import { getCurrencySign } from "../util/getCurrencySign";
 import { useUserPreferences } from "../contexts/userPreferences";
+import Button from "../components/Button";
+import { JSONToCSV } from "../util/json-csv";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
   refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
 }> = ({ scholarsQuery, refetchScholarMutation }) => {
-  const { colors } = useTheme();
+  const { colors, isDarkMode } = useTheme();
   const { scholars } = useScholars();
   const queryClient = useQueryClient();
   const { currency } = useUserPreferences();
   const SLPPrice = queryClient.getQueryState<SLPPrice>(["SLPPrice", currency]);
+  const [sorted, setSorted] = useState<IScholars[]>();
 
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
   );
   const [orderBy, setOrderBy] = useState<string>("nickname");
   const [order, setOrder] = useState<string>("asc");
+  const [downloadableFileURL, setDownloadableFileURL] = useState<string>("");
 
   const { screenWidth } = useScreenSize();
 
@@ -46,30 +50,88 @@ const HomeSection2: React.FC<{
     }
   }, [screenWidth]);
 
-  let sortedScholarAddresses: string[] = [];
-  let sortedScholars: IScholars[] = [];
-  const data = scholarsQuery.data?.list;
-  if (data) {
-    if (orderBy === "nickname") {
-      sortedScholars = scholars.sort(
-        DynamicSortArray((order === "desc" ? "-" : "") + orderBy)
-      );
-    } else {
-      sortedScholarAddresses = Object.keys(data).sort(
-        DynamicSortObject((order === "desc" ? "-" : "") + orderBy, data)
-      );
+  useEffect(() => {
+    let sortedScholarAddresses: string[] = [];
+    let sortedScholars: IScholars[] = [];
+    const data = scholarsQuery.data?.list;
+    if (data) {
+      if (orderBy === "nickname") {
+        sortedScholars = scholars.sort(
+          DynamicSortArray((order === "desc" ? "-" : "") + orderBy)
+        );
+      } else {
+        sortedScholarAddresses = Object.keys(data).sort(
+          DynamicSortObject((order === "desc" ? "-" : "") + orderBy, data)
+        );
 
-      for (const address of sortedScholarAddresses) {
-        for (const scholar of scholars) {
-          if (scholar.ronin === address) {
-            sortedScholars.push(scholar);
+        for (const address of sortedScholarAddresses) {
+          for (const scholar of scholars) {
+            if (scholar.ronin === address) {
+              sortedScholars.push(scholar);
+            }
           }
         }
       }
-    }
-  }
 
-  if (scholarsQuery.data) {
+      const downloadableData: {
+        name: string;
+        totalSLP: number;
+        today: number;
+        yesterday: number;
+        mmr: number;
+        rank: number;
+        last_claimed: string;
+        last_updated: string;
+        next_claim: string;
+        manager_share: number;
+        manager: number;
+        scholar: number;
+      }[] = [];
+
+      for (const scholar of sortedScholars) {
+        const obj = {
+          name: scholar.nickname,
+          totalSLP: data[scholar.ronin].total,
+          today: data[scholar.ronin].today,
+          yesterday:
+            data[scholar.ronin].chart[data[scholar.ronin].chart.length - 1]
+              .earned,
+          mmr: data[scholar.ronin].mmr,
+          rank: data[scholar.ronin].rank,
+          last_claimed: moment
+            .unix(data[scholar.ronin].lastClaimed)
+            .format("MM-DD-YYYY hh:mm A"),
+          last_updated: moment
+            .unix(data[scholar.ronin].lastUpdated)
+            .format("MM-DD-YYYY hh:mm A"),
+          next_claim: moment
+            .unix(data[scholar.ronin].lastClaimed)
+            .add(14, "days")
+            .format("MM-DD-YYYY hh:mm A"),
+          manager_share: scholar.managerShare,
+          manager: data[scholar.ronin].total * (scholar.managerShare / 100),
+          scholar:
+            data[scholar.ronin].total -
+            data[scholar.ronin].total * (scholar.managerShare / 100),
+        };
+
+        downloadableData.push(obj);
+      }
+
+      (async function () {
+        const blob = new Blob([JSONToCSV(downloadableData)], {
+          type: "text/csv",
+        });
+        const href = await URL.createObjectURL(blob);
+
+        setDownloadableFileURL(href);
+      })();
+
+      setSorted(sortedScholars);
+    }
+  }, [scholarsQuery.data, scholars, orderBy, order]);
+
+  if (scholarsQuery.data && sorted) {
     let scholarsStat = scholarsQuery.data.list;
 
     return (
@@ -80,24 +142,48 @@ const HomeSection2: React.FC<{
       >
         <div className="options">
           <Sorters setOrderBy={setOrderBy} setOrder={setOrder} />
-          <LayoutSelector
-            activeLayout={activeLayout}
-            setActiveLayout={setActiveLayout}
-          />
+          <div className="options__right">
+            {screenWidth > 700 && (
+              <a
+                href={downloadableFileURL}
+                download={`${moment(new Date()).format(
+                  "MM-DD-YYYY"
+                )}-report.csv`}
+              >
+                <Button
+                  bgColor={isDarkMode ? colors.BGLighter : "transparent"}
+                  style={{
+                    height: "100%",
+                    marginRight: 20,
+                    border: isDarkMode
+                      ? `none`
+                      : `1px solid ${colors.textIntense + 30}`,
+                  }}
+                >
+                  Export CSV
+                </Button>
+              </a>
+            )}
+
+            <LayoutSelector
+              activeLayout={activeLayout}
+              setActiveLayout={setActiveLayout}
+            />
+          </div>
         </div>
         {activeLayout === "tabular" &&
         !scholarsQuery.isLoading &&
         scholarsQuery.data ? (
           <ScholarsTable
             data={scholarsQuery.data.list}
-            sortedScholars={sortedScholars}
+            sortedScholars={sorted}
             refetchScholarMutation={refetchScholarMutation}
           />
         ) : (
           activeLayout === "cards" &&
           !scholarsQuery.isLoading && (
             <div className="scholar-cards">
-              {sortedScholars.map((i, idx) => (
+              {sorted.map((i, idx) => (
                 <ScholarCard
                   key={idx}
                   ronin={i.ronin}
@@ -184,6 +270,10 @@ const Container = styled.div<{ numScholars: number }>`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &__right {
+      display: flex;
+    }
   }
 
   .scholar-cards {
