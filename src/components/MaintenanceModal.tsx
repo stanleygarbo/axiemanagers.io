@@ -15,8 +15,8 @@ const MaintenanceModal = () => {
           <img src="/maintenance.svg" alt="maintenace" />
           <h1>Server under maintenance</h1>
           <p>
-            Please come back later after 5pm PH time once axie infinity's server
-            maintenance is over .
+            Please come back later after 5:30pm PH time once axie infinity's
+            server maintenance is over .
           </p>
         </div>
         <div onClick={() => setIsOpen(false)} className="modal-backdrop"></div>
