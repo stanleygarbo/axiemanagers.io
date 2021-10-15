@@ -16,7 +16,7 @@ const MaintenanceModal = () => {
           <h1>Server under maintenance</h1>
           <p>
             Please come back later after 5pm PH time once axie infinity's server
-            is over maintenance.
+            maintenance is over .
           </p>
         </div>
         <div onClick={() => setIsOpen(false)} className="modal-backdrop"></div>
@@ -55,7 +55,7 @@ const Container = styled.div<{ colors: IColors }>`
       padding: 20px;
       display: flex;
       flex-direction: column;
-      max-width: 360px;
+      max-width: 450px;
       margin: 0 20px;
       align-items: center;
       text-align: center;
