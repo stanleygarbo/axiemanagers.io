@@ -81,10 +81,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>Notice:</span> Servers are under maintenance. Please come back
         again after 3pm PH time.
-      </p>
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
@@ -243,7 +243,7 @@ const Container = styled.div<{ colors: IColors }>`
       max-width: 1200px;
       margin: 0 auto;
       padding: 0px 20px 20px 20px;
-      font-size: 16px;
+      font-size: 13px;
 
       span {
         background-color: ${colors.warning};
