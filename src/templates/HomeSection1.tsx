@@ -85,10 +85,9 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Update:</span> Yesterday SLP is now added. You can choose what
-        columns to show/hide on the table under settings &#8594; preferences.
-      </p> */}
+      <p>
+        <span>Notice:</span> Servers are under maintenance.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
