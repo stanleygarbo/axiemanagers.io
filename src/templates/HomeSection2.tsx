@@ -89,33 +89,35 @@ const HomeSection2: React.FC<{
       }[] = [];
 
       for (const scholar of sortedScholars) {
-        const obj = {
-          name: scholar.nickname,
-          totalSLP: data[scholar.ronin].total,
-          today: data[scholar.ronin]?.today,
-          yesterday:
-            data[scholar.ronin].chart[data[scholar.ronin].chart?.length - 1]
-              ?.earned,
-          mmr: data[scholar.ronin].mmr,
-          rank: data[scholar.ronin].rank,
-          last_claimed: moment
-            .unix(data[scholar.ronin].lastClaimed)
-            .format("MM-DD-YYYY hh:mm A"),
-          last_updated: moment
-            .unix(data[scholar.ronin].lastUpdated)
-            .format("MM-DD-YYYY hh:mm A"),
-          next_claim: moment
-            .unix(data[scholar.ronin].lastClaimed)
-            .add(14, "days")
-            .format("MM-DD-YYYY hh:mm A"),
-          manager_share: scholar.managerShare,
-          manager: data[scholar.ronin].total * (scholar.managerShare / 100),
-          scholar:
-            data[scholar.ronin].total -
-            data[scholar.ronin].total * (scholar.managerShare / 100),
-        };
+        if (data[scholar.ronin]?.chart) {
+          const obj = {
+            name: scholar.nickname,
+            totalSLP: data[scholar.ronin].total,
+            today: data[scholar.ronin]?.today,
+            yesterday:
+              data[scholar.ronin]?.chart[data[scholar.ronin]?.chart?.length - 1]
+                ?.earned,
+            mmr: data[scholar.ronin].mmr,
+            rank: data[scholar.ronin].rank,
+            last_claimed: moment
+              .unix(data[scholar.ronin].lastClaimed)
+              .format("MM-DD-YYYY hh:mm A"),
+            last_updated: moment
+              .unix(data[scholar.ronin].lastUpdated)
+              .format("MM-DD-YYYY hh:mm A"),
+            next_claim: moment
+              .unix(data[scholar.ronin].lastClaimed)
+              .add(14, "days")
+              .format("MM-DD-YYYY hh:mm A"),
+            manager_share: scholar.managerShare,
+            manager: data[scholar.ronin].total * (scholar.managerShare / 100),
+            scholar:
+              data[scholar.ronin].total -
+              data[scholar.ronin].total * (scholar.managerShare / 100),
+          };
 
-        downloadableData.push(obj);
+          downloadableData.push(obj);
+        }
       }
 
       (async function () {
