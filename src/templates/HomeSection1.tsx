@@ -83,8 +83,8 @@ const HomeSection1: React.FC<{
     <Container colors={colors}>
       <p>
         <span>Notice</span> If your scholar's MMR shows 0, just click the
-        refresh button next to it. This is just a temporary solution as the API
-        is currently unstable.{" "}
+        refresh button next to it. This is just a temporary solution as Axie
+        Infinity's official leaderboard API is currently unstable.{" "}
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
