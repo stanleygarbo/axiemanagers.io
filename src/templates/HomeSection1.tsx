@@ -242,7 +242,7 @@ const Container = styled.div<{ colors: IColors }>`
       max-width: 1200px;
       margin: 0 auto;
       padding: 0px 20px 20px 20px;
-      font-size: 13px;
+      font-size: 16px;
 
       span {
         background-color: ${colors.warning};
