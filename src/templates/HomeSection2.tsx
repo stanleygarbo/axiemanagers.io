@@ -77,7 +77,7 @@ const HomeSection2: React.FC<{
         name: string;
         totalSLP: number;
         today: number;
-        yesterday: number;
+        yesterday?: number;
         mmr: number;
         rank: number;
         last_claimed: string;
