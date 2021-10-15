@@ -81,10 +81,11 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Notice:</span> Servers are under maintenance. Please come back
-        again after 3pm PH time.
-      </p> */}
+      <p>
+        <span>Notice</span> If your scholar's MMR shows 0, just click the
+        refresh button next to it. This is just a temporary solution as the API
+        is currently unstable.{" "}
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
