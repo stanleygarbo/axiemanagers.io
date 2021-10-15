@@ -215,7 +215,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                             style={{
                               background:
                                 data[i.ronin]?.chart[
-                                  data[i.ronin]?.chart.length - 1
+                                  data[i.ronin]?.chart?.length - 1
                                 ].earned < minQuota
                                   ? colors.danger
                                   : colors.success,
@@ -223,7 +223,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           >
                             {addCommaToNumber(
                               data[i.ronin]?.chart[
-                                data[i.ronin]?.chart.length - 1
+                                data[i.ronin]?.chart?.length - 1
                               ].earned
                             )}
                           </span>
@@ -236,7 +236,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         ? addCommaToNumber(
                             Math.floor(
                               data[i.ronin]?.chart[
-                                data[i.ronin]?.chart.length - 1
+                                data[i.ronin]?.chart?.length - 1
                               ].earned * SLPPrice.data?.current
                             )
                           )
@@ -263,7 +263,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                   {/* <td>Progress</td> */}
                   {scholarsTable?.chart && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      {data[i.ronin]?.chart.length > 2 ? (
+                      {data[i.ronin]?.chart?.length > 2 ? (
                         <div className="chart">
                           <LineChart
                             data={data[i.ronin]?.chart?.map((cd) =>
