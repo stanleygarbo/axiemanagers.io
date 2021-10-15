@@ -94,7 +94,7 @@ const HomeSection2: React.FC<{
           totalSLP: data[scholar.ronin].total,
           today: data[scholar.ronin]?.today,
           yesterday:
-            data[scholar.ronin].chart[data[scholar.ronin].chart.length - 1]
+            data[scholar.ronin].chart[data[scholar.ronin].chart?.length - 1]
               ?.earned,
           mmr: data[scholar.ronin].mmr,
           rank: data[scholar.ronin].rank,
@@ -137,7 +137,7 @@ const HomeSection2: React.FC<{
     return (
       <Container
         numScholars={
-          scholarsQuery.data ? Object.keys(scholarsQuery.data.list).length : 0
+          scholarsQuery.data ? Object.keys(scholarsQuery.data.list)?.length : 0
         }
       >
         <div className="options">

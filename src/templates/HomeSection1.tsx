@@ -79,10 +79,6 @@ const HomeSection1: React.FC<{
     }
   }
 
-  // scholarsQuery.data?.list.map((i) => (totalUnclaimed += i.total));
-
-  // scholarsQuery.data?.list.map((i) => (totalClaimed += i.lastClaimAmount));
-
   return (
     <Container colors={colors}>
       <p>
