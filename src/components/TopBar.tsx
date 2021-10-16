@@ -8,6 +8,7 @@ import { useScreenSize } from "../contexts/screenSizeContext";
 import SearchScholar from "./SearchScholar";
 import { Link, useHistory, useLocation, withRouter } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
+// import { useScroll } from "../contexts/scrollContext";
 
 const TopBar = () => {
   const { colors } = useTheme();
@@ -16,8 +17,15 @@ const TopBar = () => {
 
   const { screenWidth } = useScreenSize();
 
+  // const { isScrollingDown } = useScroll();
+
   return (
-    <Container colors={colors}>
+    <Container
+      colors={colors}
+      className="top-bar"
+      id="top-bar"
+      // style={{ top: isScrollingDown ? -120 : 0 }}
+    >
       <div className="announcement">
         <div className="announcement__content">
           <div className="announcement__content__text">
@@ -25,13 +33,13 @@ const TopBar = () => {
               <Link to="/donate">DONATE</Link>
               {/* NOTICE */}
             </span>
-            <div
+            {/* <div
               className="announcement__content__text__moving"
               dangerouslySetInnerHTML={{
                 __html:
                   '<marquee behavior="scroll" scrollamount="2" direction="left">If you find this app useful, please consider donating.</marquee>',
               }}
-            ></div>
+            ></div> */}
           </div>
           <ul className="announcement__content__links">
             {screenWidth > 500 && (
@@ -99,6 +107,7 @@ const Container = styled.nav<{ colors: IColors }>`
     background: ${colors.BGLight};
     width: 100%;
     position: fixed;
+    transition: 0.5s;
     top: 0;
     left: 0;
     z-index: 5;

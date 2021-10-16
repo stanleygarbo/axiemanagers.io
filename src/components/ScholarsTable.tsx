@@ -35,7 +35,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
   const { minQuota } = useScholars();
 
   return (
-    <Container colors={colors}>
+    <Container colors={colors} isScrollingDown={false}>
       <p>
         <span>Tip:</span> {"To hide/show columns check "}
         <Link to="/settings/interface">{"settings > preferences"}</Link>.
@@ -44,7 +44,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
         <thead>
           <tr>
             <th></th>
-            {scholarsTable?.name && <th>Name</th>}
+            {scholarsTable?.name && <th className="th">Name</th>}
             {scholarsTable?.total && <th>Total SLP</th>}
             {scholarsTable?.average && <th>Average</th>}
             {scholarsTable?.manager && <th>Manager</th>}
@@ -321,7 +321,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
   );
 };
 
-const Container = styled.div<{ colors: IColors }>`
+const Container = styled.div<{ colors: IColors; isScrollingDown: boolean }>`
   ${({ colors }) => css`
     width: 100%;
     display: block;
@@ -354,7 +354,6 @@ const Container = styled.div<{ colors: IColors }>`
 
       th {
         position: sticky;
-        top: 85px;
         z-index: 2;
         background-color: ${colors.BGLight};
       }

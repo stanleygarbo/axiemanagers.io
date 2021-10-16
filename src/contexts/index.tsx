@@ -4,13 +4,18 @@ import { IAllContextProviders } from "../interfaces/IAllContextProviders";
 import { ScreenSizeContextProvider } from "./screenSizeContext";
 import { ScholarContextProvider } from "./scholarsContext";
 import { UserPreferencesContextProvider } from "./userPreferences";
+// import { ScrollContextProvider } from "./scrollContext";
 
 const Index: React.FC<IAllContextProviders> = ({ children }) => {
   return (
     <ThemeContextProvider>
       <ScreenSizeContextProvider>
         <UserPreferencesContextProvider>
-          <ScholarContextProvider>{children}</ScholarContextProvider>
+          <ScholarContextProvider>
+            {/* <ScrollContextProvider> */}
+            {children}
+            {/* </ScrollContextProvider> */}
+          </ScholarContextProvider>
         </UserPreferencesContextProvider>
       </ScreenSizeContextProvider>
     </ThemeContextProvider>
