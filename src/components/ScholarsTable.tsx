@@ -287,7 +287,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                   )}
                   {scholarsTable?.mmr && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      {data[i.ronin]?.mmr}
+                      {data[i.ronin]?.mmr !== 0 ? data[i.ronin]?.mmr : "---"}
                     </td>
                   )}
                   {scholarsTable?.rank && (

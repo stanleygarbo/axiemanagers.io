@@ -93,7 +93,9 @@ const ScholarCard: React.FC<IScholarCard> = ({
             <div className="stats-row__today__label">Average</div>
           </div> */}
           <div className="stats-row__today" style={{ marginRight: 20 }}>
-            <div className="stats-row__today__value">{mmr}</div>
+            <div className="stats-row__today__value">
+              {mmr === 0 ? mmr : "---"}
+            </div>
             <div className="stats-row__today__label">MMR</div>
           </div>
           <div className="stats-row__today">
