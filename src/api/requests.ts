@@ -13,7 +13,7 @@ export const fetchSLPPrice = async (currency: string) => {
 export const fetchAllScholars = async (addresses: string[]) => {
   const res = await axios({
     method: "post",
-    url: `https://api.axiemanagers.io/scholars`,
+    url: `https://api.axiemanagers.io/scholars?getLeaderboard=true`,
     data: {
       ids: addresses,
     },
