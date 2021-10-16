@@ -246,7 +246,7 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        background-color: ${colors.warning};
+        background-color: ${colors.success};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;
