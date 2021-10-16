@@ -82,9 +82,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice</span> MMR has been temporarily disabled while axie
-        infinity's LeaderBoard API is unstable and facing some errors at the
-        moment. It will be brought back once their API becomes stable.
+        <span>Notice</span> Due to axie infinity's leaderboard API being
+        unstable, a longer loading time is to be expected.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
