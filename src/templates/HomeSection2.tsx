@@ -21,6 +21,7 @@ import { getCurrencySign } from "../util/getCurrencySign";
 import { useUserPreferences } from "../contexts/userPreferences";
 import Button from "../components/Button";
 import { JSONToCSV } from "../util/json-csv";
+import CircularLoader from "../components/CircularLoader";
 
 const HomeSection2: React.FC<{
   scholarsQuery: UseQueryResult<Scholars, unknown>;
@@ -248,7 +249,11 @@ const HomeSection2: React.FC<{
   }
 
   if (scholarsQuery.isLoading)
-    return <Message colors={colors}>loading...</Message>;
+    return (
+      <Message colors={colors}>
+        Updating data &nbsp;&nbsp;&nbsp; <CircularLoader />{" "}
+      </Message>
+    );
 
   return (
     <Message colors={colors}>you have not added any scholars yet.</Message>
@@ -260,6 +265,9 @@ const Message = styled.div<{ colors: IColors }>`
     text-align: center;
     margin-top: 50px;
     color: ${colors.textNotSoIntense};
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `}
 `;
 
