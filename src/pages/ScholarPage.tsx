@@ -29,9 +29,14 @@ import {
   fetchScholarAxies,
   // fetchScholarAxies,
   fetchScholarByAddress,
+  fetchScholarReports,
   fetchSLPPrice,
 } from "../api/requests";
-import { Scholar, Scholars } from "../interfaces/IResponseTypes";
+import {
+  Scholar,
+  ScholarReports,
+  Scholars,
+} from "../interfaces/IResponseTypes";
 import ErrorMessage from "../components/ErrorMessage";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useUserPreferences } from "../contexts/userPreferences";
@@ -81,6 +86,16 @@ const ScholarPage = () => {
       staleTime: 60000,
     }
   );
+
+  const scholarReportsQuery = useQuery<ScholarReports>(
+    ["ScholarReports", roninAddress],
+    () => fetchScholarReports(roninAddress),
+    {
+      staleTime: Infinity,
+    }
+  );
+
+  console.log(scholarReportsQuery?.data);
 
   const axiesQuery = useQuery(
     ["Axies", roninAddress],
@@ -465,7 +480,7 @@ const ScholarPage = () => {
 
                 {activeTab === "reports" ? (
                   <ReportsTable
-                    reports={scholarQuery.data?.chart}
+                    reports={scholarReportsQuery.data}
                     mmr={scholarQuery.data?.mmr}
                     rank={scholarQuery.data?.rank}
                     totalSLP={scholarQuery.data?.total}

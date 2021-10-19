@@ -21,6 +21,13 @@ export type Scholar = {
   rank: number;
 };
 
+export type ScholarReports = {
+  from: string;
+  to: string;
+  earned: number;
+  total: number;
+}[];
+
 export type Scholars = {
   list: { [key: string]: Scholar };
   earnings: Earnings;

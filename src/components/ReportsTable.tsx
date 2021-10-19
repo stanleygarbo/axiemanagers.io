@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
-import moment from "moment";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { useScholars } from "../contexts/scholarsContext";
@@ -65,28 +64,16 @@ const ReportsTable: React.FC<IReportsTable> = ({
               <th>From</th>
               <th>To</th>
               <th>Earned</th>
+              <th>Total</th>
+              <th>Quota status</th>
             </tr>
           </thead>
           <tbody>
             {reports?.map((i, idx) => {
               return (
                 <tr key={idx}>
-                  <td>
-                    {reports[idx - 1]
-                      ? moment
-                          .unix(reports[idx - 1]?.date)
-                          // .subtract(1, "days")
-                          .format("MMM D, YYYY hh:mma")
-                      : moment
-                          .unix(reports[idx]?.date)
-                          .subtract(1, "days")
-                          .format("MMM D, YYYY hh:mma")}
-                  </td>
-                  <td>
-                    {moment
-                      .unix(reports[idx]?.date)
-                      .format("MMM D, YYYY hh:mm a")}
-                  </td>
+                  <td>{i?.from}</td>
+                  <td>{i?.to}</td>
                   <td>
                     <div className="center">
                       <img src="/slp.png" width={20} alt="slp" />
@@ -98,9 +85,20 @@ const ReportsTable: React.FC<IReportsTable> = ({
                               : colors.success,
                         }}
                       >
-                        {i.earned}
+                        {i?.earned}
                       </span>
                     </div>
+                  </td>
+                  <td>
+                    <div className="center">
+                      <img src="/slp.png" width={20} alt="slp" />
+                      <span>{i?.total}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <QuotaStatus colors={colors} passed={i.earned > minQuota}>
+                      {i.earned > minQuota ? "Passed" : "Failed"}
+                    </QuotaStatus>
                   </td>
                 </tr>
               );
@@ -111,6 +109,18 @@ const ReportsTable: React.FC<IReportsTable> = ({
     </Container>
   );
 };
+
+const QuotaStatus = styled.div<{ colors: IColors; passed: boolean }>`
+  padding: 2px 8px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+  width: fit-content;
+
+  ${({ colors, passed }) => css`
+    background-color: ${passed ? colors.success : colors.danger};
+  `}
+`;
 
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`

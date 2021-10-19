@@ -1,7 +1,7 @@
-import { ChartObj } from ".././IResponseTypes";
+import { ScholarReports } from ".././IResponseTypes";
 
 export interface IReportsTable {
-  reports: ChartObj[];
+  reports?: ScholarReports;
   rank: number;
   mmr: number;
   totalSLP: number;
