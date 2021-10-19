@@ -104,7 +104,7 @@ const QuotaStatus = styled.div<{
       ? colors.success
       : status === "failed"
       ? colors.danger
-      : colors.warning};
+      : "#2897eb"};
   `}
 `;
 
