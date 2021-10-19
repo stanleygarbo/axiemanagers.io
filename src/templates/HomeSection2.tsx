@@ -251,7 +251,7 @@ const HomeSection2: React.FC<{
   if (scholarsQuery.isLoading)
     return (
       <Message colors={colors}>
-        Updating data &nbsp;&nbsp;&nbsp; <CircularLoader />{" "}
+        Updating data &nbsp;&nbsp;&nbsp; <CircularLoader size="medium" />{" "}
       </Message>
     );
 

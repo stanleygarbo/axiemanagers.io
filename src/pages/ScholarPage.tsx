@@ -155,7 +155,7 @@ const ScholarPage = () => {
   if (scholarQuery.isLoading) {
     return (
       <FullScreenLoader>
-        <CircularLoader />
+        <CircularLoader size="large" />
       </FullScreenLoader>
     );
   }
@@ -482,7 +482,7 @@ const ScholarPage = () => {
                     {/* {ScholarAxies.error} */}
                     {axiesQuery.isLoading && (
                       <div className="axie-loader">
-                        <CircularLoader />
+                        <CircularLoader size="large" />
                       </div>
                     )}
                     <div className="team">
