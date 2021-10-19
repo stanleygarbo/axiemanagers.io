@@ -6,6 +6,7 @@ import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { IScholarCard } from "../interfaces/IScholarCard";
 import { addCommaToNumber } from "../util/addCommaToNumber";
+import CircularLoader from "./CircularLoader";
 import { LineChart } from "./LineChart";
 import Progress from "./Progress";
 
@@ -57,7 +58,12 @@ const ScholarCard: React.FC<IScholarCard> = ({
             refetchScholarMutation.mutate(ronin.replace("ronin:", "0x"))
           }
         >
-          <TiArrowSync size={25} />
+          {refetchScholarMutation.isLoading &&
+          refetchScholarMutation.variables === ronin.replace("ronin:", "0x") ? (
+            <CircularLoader size="small" />
+          ) : (
+            <TiArrowSync size={25} />
+          )}
         </div>
       )}
       <div
@@ -143,6 +149,7 @@ const Container = styled.div<{ colors: IColors }>`
 
     .retry {
       color: ${colors.textNotSoIntense};
+      cursor: pointer;
 
       position: absolute;
       top: 40px;
