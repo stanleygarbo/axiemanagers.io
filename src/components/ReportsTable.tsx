@@ -6,56 +6,14 @@ import { IColors } from "../interfaces/IColors";
 import { useScholars } from "../contexts/scholarsContext";
 // import { addCommaToNumber } from "../util/addCommaToNumber";
 
-const ReportsTable: React.FC<IReportsTable> = ({
-  reports,
-  // totalSLP,
-  // totalToday,
-  // dailyAverage,
-  // mmr,
-  // rank,
-}) => {
+const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
   const { colors } = useTheme();
 
   const { minQuota } = useScholars();
 
   return (
     <Container colors={colors}>
-      {/* <div className="main-stats">
-        <div className="main-stats__container">
-          <div className="main-stats__container__label">Total SLP</div>
-          <div className="main-stats__container__value">
-            <img src="/slp.png" alt="slp" width={30} />
-            {addCommaToNumber(totalSLP)}
-          </div>
-        </div>
-        <div className="main-stats__container">
-          <div className="main-stats__container__label">Total Today</div>
-          <div className="main-stats__container__value">
-            <img src="/slp.png" alt="slp" width={30} />
-            {addCommaToNumber(totalToday)}
-          </div>
-        </div>
-        <div className="main-stats__container">
-          <div className="main-stats__container__label">Daily Average</div>
-          <div className="main-stats__container__value">
-            <img src="/slp.png" alt="slp" width={30} />
-            {dailyAverage.slp}
-          </div>
-        </div>
-        <div className="main-stats__container">
-          <div className="main-stats__container__label">MMR</div>
-          <div className="main-stats__container__value">
-            {" "}
-            <span style={{ fontSize: 23 }}> 🏆</span>
-            {mmr}
-          </div>
-        </div>
-        <div className="main-stats__container">
-          <div className="main-stats__container__label">Rank</div>
-          <div className="main-stats__container__value">#{rank}</div>
-        </div>
-      </div> */}
-
+      <p>Greenwich Mean Time (GMT)</p>
       <div className="table-container">
         {" "}
         <table>
@@ -127,36 +85,15 @@ const Container = styled.div<{ colors: IColors }>`
     border: 1px solid ${colors.textIntense + 20};
     border-radius: 5px;
 
+    p {
+      padding: 5px 20px;
+      color: ${colors.textNotSoIntense};
+    }
+
     .table-container {
       overflow-x: auto;
       white-space: nowrap;
       display: block;
-    }
-
-    .main-stats {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 70px;
-      background-color: ${colors.BGLight};
-      border-bottom: 1px solid ${colors.textIntense + 30};
-
-      &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-
-        &__label {
-          color: ${colors.textNotSoIntense};
-        }
-        &__value {
-          color: ${colors.textNotSoIntense};
-          font-size: 30px;
-          font-weight: 600;
-          display: flex;
-          align-items: center;
-        }
-      }
     }
 
     table {
@@ -207,25 +144,6 @@ const Container = styled.div<{ colors: IColors }>`
       }
     }
 
-    @media (max-width: 911px) {
-      .main-stats {
-        padding: 20px;
-      }
-    }
-
-    @media (max-width: 777px) {
-      .main-stats {
-        &__container {
-          &__label {
-            font-size: 13px;
-          }
-          &__value {
-            font-size: 20px;
-          }
-        }
-      }
-    }
-
     @media (max-width: 700px) {
       margin: 16px;
     }
@@ -238,14 +156,13 @@ const Container = styled.div<{ colors: IColors }>`
         }
       }
     }
-    @media (max-width: 557px) {
-      .main-stats {
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-    }
-
     @media (max-width: 465px) {
+      p {
+        padding: 5px 7px;
+        color: ${colors.textNotSoIntense};
+        font-size: 12px;
+      }
+
       table {
         td,
         th {

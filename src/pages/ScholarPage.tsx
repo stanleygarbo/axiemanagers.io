@@ -95,8 +95,6 @@ const ScholarPage = () => {
     }
   );
 
-  console.log(scholarReportsQuery?.data);
-
   const axiesQuery = useQuery(
     ["Axies", roninAddress],
     () => fetchScholarAxies(roninAddress),
@@ -104,8 +102,6 @@ const ScholarPage = () => {
       staleTime: Infinity,
     }
   );
-
-  // console.log(axiesQuery);
 
   const SLPPriceQuery = useQuery(
     ["SLPPrice", currency],
