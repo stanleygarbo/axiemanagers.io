@@ -256,7 +256,11 @@ const HomeSection2: React.FC<{
     );
 
   return (
-    <Message colors={colors}>you have not added any scholars yet.</Message>
+    <Message colors={colors}>
+      {scholars.length <= 0
+        ? "you have not added any scholars yet."
+        : "Sorting..."}
+    </Message>
   );
 };
 
