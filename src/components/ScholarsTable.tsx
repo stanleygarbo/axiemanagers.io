@@ -17,6 +17,7 @@ import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
 import { LineChart } from "./LineChart";
 import { TiArrowSync } from "react-icons/ti";
 import { useUserPreferences } from "../contexts/userPreferences";
+import CircularLoader from "./CircularLoader";
 
 const ScholarsTable: React.FC<IScholarsTable> = ({
   data,
@@ -307,7 +308,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         )
                       }
                     >
-                      <TiArrowSync size={25} />
+                      {refetchScholarMutation.isLoading &&
+                      refetchScholarMutation.variables ===
+                        i.ronin.replace("ronin:", "0x") ? (
+                        <CircularLoader size="small" />
+                      ) : (
+                        <TiArrowSync size={25} />
+                      )}
                     </td>
                   ) : (
                     <td></td>
