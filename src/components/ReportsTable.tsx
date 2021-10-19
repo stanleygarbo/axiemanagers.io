@@ -5,8 +5,9 @@ import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { useScholars } from "../contexts/scholarsContext";
 // import { addCommaToNumber } from "../util/addCommaToNumber";
+import moment from "moment";
 
-const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
+const ReportsTable: React.FC<IReportsTable> = ({ reports, lastClaimed }) => {
   const { colors } = useTheme();
 
   const { minQuota } = useScholars();
@@ -23,11 +24,16 @@ const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
               <th>To</th>
               <th>Earned</th>
               <th>Total</th>
-              <th>Quota status</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {reports?.map((i, idx) => {
+              const didClaim = lastClaimed
+                ? moment.unix(lastClaimed).format("MM-DD-YYYY") ===
+                  moment(i.from).format("MM-DD-YYYY")
+                : null;
+
               return (
                 <tr key={idx}>
                   <td>{i?.from}</td>
@@ -38,12 +44,14 @@ const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
                       <span
                         style={{
                           color:
-                            minQuota > i.earned
+                            didClaim && i.earned === 0
+                              ? ""
+                              : minQuota > i.earned
                               ? colors.danger
                               : colors.success,
                         }}
                       >
-                        {i?.earned}
+                        {i?.earned === 0 && didClaim ? "Claimed" : i?.earned}
                       </span>
                     </div>
                   </td>
@@ -54,8 +62,21 @@ const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
                     </div>
                   </td>
                   <td>
-                    <QuotaStatus colors={colors} passed={i.earned > minQuota}>
-                      {i.earned > minQuota ? "Passed" : "Failed"}
+                    <QuotaStatus
+                      colors={colors}
+                      status={
+                        didClaim
+                          ? "claimed"
+                          : i.earned >= minQuota
+                          ? "passed"
+                          : "failed"
+                      }
+                    >
+                      {didClaim
+                        ? "Claimed"
+                        : i.earned >= minQuota
+                        ? "Passed"
+                        : i.earned < minQuota && "Failed"}
                     </QuotaStatus>
                   </td>
                 </tr>
@@ -68,15 +89,22 @@ const ReportsTable: React.FC<IReportsTable> = ({ reports }) => {
   );
 };
 
-const QuotaStatus = styled.div<{ colors: IColors; passed: boolean }>`
+const QuotaStatus = styled.div<{
+  colors: IColors;
+  status: "failed" | "passed" | "claimed";
+}>`
   padding: 2px 8px;
   color: #fff;
   font-size: 12px;
   border-radius: 5px;
   width: fit-content;
 
-  ${({ colors, passed }) => css`
-    background-color: ${passed ? colors.success : colors.danger};
+  ${({ colors, status }) => css`
+    background-color: ${status === "passed"
+      ? colors.success
+      : status === "failed"
+      ? colors.danger
+      : colors.warning};
   `}
 `;
 

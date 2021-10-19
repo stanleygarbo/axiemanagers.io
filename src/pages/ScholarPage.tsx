@@ -43,7 +43,6 @@ import { useUserPreferences } from "../contexts/userPreferences";
 import { getCurrencySign } from "../util/getCurrencySign";
 import ReportsTable from "../components/ReportsTable";
 import TabSelector from "../components/scholar-page/TabSelector";
-import { getAverageSLP } from "../util/getAverageSLP";
 
 const ValidationSchema = Yup.object().shape({
   nickname: Yup.string().max(50, "too long").required("Required"),
@@ -477,15 +476,7 @@ const ScholarPage = () => {
                 {activeTab === "reports" ? (
                   <ReportsTable
                     reports={scholarReportsQuery.data}
-                    mmr={scholarQuery.data?.mmr}
-                    rank={scholarQuery.data?.rank}
-                    totalSLP={scholarQuery.data?.total}
-                    totalToday={scholarQuery.data?.today}
-                    dailyAverage={getAverageSLP(
-                      scholarQuery.data?.lastClaimed,
-                      scholarQuery.data?.total,
-                      SLPPriceQuery.data?.current
-                    )}
+                    lastClaimed={scholarQuery.data?.lastClaimed}
                   />
                 ) : (
                   <>
