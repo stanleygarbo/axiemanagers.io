@@ -195,6 +195,7 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
           padding: 0px;
           margin-top: 10px;
           margin-left: 20px;
+          font-size: 15px;
           color: ${colors.textNotSoIntense};
         }
 
@@ -212,6 +213,7 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
             border: 1px solid ${colors.textIntense + 20};
             padding: 1px 8px;
             border-radius: 5px;
+            font-size: 16px;
 
             &:hover {
               background-color: ${colors.BGLighter};
