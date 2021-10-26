@@ -211,7 +211,7 @@ const Container = styled.div<{ colors: IColors }>`
         grid-column: span 2;
       }
 
-      button {
+      .back {
         grid-column: span 2;
         border-radius: 100px;
         padding: 12px 40px;

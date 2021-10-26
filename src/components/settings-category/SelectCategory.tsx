@@ -10,6 +10,7 @@ import { BiEdit } from "react-icons/bi";
 import { useScholars } from "../../contexts/scholarsContext";
 import { IoIosArrowDown } from "react-icons/io";
 import { useHistory, useLocation } from "react-router";
+import { IoMdClose } from "react-icons/io";
 
 const SelectCategory: React.FC<ISelectCategory> = ({
   size,
@@ -45,6 +46,14 @@ const SelectCategory: React.FC<ISelectCategory> = ({
             onClick={() => setIsOpen(false)}
           ></div>
           <div className="modal__box">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+              }}
+              className="modal__box__close"
+            >
+              <IoMdClose />
+            </button>
             <div className="modal__box__header">
               <div className="modal__box__header__title">Select a category</div>
             </div>
@@ -200,6 +209,7 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
 
       &__box {
         z-index: 1;
+        position: relative;
 
         background-color: ${colors.BGLight};
 
@@ -208,6 +218,26 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
         border-radius: 20px;
         border: 1px solid ${colors.textIntense + 20};
         overflow: hidden;
+
+        &__close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: 35px;
+          height: 35px;
+          border-radius: 20px;
+          border: none;
+
+          font-size: 25px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          background-color: ${colors.BGDark};
+          color: ${colors.textNotSoIntense};
+          cursor: pointer;
+        }
 
         &__header,
         &__search {
