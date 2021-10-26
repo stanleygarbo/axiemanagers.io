@@ -3,14 +3,15 @@ import styled, { css } from "styled-components";
 import { IReportsTable } from "../interfaces/scholar-page/IReportsTable";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { useScholars } from "../contexts/scholarsContext";
 // import { addCommaToNumber } from "../util/addCommaToNumber";
 import moment from "moment";
 
-const ReportsTable: React.FC<IReportsTable> = ({ reports, lastClaimed }) => {
+const ReportsTable: React.FC<IReportsTable> = ({
+  reports,
+  lastClaimed,
+  minQuota,
+}) => {
   const { colors } = useTheme();
-
-  const { minQuota } = useScholars();
 
   return (
     <Container colors={colors}>

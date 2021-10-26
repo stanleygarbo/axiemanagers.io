@@ -56,7 +56,7 @@ const DummyData = ["5", "8", "10", "18", "19"];
 
 const ScholarPage = () => {
   const { ronin } = useParams<{ ronin: string }>();
-  const { scholars, updateScholar, deleteScholar } = useScholars();
+  const { scholars, updateScholar, deleteScholar, categories } = useScholars();
   const { colors } = useTheme();
   const [isSaveable, setIsSaveable] = useState(false);
   // const [scholar, setScholar] = useState();
@@ -118,6 +118,8 @@ const ScholarPage = () => {
       return old;
     });
   };
+
+  const ctgry = categories.find((obj) => obj.name === scholar?.category)?.quota;
 
   const chartDate =
     scholarQuery.data?.chart !== null && scholarQuery.data?.chart.length! > 2
@@ -479,6 +481,7 @@ const ScholarPage = () => {
                   <ReportsTable
                     reports={scholarReportsQuery.data}
                     lastClaimed={scholarQuery.data?.lastClaimed}
+                    minQuota={ctgry ? ctgry : 75}
                   />
                 ) : (
                   <>
