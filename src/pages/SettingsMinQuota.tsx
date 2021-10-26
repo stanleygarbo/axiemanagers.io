@@ -129,6 +129,7 @@ const Container = styled.div<{ colors: IColors }>`
     color: ${colors.textNotSoIntense};
     flex: 1;
     padding: 20px;
+    width: 100%;
 
     p {
       margin-bottom: 10px;
@@ -165,11 +166,12 @@ const Container = styled.div<{ colors: IColors }>`
     @media (max-width: 439px) {
       form {
         display: grid;
-        grid-template-columns: 1fr 50px 25px;
+        width: 100%;
         gap: 10px;
 
         input {
           margin-right: 0px;
+          width: 210px;
         }
 
         button {

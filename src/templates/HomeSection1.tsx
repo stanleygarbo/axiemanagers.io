@@ -81,10 +81,11 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Notice</span> Due to axie infinity's leaderboard API being
-        unstable, a longer loading time is to be expected.
-      </p> */}
+      <p>
+        <span>UPDATE</span> You can now add different quotas for different
+        teams. Additional and simpler sorting mechanisms will come on the next
+        update.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
