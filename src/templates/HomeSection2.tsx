@@ -28,7 +28,7 @@ const HomeSection2: React.FC<{
   refetchScholarMutation: UseMutationResult<any, unknown, string, unknown>;
 }> = ({ scholarsQuery, refetchScholarMutation }) => {
   const { colors, isDarkMode } = useTheme();
-  const { scholars } = useScholars();
+  const { scholars, categories } = useScholars();
   const queryClient = useQueryClient();
   const { currency } = useUserPreferences();
   const SLPPrice = queryClient.getQueryState<SLPPrice>(["SLPPrice", currency]);
@@ -193,7 +193,16 @@ const HomeSection2: React.FC<{
                   refetchScholarMutation={refetchScholarMutation}
                   error={false}
                   name={i.nickname}
-                  badge={{ id: "", name: "" }}
+                  badge={{
+                    id: i.category ? i.category : "",
+                    name: i.category ? i.category : "",
+                    color: i.category
+                      ? categories.length > 0
+                        ? categories.find((obj) => obj.name === i.category)
+                            ?.color!
+                        : ""
+                      : "",
+                  }}
                   earned={scholarsStat[i.ronin]?.total}
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0

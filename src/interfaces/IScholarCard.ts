@@ -7,6 +7,7 @@ export interface IScholarCard {
   badge?: {
     id: string;
     name: string;
+    color: string;
   };
   color: string;
   lastClaim: string;

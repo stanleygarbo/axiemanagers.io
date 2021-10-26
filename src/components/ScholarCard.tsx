@@ -71,7 +71,11 @@ const ScholarCard: React.FC<IScholarCard> = ({
         onClick={() => history.push(`/scholar/${ronin}`)}
       >
         <div className="name">{name}</div>
-        {badge?.id && <div className="badge">{badge.name}</div>}
+        {badge?.id && (
+          <div className="badge" style={{ background: badge.color }}>
+            {badge.name}
+          </div>
+        )}
         <div className="batch">Updated {lastUpdated}</div>
         <div className="earned">
           <section className="row">
