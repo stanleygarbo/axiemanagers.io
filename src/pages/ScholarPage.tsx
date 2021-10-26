@@ -220,6 +220,7 @@ const ScholarPage = () => {
                               color: selectedHex,
                               nickname: scholar.nickname,
                               managerShare: scholar.managerShare,
+                              category: scholar.category,
                             })
                           }
                         />
@@ -269,6 +270,7 @@ const ScholarPage = () => {
                             color: scholar.color,
                             nickname: values.nickname,
                             managerShare: values.managerShare,
+                            category: scholar.category,
                           });
                           setIsSaveable(false);
                         }
