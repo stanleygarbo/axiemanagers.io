@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormikField } from "../components/FormikField";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
@@ -13,6 +13,7 @@ import { withRouter } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 import { fetchScholarByAddress } from "../api/requests";
 import { Scholars } from "../interfaces/IResponseTypes";
+import SelectCategory from "../components/settings-category/SelectCategory";
 
 const ScholarSchema = Yup.object().shape({
   ronin: Yup.string()
@@ -27,6 +28,12 @@ const ScholarSchema = Yup.object().shape({
 const AddScholar = ({ history }) => {
   const { addScholar } = useScholars();
   const { colors } = useTheme();
+  const { categories } = useScholars();
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
+  useEffect(() => {
+    if (categories.length > 0) setSelectedCategory(categories[0].name);
+  }, [categories]);
 
   const errorFieldStyle = {
     border: `1px solid ${colors.danger}`,
@@ -88,6 +95,15 @@ const AddScholar = ({ history }) => {
               {errors.ronin && touched.ronin ? (
                 <div className="error">{errors.ronin}</div>
               ) : null}
+            </section>
+            <section>
+              <SelectCategory
+                currentCategory={selectedCategory}
+                onSelect={(ctgry) => {
+                  setSelectedCategory(ctgry);
+                }}
+                size="medium"
+              />
             </section>
             <section>
               <FormikField
@@ -162,7 +178,7 @@ const Container = styled.div<{ colors: IColors }>`
       padding: 10px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 100px 1fr 100px;
       gap: 10px;
 
       section {
@@ -178,6 +194,20 @@ const Container = styled.div<{ colors: IColors }>`
       }
 
       section:nth-child(1) {
+        grid-column: span 3;
+      }
+
+      section:nth-child(2) {
+        .select-btn {
+          width: 100%;
+          height: 45px;
+        }
+      }
+
+      section:nth-child(3) {
+        grid-column: span 2;
+      }
+      section:nth-child(4) {
         grid-column: span 2;
       }
 

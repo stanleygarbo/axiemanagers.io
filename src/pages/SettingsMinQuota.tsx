@@ -9,7 +9,15 @@ import { Form, Formik } from "formik";
 import Button from "../components/Button";
 import { useScholars } from "../contexts/scholarsContext";
 
+import ScholarList from "../components/settings-category/ScholarList";
+import CategoriesList from "../components/settings-category/CategoriesList";
+import ColorPicker from "../components/ColorPicker";
+
 const ScholarSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(0, "1 - 12 characters only")
+    .max(12, "1 - 12 characters only")
+    .required("Required"),
   minQuota: Yup.number()
     .min(0, "Too low")
     .max(600, "Too high")
@@ -18,10 +26,9 @@ const ScholarSchema = Yup.object().shape({
 
 const SettingsMinQuota = () => {
   const { colors } = useTheme();
+  const [color, setColor] = useState<string>("#7189da");
 
-  const { minQuota, updateMinQuota } = useScholars();
-
-  const [isSaveable, setIsSaveable] = useState(false);
+  const { addCategory } = useScholars();
 
   const errorFieldStyle = {
     border: `1px solid ${colors.danger}`,
@@ -31,70 +38,88 @@ const SettingsMinQuota = () => {
     border: `1px solid transparent`,
   };
 
-  const onChangeHandler: React.ChangeEventHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (Number(e.target.value) !== minQuota) {
-      setIsSaveable(true);
-    } else {
-      setIsSaveable(false);
-    }
-  };
-
   return (
     <Container colors={colors}>
-      <p>Min Quota</p>
+      <p>New Category</p>
       <Formik
         validationSchema={ScholarSchema}
         enableReinitialize
         initialValues={{
-          minQuota: minQuota,
+          minQuota: 0,
+          name: "",
         }}
         onSubmit={(values, { resetForm }) => {
-          setIsSaveable(false);
-          updateMinQuota(values.minQuota);
+          addCategory({ name: values.name, quota: values.minQuota, color });
           resetForm();
         }}
       >
         {({ errors, touched }) => (
           <Form>
-            <FormikField
-              colors={colors}
-              type="number"
-              placeholder="Min-quota"
-              autoComplete="off"
-              name="minQuota"
-              style={{
-                ...inputFieldStyles,
-                ...(errors.minQuota && touched.minQuota && errorFieldStyle),
-                maxWidth: 60,
-                padding: "5px 10px",
-              }}
-              onKeyUp={onChangeHandler}
-            />
+            <section>
+              <label htmlFor="name">Name</label>
+              <FormikField
+                colors={colors}
+                type="text"
+                placeholder="Name"
+                autoComplete="off"
+                name="name"
+                style={{
+                  ...inputFieldStyles,
+                  ...(errors.minQuota && touched.minQuota && errorFieldStyle),
+                  padding: "5px 10px",
+                }}
+              />
+            </section>
+
+            <section>
+              <label htmlFor="minQuota">Quota</label>
+              <FormikField
+                colors={colors}
+                type="number"
+                placeholder="Min-quota"
+                autoComplete="off"
+                name="minQuota"
+                style={{
+                  ...inputFieldStyles,
+                  ...(errors.minQuota && touched.minQuota && errorFieldStyle),
+                  maxWidth: 60,
+                  padding: "5px 10px",
+                }}
+              />
+            </section>
+            <section>
+              <label htmlFor="color" style={{ marginBottom: 7 }}>
+                Color
+              </label>
+
+              <ColorPicker
+                color={color}
+                setActiveColor={(selectedHex: string) => setColor(selectedHex)}
+              />
+            </section>
+
             <Button
               foreground={colors.textIntense}
               type="submit"
-              disabled={(errors.minQuota && touched.minQuota) || !isSaveable}
               style={{
-                border:
-                  errors.minQuota || !isSaveable
-                    ? colors.BGLight
-                    : `1px solid ${colors.accent}`,
-                background:
-                  errors.minQuota || !isSaveable
-                    ? colors.BGLighter
-                    : colors.accent,
-                marginLeft: 10,
+                border: colors.BGLight,
+                background: colors.BGLighter,
               }}
             >
-              Save
+              Add
             </Button>
             <br />
+            <span className="error">{errors.minQuota}</span>
+            <span className="error">{errors.minQuota}</span>
             <span className="error">{errors.minQuota}</span>
           </Form>
         )}
       </Formik>
+      <p>Categories</p>
+      <CategoriesList />
+      <br />
+      <p>Scholars</p>
+      <ScholarList />
     </Container>
   );
 };
@@ -109,9 +134,49 @@ const Container = styled.div<{ colors: IColors }>`
       margin-bottom: 10px;
     }
 
+    form {
+      display: flex;
+      margin-bottom: 20px;
+      align-items: flex-end;
+
+      section {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: 10px;
+        }
+      }
+
+      input {
+        margin-right: 10px;
+      }
+
+      button {
+        margin-left: 10px;
+      }
+    }
+
     .error {
       color: ${colors.danger};
       font-size: 12px;
+    }
+
+    @media (max-width: 439px) {
+      form {
+        display: grid;
+        grid-template-columns: 1fr 50px 25px;
+        gap: 10px;
+
+        input {
+          margin-right: 0px;
+        }
+
+        button {
+          margin-left: 0;
+          grid-column: span 3;
+        }
+      }
     }
   `}
 `;

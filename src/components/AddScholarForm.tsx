@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormikField } from "./FormikField";
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
@@ -14,6 +14,7 @@ import { Scholars } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { randomColor } from "../util/randomColor";
 import { withRouter } from "react-router-dom";
+import SelectCategory from "./settings-category/SelectCategory";
 
 const ScholarSchema = Yup.object().shape({
   ronin: Yup.string()
@@ -29,8 +30,15 @@ const ScholarSchema = Yup.object().shape({
 const AddScholarForm = ({ history }) => {
   const { colors } = useTheme();
   const { screenWidth } = useScreenSize();
-  const { addScholar } = useScholars();
+  const { addScholar, categories } = useScholars();
   const queryClient = useQueryClient();
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
+  useEffect(()=>{
+    if(categories.length > 0){
+      setSelectedCategory(categories[0].name)
+    }
+  },[categories])
 
   const addRoninMutation = useMutation(
     (ronin: string) => fetchScholarByAddress(ronin),
@@ -69,6 +77,7 @@ const AddScholarForm = ({ history }) => {
               ronin: values.ronin,
               managerShare: Number(values.managerShare),
               color: randomColor(),
+              category: selectedCategory,
             });
             addRoninMutation.mutate(values.ronin.replace("ronin:", "0x"));
             resetForm();
@@ -111,6 +120,15 @@ const AddScholarForm = ({ history }) => {
                     errorFieldStyle),
                 }}
               />
+              <section>
+                <SelectCategory
+                  size="medium"
+                  onSelect={(category) => {
+                    setSelectedCategory(category);
+                  }}
+                  currentCategory={selectedCategory}
+                />
+              </section>
               <Button
                 foreground={colors.textIntense}
                 type="submit"
@@ -118,6 +136,7 @@ const AddScholarForm = ({ history }) => {
                 style={{
                   border: `1px solid ${colors.textIntense + 70}`,
                   background: "none",
+                  whiteSpace: "nowrap",
                 }}
               >
                 ADD SCHOLAR
@@ -153,9 +172,25 @@ const Container = styled.div<{ colors: IColors }>`
       background-color: ${colors.BGLight};
 
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      /* grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
+      grid-template-columns:
+        minmax(130px, 1fr) minmax(130px, 1fr) minmax(130px, 1fr)
+        85px minmax(130px, 1fr);
+
       gap: 10px;
+
+      section {
+        .select-btn {
+          width: 100%;
+        }
+      }
     }
+
+    /* @media (max-width: 1023px) {
+      form {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      }
+    } */
   `}
 `;
 

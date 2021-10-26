@@ -27,7 +27,7 @@ const SettingsNav = () => {
         to="/settings/min-quota"
         className={pathname === "/settings/min-quota" ? `active-tab` : ""}
       >
-        Minimum Quota
+        Quota by Team
       </Link>
     </Container>
   );

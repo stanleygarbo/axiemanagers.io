@@ -18,6 +18,7 @@ import { LineChart } from "./LineChart";
 import { TiArrowSync } from "react-icons/ti";
 import { useUserPreferences } from "../contexts/userPreferences";
 import CircularLoader from "./CircularLoader";
+import SelectCategory from "./settings-category/SelectCategory";
 
 const ScholarsTable: React.FC<IScholarsTable> = ({
   data,
@@ -25,7 +26,6 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
   refetchScholarMutation,
 }) => {
   const { colors } = useTheme();
-  const { updateScholar } = useScholars();
   const queryClient = useQueryClient();
   const history = useHistory();
   const { currency } = useUserPreferences();
@@ -33,7 +33,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   const { scholarsTable } = useUserPreferences();
 
-  const { minQuota } = useScholars();
+  const { categories, updateScholar } = useScholars();
 
   return (
     <Container colors={colors} isScrollingDown={false}>
@@ -56,10 +56,11 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {scholarsTable?.lastClaimed && <th>Last Claimed</th>}
             {scholarsTable?.nextClaim && <th>Claimable</th>}
             {/* <td>Progress</td> */}
-            {scholarsTable?.chart && <th>Chart</th>}
             {scholarsTable?.mmr && <th>MMR</th>}
             {scholarsTable?.rank && <th>Rank</th>}
-            <th></th>
+            <th>Team</th>
+            {scholarsTable?.chart && <th>Chart</th>}
+            <th style={{ padding: 0 }}></th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +79,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                 SLPPrice?.data?.current
               );
 
+              const yesterday =
+                data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1].earned;
+
+              const categoryQuota = categories.find(
+                (obj) => obj.name === i.category
+              )?.quota;
+
               return (
                 <tr key={idx}>
                   <td className="color-picker">
@@ -89,6 +97,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           nickname: i.nickname,
                           managerShare: i.managerShare,
                           color: selectedHex,
+                          category: i.category,
                         });
                       }}
                     />
@@ -176,10 +185,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           <span
                             className="quota"
                             style={{
-                              background:
-                                data[i.ronin]?.today < minQuota
+                              background: categoryQuota
+                                ? data[i.ronin]?.today < categoryQuota
                                   ? colors.danger
-                                  : colors.success,
+                                  : colors.success
+                                : data[i.ronin]?.today < 75
+                                ? colors.danger
+                                : colors.success,
                             }}
                           >
                             {addCommaToNumber(data[i.ronin]?.today)}
@@ -214,19 +226,17 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           <span
                             className="quota"
                             style={{
-                              background:
-                                data[i.ronin]?.chart[
-                                  data[i.ronin]?.chart?.length - 1
-                                ].earned < minQuota
+                              background: categoryQuota
+                                ? yesterday < categoryQuota
                                   ? colors.danger
-                                  : colors.success,
+                                  : colors.success
+                                : yesterday < 75
+                                ? colors.danger
+                                : colors.success,
                             }}
                           >
-                            {addCommaToNumber(
-                              data[i.ronin]?.chart[
-                                data[i.ronin]?.chart?.length - 1
-                              ].earned
-                            )}
+                            {i.category && categories[i.category]?.quota}
+                            {addCommaToNumber(yesterday)}
                           </span>
                         ) : (
                           "---"
@@ -235,11 +245,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       &nbsp;&#8776; {getCurrencySign(currency)}
                       {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
                         ? addCommaToNumber(
-                            Math.floor(
-                              data[i.ronin]?.chart[
-                                data[i.ronin]?.chart?.length - 1
-                              ].earned * SLPPrice.data?.current
-                            )
+                            Math.floor(yesterday * SLPPrice.data?.current)
                           )
                         : "---"}
                     </td>
@@ -262,6 +268,33 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                     </td>
                   )}
                   {/* <td>Progress</td> */}
+                  {scholarsTable?.mmr && (
+                    <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
+                      {data[i.ronin]?.mmr !== 0 ? data[i.ronin]?.mmr : "---"}
+                    </td>
+                  )}
+                  {scholarsTable?.rank && (
+                    <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
+                      #{data[i.ronin]?.rank}
+                    </td>
+                  )}
+
+                  <td style={{ cursor: "default" }}>
+                    <SelectCategory
+                      currentCategory={i.category}
+                      onSelect={(ctgry) => {
+                        updateScholar({
+                          ronin: i.ronin,
+                          nickname: i.nickname,
+                          managerShare: i.managerShare,
+                          color: i.color,
+                          category: ctgry,
+                        });
+                      }}
+                      size="small"
+                    />
+                  </td>
+
                   {scholarsTable?.chart && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
                       {data[i.ronin]?.chart?.length > 2 ? (
@@ -286,16 +319,6 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       )}
                     </td>
                   )}
-                  {scholarsTable?.mmr && (
-                    <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      {data[i.ronin]?.mmr !== 0 ? data[i.ronin]?.mmr : "---"}
-                    </td>
-                  )}
-                  {scholarsTable?.rank && (
-                    <td onClick={() => history.push(`/scholar/${i.ronin}`)}>
-                      #{data[i.ronin]?.rank}
-                    </td>
-                  )}
 
                   {(data[i.ronin]?.today === 0 &&
                     data[i.ronin]?.total === 0 &&
@@ -317,7 +340,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       )}
                     </td>
                   ) : (
-                    <td></td>
+                    <td style={{ padding: 0 }}></td>
                   )}
                 </tr>
               );

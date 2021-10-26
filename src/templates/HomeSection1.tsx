@@ -215,7 +215,9 @@ const HomeSection1: React.FC<{
           </div>
           <button
             onClick={() => SLPPriceQuery.refetch()}
-            className={SLPPriceQuery.isFetching ? `rotating` : ""}
+            className={`home-section1-wrapper__line-chart__btn ${
+              SLPPriceQuery.isFetching ? `rotating` : ""
+            }`}
           >
             <TiArrowSync size={25} />
           </button>
@@ -339,7 +341,7 @@ const Container = styled.div<{ colors: IColors }>`
           font-weight: 600;
         }
 
-        button {
+        &__btn {
           background-color: transparent;
           color: ${colors.textIntense};
 
