@@ -23,6 +23,11 @@ const SelectCategory: React.FC<ISelectCategory> = ({
   const history = useHistory();
   const { pathname } = useLocation();
 
+  const alreadySelectedStyling = {
+    opacity: 0.6,
+    cursor: "default",
+  };
+
   return (
     <Container size={size} colors={colors}>
       <button
@@ -57,13 +62,22 @@ const SelectCategory: React.FC<ISelectCategory> = ({
                 (i, idx) =>
                   idx < 3 && (
                     <div
+                      style={
+                        i.name === currentCategory
+                          ? { ...alreadySelectedStyling }
+                          : {}
+                      }
                       onClick={() => {
-                        if (onSelect) {
-                          onSelect(i.name);
+                        if (i.name !== currentCategory) {
+                          if (onSelect) {
+                            onSelect(i.name);
+                          }
+                          setIsOpen(false);
                         }
-                        setIsOpen(false);
                       }}
-                      className="modal__box__recent__item"
+                      className={`modal__box__recent__item${
+                        i.name !== currentCategory && "-hoverable"
+                      } modal__box__recent__item`}
                       key={idx}
                     >
                       <div
@@ -83,13 +97,22 @@ const SelectCategory: React.FC<ISelectCategory> = ({
                   i.name.toLowerCase().includes(searchText.toLowerCase()) && (
                     <div
                       onClick={() => {
-                        if (onSelect) {
-                          onSelect(i.name);
+                        if (i.name !== currentCategory) {
+                          if (onSelect) {
+                            onSelect(i.name);
+                          }
+                          setIsOpen(false);
                         }
-                        setIsOpen(false);
                       }}
                       key={idx}
-                      className="modal__box__list__item"
+                      style={
+                        i.name === currentCategory
+                          ? { ...alreadySelectedStyling }
+                          : {}
+                      }
+                      className={`modal__box__list__item${
+                        i.name !== currentCategory && "-hoverable"
+                      } modal__box__list__item`}
                     >
                       <div
                         className="modal__box__list__item__color"
@@ -215,8 +238,10 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
             border-radius: 5px;
             font-size: 16px;
 
-            &:hover {
-              background-color: ${colors.BGLighter};
+            &-hoverable {
+              &:hover {
+                background-color: ${colors.BGLighter};
+              }
             }
 
             &__color {
@@ -272,8 +297,10 @@ const Container = styled.div<{ colors: IColors; size: ISelectCategorySizes }>`
             padding: 10px 20px;
             cursor: pointer;
 
-            &:hover {
-              background-color: ${colors.BGLighter};
+            &-hoverable {
+              &:hover {
+                background-color: ${colors.BGLighter};
+              }
             }
 
             &__color {

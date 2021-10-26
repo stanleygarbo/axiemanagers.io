@@ -33,13 +33,16 @@ const useScholarsContext = () => {
     }
     setScholars(parsedScholars.length > 0 ? parsedScholars : []);
 
-    let parsedCategories = [
-      { name: "PVP", quota: 150, color: "#7189da" },
-      { name: "PVE", quota: 75, color: "#4caf50" },
-      { name: "AAP", quota: 120, color: "#00bcd4" },
-    ];
+    let parsedCategories: ICategory[] = [];
     if (stringifiedCategories) {
       parsedCategories = JSON.parse(stringifiedCategories);
+    }
+    if (parsedCategories.length < 1) {
+      parsedCategories = [
+        { name: "PVP", quota: 150, color: "#7189da" },
+        { name: "PVE", quota: 75, color: "#4caf50" },
+        { name: "AAP", quota: 120, color: "#00bcd4" },
+      ];
     }
     setCategories(parsedCategories);
 
