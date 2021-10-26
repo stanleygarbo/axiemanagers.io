@@ -74,6 +74,21 @@ const GlobalStyles = createGlobalStyle<{ colors: IColors }>`
         background: ${colors.BGLighter};
       }
     }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: ${colors.BGDark};
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
   `}
 
   a{
