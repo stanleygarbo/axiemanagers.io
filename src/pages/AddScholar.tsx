@@ -211,12 +211,6 @@ const Container = styled.div<{ colors: IColors }>`
         grid-column: span 2;
       }
 
-      .back {
-        grid-column: span 2;
-        border-radius: 100px;
-        padding: 12px 40px;
-      }
-
       .floating {
         width: 100%;
         padding: 20px;
@@ -230,22 +224,28 @@ const Container = styled.div<{ colors: IColors }>`
           display: flex;
           justify-content: space-between;
           align-items: center;
+
+          button {
+            grid-column: span 2;
+            border-radius: 100px;
+            padding: 12px 40px;
+          }
+
+          .back {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: 1px solid ${colors.textIntense + 20};
+            padding: 0;
+
+            display: grid;
+            place-items: center;
+
+            background-color: ${colors.textIntense + "10"};
+            color: ${colors.textIntense};
+          }
         }
       }
-    }
-
-    .back {
-      width: 50px;
-      height: 50px;
-      border-radius: 100px;
-      border: 1px solid ${colors.textIntense + 20};
-      padding: 0;
-
-      display: grid;
-      place-items: center;
-
-      background-color: ${colors.textIntense + "10"};
-      color: ${colors.textIntense};
     }
   `}
 `;
