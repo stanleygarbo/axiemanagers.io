@@ -426,6 +426,14 @@ const Container = styled.div<{ colors: IColors }>`
     @media (max-width: 493px) {
       margin-top: 10px;
 
+      p {
+        padding: 0px 10px 10px 10px;
+
+        button {
+          margin-top: 7px;
+        }
+      }
+
       .home-section1-wrapper {
         padding: 0 10px;
 
