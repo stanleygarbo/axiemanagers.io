@@ -24,7 +24,7 @@ const userPreferencesContext = createContext<IUserPreferences>({
     team: false,
   },
   didAcceptCookiePolicy: false,
-  currency: "",
+  currency: "php",
   setScholarsTable: () => {},
   setCurrency: () => {},
   acceptCookiePolicy: () => {},
