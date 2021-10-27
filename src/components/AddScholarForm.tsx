@@ -34,11 +34,11 @@ const AddScholarForm = ({ history }) => {
   const queryClient = useQueryClient();
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-  useEffect(()=>{
-    if(categories.length > 0){
-      setSelectedCategory(categories[0].name)
+  useEffect(() => {
+    if (categories.length > 0) {
+      setSelectedCategory(categories[0].name);
     }
-  },[categories])
+  }, [categories]);
 
   const addRoninMutation = useMutation(
     (ronin: string) => fetchScholarByAddress(ronin),
@@ -72,6 +72,13 @@ const AddScholarForm = ({ history }) => {
             managerShare: "",
           }}
           onSubmit={(values, { resetForm }) => {
+            console.log({
+              nickname: values.name,
+              ronin: values.ronin,
+              managerShare: Number(values.managerShare),
+              color: randomColor(),
+              category: selectedCategory,
+            });
             addScholar({
               nickname: values.name,
               ronin: values.ronin,

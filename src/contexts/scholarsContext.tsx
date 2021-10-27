@@ -84,11 +84,20 @@ const useScholarsContext = () => {
     setCategories(filtered);
   }
 
-  function addScholar({ ronin, color, nickname, managerShare }: IScholars) {
+  function addScholar({
+    ronin,
+    color,
+    nickname,
+    managerShare,
+    category,
+  }: IScholars) {
     const exists = scholars.find((obj) => obj.ronin === ronin);
 
     if (!exists) {
-      setScholars([...scholars, { ronin, color, nickname, managerShare }]);
+      setScholars([
+        ...scholars,
+        { ronin, color, nickname, managerShare, category },
+      ]);
     } else {
       alert(`${exists.nickname} already added.`);
     }
