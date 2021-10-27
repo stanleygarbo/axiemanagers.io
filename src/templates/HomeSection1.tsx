@@ -82,9 +82,11 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>UPDATE</span> You can now add different quotas for different
-        teams. Additional and simpler sorting mechanisms will come on the next
-        update.
+        <span>NOTICE</span> Please hard refresh (ctrl + F5).{" "}
+        <button onClick={() => window.location.reload()}>
+          {" "}
+          Click here to hard refresh page
+        </button>
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
