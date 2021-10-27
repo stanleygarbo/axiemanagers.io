@@ -83,7 +83,16 @@ const HomeSection1: React.FC<{
     <Container colors={colors}>
       <p>
         <span>NOTICE</span> Please hard refresh (ctrl + F5).{" "}
-        <button onClick={() => window.location.reload()}>
+        <button
+          style={{
+            padding: "0px 5px",
+            background: colors.BGLighter,
+            color: colors.textIntense,
+            border: "1px solid " + colors.textIntense + 20,
+            borderRadius: 5,
+          }}
+          onClick={() => window.location.reload(true)}
+        >
           {" "}
           Click here to hard refresh page
         </button>
