@@ -13,6 +13,7 @@ export type IScholarsTableColumns = {
   average: boolean;
   today: boolean;
   yesterday: boolean;
+  team: boolean;
 };
 
 export type ICurrency = "eur" | "sgd" | "inr" | "vnd" | "php" | "usd" | "";
@@ -37,6 +38,7 @@ export interface IUserPreferences {
     mmr,
     rank,
     chart,
+    team,
   }: IScholarsTableColumns) => void;
   setCurrency: (currency: ICurrency) => void;
 }

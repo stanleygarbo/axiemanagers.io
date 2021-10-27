@@ -58,7 +58,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {/* <td>Progress</td> */}
             {scholarsTable?.mmr && <th>MMR</th>}
             {scholarsTable?.rank && <th>Rank</th>}
-            <th>Team</th>
+            {scholarsTable?.rank && <th>Team</th>}
             {scholarsTable?.chart && <th>Chart</th>}
             <th style={{ padding: 0 }}></th>
           </tr>
@@ -279,21 +279,23 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                     </td>
                   )}
 
-                  <td style={{ cursor: "default" }}>
-                    <SelectCategory
-                      currentCategory={i.category}
-                      onSelect={(ctgry) => {
-                        updateScholar({
-                          ronin: i.ronin,
-                          nickname: i.nickname,
-                          managerShare: i.managerShare,
-                          color: i.color,
-                          category: ctgry,
-                        });
-                      }}
-                      size="small"
-                    />
-                  </td>
+                  {scholarsTable?.team && (
+                    <td style={{ cursor: "default" }}>
+                      <SelectCategory
+                        currentCategory={i.category}
+                        onSelect={(ctgry) => {
+                          updateScholar({
+                            ronin: i.ronin,
+                            nickname: i.nickname,
+                            managerShare: i.managerShare,
+                            color: i.color,
+                            category: ctgry,
+                          });
+                        }}
+                        size="small"
+                      />
+                    </td>
+                  )}
 
                   {scholarsTable?.chart && (
                     <td onClick={() => history.push(`/scholar/${i.ronin}`)}>

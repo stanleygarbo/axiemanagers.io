@@ -22,6 +22,7 @@ const additionalFilters = [
   { id: "chart", name: "CHART" },
   { id: "mmr", name: "MMR" },
   { id: "rank", name: "RANK" },
+  { id: "team", name: "TEAM" },
 ];
 
 const currencies: { id: ICurrency; name: string }[] = [

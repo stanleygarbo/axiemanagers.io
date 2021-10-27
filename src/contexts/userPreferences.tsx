@@ -21,6 +21,7 @@ const userPreferencesContext = createContext<IUserPreferences>({
     today: true,
     yesterday: true,
     average: true,
+    team: false,
   },
   didAcceptCookiePolicy: false,
   currency: "",
@@ -45,6 +46,7 @@ const useUserPreferencesContext = () => {
     today: true,
     yesterday: true,
     average: true,
+    team: false,
   });
 
   const [selectedCurrency, setselectedCurrency] = useState<ICurrency>("");
@@ -74,6 +76,7 @@ const useUserPreferencesContext = () => {
         today: true,
         yesterday: true,
         average: true,
+        team: false,
       },
       currency: "",
       didAcceptCookiePolicy: false,
@@ -98,6 +101,7 @@ const useUserPreferencesContext = () => {
         today: true,
         yesterday: true,
         average: true,
+        team: false,
       });
       setCurrency("");
       setAcceptedCookiePolicy(false);
@@ -134,6 +138,7 @@ const useUserPreferencesContext = () => {
     today,
     yesterday,
     average,
+    team,
   }: IScholarsTableColumns) => {
     setScholarsTablePreferences({
       name,
@@ -150,6 +155,7 @@ const useUserPreferencesContext = () => {
       today,
       yesterday,
       average,
+      team,
     });
   };
 
