@@ -58,7 +58,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             {/* <td>Progress</td> */}
             {scholarsTable?.mmr && <th>MMR</th>}
             {scholarsTable?.rank && <th>Rank</th>}
-            {scholarsTable?.rank && <th>Team</th>}
+            {scholarsTable?.team && <th>Team</th>}
             {scholarsTable?.chart && <th>Chart</th>}
             <th style={{ padding: 0 }}></th>
           </tr>
