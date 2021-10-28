@@ -35,7 +35,6 @@ const Container = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -11;
-    cursor: pointer;
   }
 `;
 
