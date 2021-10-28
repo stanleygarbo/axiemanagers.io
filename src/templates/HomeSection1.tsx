@@ -82,7 +82,7 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>NOTICE</span> Please hard refresh (ctrl + F5).{" "}
+        <span>NOTICE</span> Please hard refresh if you haven't (ctrl + F5).{" "}
         <button
           style={{
             padding: "0px 5px",
