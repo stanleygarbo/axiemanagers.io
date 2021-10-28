@@ -16,7 +16,7 @@ import Announcement from "./pages/Announcement";
 import FooterTemplate from "./templates/FooterTemplate";
 import ConverterPage from "./pages/ConverterPage";
 import CookiePopup from "./components/CookiePopup";
-// import MaintenanceModal from "./components/MaintenanceModal";
+// import MaintenanceModal from "./components/modal/MaintenanceModal";
 
 const App: React.FC = () => {
   return (
