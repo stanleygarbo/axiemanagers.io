@@ -80,7 +80,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
               );
 
               const yesterday =
-                data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1].earned;
+                data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1]?.earned;
 
               const categoryQuota = categories.find(
                 (obj) => obj.name === i.category
