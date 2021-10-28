@@ -110,6 +110,12 @@ const ScholarPage = () => {
     }
   );
 
+  useEffect(() => {
+    if (scholarReportsQuery.data && scholarReportsQuery.data.length < 1) {
+      setActiveTab("axies");
+    }
+  }, [scholarReportsQuery.data]);
+
   const removeScholarFromCache = () => {
     queryClient.setQueryData<Scholars>("Scholars", (old: any) => {
       // old.earnings.total -= old.list[roninAddress].total;
