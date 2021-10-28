@@ -23,7 +23,7 @@ const userPreferencesContext = createContext<IUserPreferences>({
     average: true,
     team: false,
   },
-  didAcceptCookiePolicy: false,
+  didAcceptCookiePolicy: true,
   currency: "php",
   setScholarsTable: () => {},
   setCurrency: () => {},
@@ -79,7 +79,7 @@ const useUserPreferencesContext = () => {
         team: false,
       },
       currency: "",
-      didAcceptCookiePolicy: false,
+      didAcceptCookiePolicy: true,
     };
     if (stringifiedUserPreferences) {
       parsedUserPreferences = JSON.parse(stringifiedUserPreferences);
