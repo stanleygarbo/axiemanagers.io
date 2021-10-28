@@ -73,6 +73,7 @@ const AddScholar = ({ history }) => {
             ronin: values.ronin,
             managerShare: Number(values.managerShare),
             color: randomColor(),
+            category: selectedCategory
           });
           addRoninMutation.mutate(values.ronin.replace("ronin:", "0x"));
           resetForm();
