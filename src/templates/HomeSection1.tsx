@@ -81,7 +81,7 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>NOTICE</span> Please hard refresh if you haven't (ctrl + F5).{" "}
         <button
           style={{
@@ -96,7 +96,7 @@ const HomeSection1: React.FC<{
           {" "}
           Click here to hard refresh page
         </button>
-      </p>
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
