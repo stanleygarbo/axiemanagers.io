@@ -139,12 +139,20 @@ const HomeSection2: React.FC<{
 
     return (
       <Container
+        colors={colors}
         numScholars={
           scholarsQuery.data ? Object.keys(scholarsQuery.data.list)?.length : 0
         }
       >
         <div className="options">
-          <Sorters setOrderBy={setOrderBy} setOrder={setOrder} />
+          {activeLayout === "cards" ? (
+            <Sorters setOrderBy={setOrderBy} setOrder={setOrder} />
+          ) : (
+            <p className="update-msg">
+              <span>Update</span> you can now just click on the column header to
+              sort rows.
+            </p>
+          )}
           <div className="options__right">
             {screenWidth > 700 && (
               <a
@@ -288,10 +296,31 @@ const Message = styled.div<{ colors: IColors }>`
   `}
 `;
 
-const Container = styled.div<{ numScholars: number }>`
+const Container = styled.div<{ numScholars: number; colors: IColors }>`
   max-width: 1200px;
   margin: 20px auto 0px auto;
   padding: 0 20px;
+
+  ${({ colors }) => css`
+    .update-msg {
+      color: ${colors.textNotSoIntense};
+      font-size: 13px;
+
+      span {
+        border: 1px solid ${colors.success};
+        background-color: ${colors.success + 90};
+        color: #fff;
+        padding: 1px 7px;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+
+      a {
+        color: ${colors.textNotSoIntense};
+        text-decoration: underline;
+      }
+    }
+  `}
 
   .options {
     display: flex;
