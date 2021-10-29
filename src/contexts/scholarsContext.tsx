@@ -37,7 +37,6 @@ const useScholarsContext = () => {
         }
       }
     }
-
     setScholars(parsedScholars.length > 0 ? parsedScholars : []);
 
     let parsedCategories: ICategory[] = [];
