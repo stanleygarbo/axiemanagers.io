@@ -23,11 +23,9 @@ const userPreferencesContext = createContext<IUserPreferences>({
     average: true,
     team: false,
   },
-  didAcceptCookiePolicy: true,
   currency: "php",
   setScholarsTable: () => {},
   setCurrency: () => {},
-  acceptCookiePolicy: () => {},
 });
 
 const useUserPreferencesContext = () => {
@@ -59,7 +57,6 @@ const useUserPreferencesContext = () => {
     let parsedUserPreferences: {
       scholarsTable: IScholarsTableColumns;
       currency: ICurrency;
-      didAcceptCookiePolicy: boolean;
     } = {
       scholarsTable: {
         name: true,
@@ -79,7 +76,6 @@ const useUserPreferencesContext = () => {
         team: false,
       },
       currency: "",
-      didAcceptCookiePolicy: true,
     };
     if (stringifiedUserPreferences) {
       parsedUserPreferences = JSON.parse(stringifiedUserPreferences);
@@ -104,11 +100,9 @@ const useUserPreferencesContext = () => {
         team: false,
       });
       setCurrency("");
-      setAcceptedCookiePolicy(false);
     } else {
       setScholarsTablePreferences(parsedUserPreferences.scholarsTable);
       setCurrency(parsedUserPreferences.currency);
-      setAcceptedCookiePolicy(parsedUserPreferences.didAcceptCookiePolicy);
     }
   }, []);
 
@@ -118,7 +112,6 @@ const useUserPreferencesContext = () => {
       JSON.stringify({
         scholarsTable: scholarsTablePreferences,
         currency: selectedCurrency,
-        didAcceptCookiePolicy: acceptedCookiePolicy,
       })
     );
   }, [scholarsTablePreferences, selectedCurrency, acceptedCookiePolicy]);
@@ -172,7 +165,6 @@ const useUserPreferencesContext = () => {
     setScholarsTable,
     setCurrency,
     currency: selectedCurrency,
-    didAcceptCookiePolicy: acceptedCookiePolicy,
     acceptCookiePolicy,
   };
 };

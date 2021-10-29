@@ -21,8 +21,6 @@ export type ICurrency = "eur" | "sgd" | "inr" | "vnd" | "php" | "usd" | "";
 export interface IUserPreferences {
   scholarsTable: IScholarsTableColumns;
   currency: ICurrency;
-  didAcceptCookiePolicy: boolean;
-  acceptCookiePolicy: () => void;
   setScholarsTable: ({
     name,
     total,

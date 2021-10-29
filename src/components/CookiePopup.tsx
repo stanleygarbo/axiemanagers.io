@@ -1,12 +1,26 @@
+import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
 import { IoMdClose } from "react-icons/io";
-import { useUserPreferences } from "../contexts/userPreferences";
 
 const CookiePopup = () => {
   const { colors } = useTheme();
-  const { didAcceptCookiePolicy, acceptCookiePolicy } = useUserPreferences();
+  const [didAcceptCookiePolicy, setDidAcceptCookiePolicy] = useState(true);
+
+  const acceptCookieClickHandler = () => {
+    localStorage.setItem("didAcceptCookiePolicy", "true");
+    setDidAcceptCookiePolicy(true);
+  };
+
+  useEffect(() => {
+    const alreadyRefreshed = localStorage.getItem("didAcceptCookiePolicy");
+    if (alreadyRefreshed && alreadyRefreshed === "true") {
+      setDidAcceptCookiePolicy(true);
+    } else {
+      setDidAcceptCookiePolicy(false);
+    }
+  }, []);
 
   if (didAcceptCookiePolicy) return null;
 
@@ -21,7 +35,7 @@ const CookiePopup = () => {
         analytics to find out page views). By using this website, you agree to
         our use of cookies.
       </p>
-      <button onClick={acceptCookiePolicy} className="cookie-close">
+      <button onClick={acceptCookieClickHandler} className="cookie-close">
         <IoMdClose />
       </button>
     </Container>
