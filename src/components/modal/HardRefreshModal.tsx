@@ -17,7 +17,6 @@ const HardRefreshModal = () => {
 
   useEffect(() => {
     const alreadyRefreshed = localStorage.getItem("hasRefreshed");
-    console.log(alreadyRefreshed);
     if (alreadyRefreshed && alreadyRefreshed === "true") {
       setHasRefreshed(true);
     } else {

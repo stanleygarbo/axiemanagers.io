@@ -41,7 +41,6 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
   const { categories, updateScholar } = useScholars();
 
   const setOrientation = (column: string) => {
-    console.log(orderBy, column);
     if (orderBy === column) {
       if (order === "desc") {
         setOrder("asc");
