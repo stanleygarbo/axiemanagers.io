@@ -149,8 +149,8 @@ const HomeSection2: React.FC<{
             <Sorters setOrderBy={setOrderBy} setOrder={setOrder} />
           ) : (
             <p className="update-msg">
-              <span>Update</span> you can now just click on the column header to
-              sort rows.
+              <span>Update</span> you can now just click on the column headers
+              to sort rows.
             </p>
           )}
           <div className="options__right">
