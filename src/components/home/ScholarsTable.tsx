@@ -447,9 +447,12 @@ const Container = styled.div<{ colors: IColors; isScrollingDown: boolean }>`
 
       th {
         position: sticky;
+        cursor: pointer;
         top: 86px;
         z-index: 2;
         background-color: ${colors.BGLight};
+
+        user-select: none;
       }
 
       tbody {
