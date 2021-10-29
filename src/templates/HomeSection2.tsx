@@ -305,6 +305,7 @@ const Container = styled.div<{ numScholars: number; colors: IColors }>`
     .update-msg {
       color: ${colors.textNotSoIntense};
       font-size: 13px;
+      padding: 16px 0px;
 
       span {
         border: 1px solid ${colors.success};
