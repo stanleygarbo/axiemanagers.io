@@ -27,10 +27,17 @@ const useScholarsContext = () => {
     const stringifiedScholars = localStorage.getItem("scholars");
     const stringifiedCategories = localStorage.getItem("categories");
 
-    let parsedScholars = [];
+    let parsedScholars: IScholars[] = [];
     if (stringifiedScholars) {
       parsedScholars = JSON.parse(stringifiedScholars);
+
+      for (let i = 0; i < parsedScholars.length; i++) {
+        if (!parsedScholars[i].category) {
+          parsedScholars[i].category = "";
+        }
+      }
     }
+
     setScholars(parsedScholars.length > 0 ? parsedScholars : []);
 
     let parsedCategories: ICategory[] = [];

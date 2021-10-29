@@ -56,7 +56,7 @@ const HomeSection2: React.FC<{
     let sortedScholars: IScholars[] = [];
     const data = scholarsQuery.data?.list;
     if (data) {
-      if (orderBy === "nickname") {
+      if (orderBy === "nickname" || orderBy === "category") {
         sortedScholars = scholars.sort(
           DynamicSortArray((order === "desc" ? "-" : "") + orderBy)
         );
