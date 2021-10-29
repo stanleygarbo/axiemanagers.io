@@ -4,7 +4,7 @@ import { useTheme } from "../contexts/themeContext";
 import LayoutSelector from "../components/LayoutSelector";
 import { useState } from "react";
 import Sorters from "../components/Sorters";
-import ScholarsTable from "../components/ScholarsTable";
+import ScholarsTable from "../components/home/ScholarsTable";
 import ScholarCard from "../components/ScholarCard";
 import { UseMutationResult, useQueryClient, UseQueryResult } from "react-query";
 import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
@@ -181,6 +181,10 @@ const HomeSection2: React.FC<{
             data={scholarsQuery.data.list}
             sortedScholars={sorted}
             refetchScholarMutation={refetchScholarMutation}
+            setOrder={setOrder}
+            order={order}
+            setOrderBy={setOrderBy}
+            orderBy={orderBy}
           />
         ) : (
           activeLayout === "cards" &&

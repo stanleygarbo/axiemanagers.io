@@ -1,29 +1,34 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { useTheme } from "../contexts/themeContext";
-import { IColors } from "../interfaces/IColors";
-import ColorPicker from "./ColorPicker";
-import { IScholarsTable } from "../interfaces/IScholarsTable";
-import { useScholars } from "../contexts/scholarsContext";
+import { useTheme } from "../../contexts/themeContext";
+import { IColors } from "../../interfaces/IColors";
+import ColorPicker from "../ColorPicker";
+import { IScholarsTable } from "../../interfaces/home/IScholarsTable";
+import { useScholars } from "../../contexts/scholarsContext";
 import moment from "moment";
 import { useQueryClient } from "react-query";
-import { SLPPrice } from "../interfaces/IResponseTypes";
-import { addCommaToNumber } from "../util/addCommaToNumber";
+import { SLPPrice } from "../../interfaces/IResponseTypes";
+import { addCommaToNumber } from "../../util/addCommaToNumber";
 import { Link, useHistory } from "react-router-dom";
-import { getAverageSLP } from "../util/getAverageSLP";
-import { getManagerShare, getScholarShare } from "../util/getShare";
-import { getCurrencySign } from "../util/getCurrencySign";
-import { getNextClaim, getLastClaimed } from "../util/getClaimDates";
-import { LineChart } from "./LineChart";
+import { getAverageSLP } from "../../util/getAverageSLP";
+import { getManagerShare, getScholarShare } from "../../util/getShare";
+import { getCurrencySign } from "../../util/getCurrencySign";
+import { getNextClaim, getLastClaimed } from "../../util/getClaimDates";
+import { LineChart } from "../LineChart";
 import { TiArrowSync } from "react-icons/ti";
-import { useUserPreferences } from "../contexts/userPreferences";
-import CircularLoader from "./CircularLoader";
-import SelectCategory from "./settings-category/SelectCategory";
+import { useUserPreferences } from "../../contexts/userPreferences";
+import CircularLoader from "../CircularLoader";
+import SelectCategory from "../settings-category/SelectCategory";
+import OrderIndicator from "./OrderIndicator";
 
 const ScholarsTable: React.FC<IScholarsTable> = ({
   data,
   sortedScholars,
   refetchScholarMutation,
+  setOrder,
+  order,
+  setOrderBy,
+  orderBy,
 }) => {
   const { colors } = useTheme();
   const queryClient = useQueryClient();
@@ -35,6 +40,28 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
 
   const { categories, updateScholar } = useScholars();
 
+  const setOrientation = (column: string) => {
+    console.log(orderBy, column);
+    if (orderBy === column) {
+      if (order === "desc") {
+        setOrder("asc");
+      } else {
+        setOrder("desc");
+      }
+    } else {
+      setOrderBy(column);
+      setOrder("asc");
+    }
+  };
+
+  const getOrderOf = (column: string) => {
+    return order === "desc" && column === orderBy
+      ? "desc"
+      : order === "asc" && column === orderBy
+      ? "asc"
+      : "none";
+  };
+
   return (
     <Container colors={colors} isScrollingDown={false}>
       <p>
@@ -45,20 +72,55 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
         <thead>
           <tr>
             <th></th>
-            {scholarsTable?.name && <th className="th">Name</th>}
-            {scholarsTable?.total && <th>Total SLP</th>}
+            {scholarsTable?.name && (
+              <th className="th" onClick={() => setOrientation("nickname")}>
+                Name
+                <OrderIndicator order={getOrderOf("nickname")} />
+              </th>
+            )}
+            {scholarsTable?.total && (
+              <th onClick={() => setOrientation("total")}>
+                Total SLP
+                <OrderIndicator order={getOrderOf("total")} />
+              </th>
+            )}
             {scholarsTable?.average && <th>Average</th>}
             {scholarsTable?.manager && <th>Manager</th>}
             {scholarsTable?.scholar && <th>Scholar</th>}
-            {scholarsTable?.today && <th>Today</th>}
+            {scholarsTable?.today && (
+              <th onClick={() => setOrientation("today")}>
+                Today <OrderIndicator order={getOrderOf("today")} />
+              </th>
+            )}
             {scholarsTable?.yesterday && <th>Yesterday</th>}
             {scholarsTable?.lastUpdated && <th>Last Updated</th>}
-            {scholarsTable?.lastClaimed && <th>Last Claimed</th>}
-            {scholarsTable?.nextClaim && <th>Claimable</th>}
+            {scholarsTable?.lastClaimed && (
+              <th onClick={() => setOrientation("lastClaimed")}>
+                Last Claimed{" "}
+                <OrderIndicator order={getOrderOf("lastClaimed")} />
+              </th>
+            )}
+            {scholarsTable?.nextClaim && (
+              <th onClick={() => setOrientation("lastClaimed")}>
+                Claimable <OrderIndicator order={getOrderOf("lastClaimed")} />
+              </th>
+            )}
             {/* <td>Progress</td> */}
-            {scholarsTable?.mmr && <th>MMR</th>}
-            {scholarsTable?.rank && <th>Rank</th>}
-            {scholarsTable?.team && <th>Team</th>}
+            {scholarsTable?.mmr && (
+              <th onClick={() => setOrientation("mmr")}>
+                MMR <OrderIndicator order={getOrderOf("mmr")} />
+              </th>
+            )}
+            {scholarsTable?.rank && (
+              <th onClick={() => setOrientation("rank")}>
+                Rank <OrderIndicator order={getOrderOf("rank")} />
+              </th>
+            )}
+            {scholarsTable?.team && (
+              <th onClick={() => setOrientation("category")}>
+                Team <OrderIndicator order={getOrderOf("category")} />
+              </th>
+            )}
             {scholarsTable?.chart && <th>Chart</th>}
             <th style={{ padding: 0 }}></th>
           </tr>
