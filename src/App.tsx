@@ -17,13 +17,13 @@ import FooterTemplate from "./templates/FooterTemplate";
 import ConverterPage from "./pages/ConverterPage";
 import CookiePopup from "./components/CookiePopup";
 // import MaintenanceModal from "./components/modal/MaintenanceModal";
-import HardRefreshModal from "./components/modal/HardRefreshModal";
+// import HardRefreshModal from "./components/modal/HardRefreshModal";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       {/* <MaintenanceModal /> */}
-      <HardRefreshModal />
+      {/* <HardRefreshModal /> */}
       <Router>
         <Layout>
           <>
