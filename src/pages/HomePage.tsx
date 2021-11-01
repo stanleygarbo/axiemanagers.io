@@ -137,11 +137,12 @@ const HomePage = () => {
     const data = scholarsQuery.data;
     if (data) {
       for (const [ronin, obj] of Object.entries(data.list)) {
-        if (obj.mmr === 0 && !refetchedScholars.current.includes(ronin)) {
+        if (
+          (obj.mmr === 0 || obj.mmr === 1200) &&
+          !refetchedScholars.current.includes(ronin)
+        ) {
           refetchScholarMutation.mutate(ronin.replace("ronin:", "0x"));
           refetchedScholars.current.push(ronin);
-          console.log(refetchScholarMutation);
-          console.log("test");
         }
       }
     }

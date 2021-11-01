@@ -7,7 +7,13 @@ import { IColors } from "../interfaces/IColors";
 import { IScholars } from "../interfaces/IScholarsContext";
 import { randomColor } from "../util/randomColor";
 
-const scholarObjProperties = ["ronin", "color", "nickname", "managerShare"];
+const scholarObjProperties = [
+  "ronin",
+  "color",
+  "nickname",
+  "managerShare",
+  "category",
+];
 const externalListObjProperties = ["name", "eth", "managerShare"];
 
 const SettingsBulkImport = () => {
