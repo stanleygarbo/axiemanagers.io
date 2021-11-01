@@ -521,6 +521,12 @@ const ScholarPage = () => {
                                     ? axieColors.plant
                                     : i.class === "Reptile"
                                     ? axieColors.reptile
+                                    : i.class === "Dusk"
+                                    ? axieColors.dusk
+                                    : i.class === "Dawn"
+                                    ? axieColors.dawn
+                                    : i.class === "Mech"
+                                    ? axieColors.mech
                                     : "",
                               }}
                             >
