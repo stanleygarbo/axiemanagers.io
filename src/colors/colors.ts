@@ -35,4 +35,7 @@ export const axieColors = {
   bird: "#ff8bbd",
   plant: "#6cc000",
   reptile: "#dc8be4",
+  dusk: "#129092",
+  mech: "#c6bdd4",
+  dawn: "#beceff",
 };
