@@ -13,7 +13,7 @@ import { Scholars } from "../interfaces/IResponseTypes";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Container = styled.div<{ colors: IColors }>`
   ${({ colors }) => css`
@@ -82,6 +82,7 @@ const HomePage = () => {
   const { scholars } = useScholars();
   const { currency } = useUserPreferences();
   const { colors } = useTheme();
+  const refetchedScholars = useRef<string[]>([]);
 
   const ids = scholars?.map((i) => i.ronin.replace("ronin:", "0x"));
 
@@ -130,6 +131,21 @@ const HomePage = () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  // run piece of code when scholarsQuery.data changes
+  useEffect(() => {
+    const data = scholarsQuery.data;
+    if (data) {
+      for (const [ronin, obj] of Object.entries(data.list)) {
+        if (obj.mmr === 0 && !refetchedScholars.current.includes(ronin)) {
+          refetchScholarMutation.mutate(ronin.replace("ronin:", "0x"));
+          refetchedScholars.current.push(ronin);
+          console.log(refetchScholarMutation);
+          console.log("test");
+        }
+      }
+    }
+  }, [scholarsQuery.data, refetchScholarMutation]);
 
   const messages = [
     {
