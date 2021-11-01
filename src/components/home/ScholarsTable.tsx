@@ -18,7 +18,7 @@ import { LineChart } from "../LineChart";
 import { TiArrowSync } from "react-icons/ti";
 import { useUserPreferences } from "../../contexts/userPreferences";
 import CircularLoader from "../CircularLoader";
-import SelectCategory from "../settings-category/SelectCategory";
+import SelectCategory from "../modal/SelectCategory";
 import OrderIndicator from "./OrderIndicator";
 
 const ScholarsTable: React.FC<IScholarsTable> = ({

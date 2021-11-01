@@ -14,7 +14,7 @@ import { Scholars } from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { randomColor } from "../util/randomColor";
 import { withRouter } from "react-router-dom";
-import SelectCategory from "./settings-category/SelectCategory";
+import SelectCategory from "./modal/SelectCategory";
 
 const ScholarSchema = Yup.object().shape({
   ronin: Yup.string()

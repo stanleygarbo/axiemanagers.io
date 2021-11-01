@@ -3,7 +3,7 @@ import { useScholars } from "../../contexts/scholarsContext";
 import { useTheme } from "../../contexts/themeContext";
 import { IColors } from "../../interfaces/IColors";
 import { IScholars } from "../../interfaces/IScholarsContext";
-import SelectCategory from "./SelectCategory";
+import SelectCategory from "../modal/SelectCategory";
 
 const ScholarList = () => {
   const { scholars, updateScholar } = useScholars();

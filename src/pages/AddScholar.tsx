@@ -13,7 +13,7 @@ import { withRouter } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 import { fetchScholarByAddress } from "../api/requests";
 import { Scholars } from "../interfaces/IResponseTypes";
-import SelectCategory from "../components/settings-category/SelectCategory";
+import SelectCategory from "../components/modal/SelectCategory";
 
 const ScholarSchema = Yup.object().shape({
   ronin: Yup.string()
