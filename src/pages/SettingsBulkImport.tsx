@@ -7,13 +7,7 @@ import { IColors } from "../interfaces/IColors";
 import { IScholars } from "../interfaces/IScholarsContext";
 import { randomColor } from "../util/randomColor";
 
-const scholarObjProperties = [
-  "ronin",
-  "color",
-  "nickname",
-  "managerShare",
-  "category",
-];
+const scholarObjProperties = ["ronin", "color", "nickname", "managerShare"];
 const externalListObjProperties = ["name", "eth", "managerShare"];
 
 const SettingsBulkImport = () => {
@@ -45,7 +39,7 @@ const SettingsBulkImport = () => {
         if (json.length) {
           for (const i of json) {
             for (const key of Object.keys(i)) {
-              if (scholarObjProperties.includes(key)) {
+              if (scholarObjProperties.includes(key) || key === "category") {
                 console.log("included");
               } else {
                 alert(
