@@ -138,7 +138,7 @@ const HomePage = () => {
     if (data) {
       for (const [ronin, obj] of Object.entries(data.list)) {
         if (
-          (obj.mmr === 0 || obj.mmr === 1200) &&
+          obj.mmr === 0 &&
           !refetchedScholars.current.includes(ronin)
         ) {
           refetchScholarMutation.mutate(ronin.replace("ronin:", "0x"));
