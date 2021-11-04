@@ -308,7 +308,16 @@ const ScholarPage = () => {
                             className="wrapper__scholar-info__form__ronin"
                             style={{ gridColumn: "span 2" }}
                           >
-                            {ronin && truncate(ronin, 29)}
+                            <a
+                              href={`https://marketplace.axieinfinity.com/profile/${ronin}/axie`}
+                              target="blank"
+                              style={{
+                                color: colors.textNotSoIntense,
+                                textDecoration: "underline",
+                              }}
+                            >
+                              {ronin && truncate(ronin, 29)}
+                            </a>
                           </div>
                           {scholar && (
                             <>
@@ -501,7 +510,16 @@ const ScholarPage = () => {
                     )}
                     <div className="team">
                       {axiesQuery.data?.map((i) => (
-                        <div key={i.id} className="team__axie">
+                        <div
+                          key={i.id}
+                          className="team__axie"
+                          onClick={() => {
+                            window.open(
+                              `https://marketplace.axieinfinity.com/axie/${i.id}`,
+                              "_blank"
+                            );
+                          }}
+                        >
                           <div className="team__axie__class">{i.class}</div>
                           <img height={"100%"} src={i.image} alt="" />
                           <div className="team__axie__info">
@@ -832,6 +850,11 @@ const Container = styled.div<{ colors: IColors }>`
         justify-content: space-around;
         position: relative;
         border: 1px solid ${colors.textIntense + 20};
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid ${colors.accent};
+        }
 
         &__class {
           position: absolute;
