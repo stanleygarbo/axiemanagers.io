@@ -28,8 +28,15 @@ const FooterTemplate = () => {
               >
                 facebook
               </a>{" "}
-              or send me a message via FB messenger so that I can assist you
-              with any concerns you have.
+              or send me a message via FB messenger/
+              <a
+                target="_blank"
+                href="https://discord.com/users/756368831944982599"
+                rel="noreferrer"
+              >
+                discord
+              </a>{" "}
+              so that I can assist you with any concerns you have.
             </div>
           </div>
           <div className="footer-wrapper__notice__message">
