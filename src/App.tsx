@@ -18,6 +18,7 @@ import ConverterPage from "./pages/ConverterPage";
 import CookiePopup from "./components/CookiePopup";
 // import MaintenanceModal from "./components/modal/MaintenanceModal";
 // import HardRefreshModal from "./components/modal/HardRefreshModal";
+import Sharing from "./pages/Sharing";
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
               <Route exact path="/donate" component={Donate} />
               <Route exact path="/announcement" component={Announcement} />
               <Route exact path="/converter" component={ConverterPage} />
+              <Route exact path="/shares" component={Sharing} />
               <Route
                 path="/settings"
                 render={({ match: { path } }) => (
