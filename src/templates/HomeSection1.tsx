@@ -49,6 +49,7 @@ const HomeSection1: React.FC<{
   let totalScholars = 0;
   let totalAverage = 0;
   let totalToday = 0;
+  let totalTodayManager = 0;
   let totalClaimed = 0;
 
   if (scholarsQuery.data && scholars) {
@@ -56,6 +57,7 @@ const HomeSection1: React.FC<{
       let scholarStat = scholarsQuery.data.list[i.ronin];
       if (scholarStat) {
         totalManager += scholarStat.total * (i.managerShare / 100);
+        totalTodayManager += scholarStat.today * (i.managerShare / 100);
 
         totalScholars += scholarStat.total * ((100 - i.managerShare) / 100);
 
@@ -179,7 +181,18 @@ const HomeSection1: React.FC<{
             <div className="home-section1-wrapper__grid__item__value">
               <div className="home-section1-wrapper__grid__item__value__slp">
                 <img src="/slp.png" alt="slp" width={35} />
-                {addCommaToNumber(totalToday)}
+                {addCommaToNumber(totalToday)}{" "}
+                {SLPPriceQuery.data && (
+                  <span>
+                    M: {Math.floor(totalTodayManager)} <br />~
+                    {getCurrencySign(currency)}
+                    {addCommaToNumber(
+                      Math.floor(
+                        totalTodayManager * SLPPriceQuery.data?.current
+                      )
+                    )}
+                  </span>
+                )}
               </div>
 
               <div className="home-section1-wrapper__grid__item__value__currency">
@@ -310,6 +323,12 @@ const Container = styled.div<{ colors: IColors }>`
               img {
                 margin-right: 5px;
               }
+
+              span {
+                font-size: 14px;
+                margin-left: 10px;
+                font-weight: 300;
+              }
             }
             &__currency {
               margin-left: 40px;
@@ -424,7 +443,24 @@ const Container = styled.div<{ colors: IColors }>`
       }
     }
 
-    @media (max-width: 493px) {
+    @media (max-width: 591px) {
+      .home-section1-wrapper {
+        &__grid {
+          &__item {
+            &__value {
+              &__slp {
+                span{
+                  font-size: 9px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+
+    @media (max-width: 553px) {
       margin-top: 10px;
 
       p {
