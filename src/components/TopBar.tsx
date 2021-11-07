@@ -35,7 +35,7 @@ const TopBar = () => {
           <ul className="announcement__content__links">
             {screenWidth > 500 && (
               <li>
-                <a href="mailto:digitalmadlad@gmail.com">Contact</a>
+                <a href="mailto:axiemanagers.io@gmail.com">Contact</a>
               </li>
             )}
             {/* <li>

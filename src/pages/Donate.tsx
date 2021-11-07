@@ -123,9 +123,9 @@ const Donate = () => {
         touch? Email me:{" "}
         <a
           style={{ color: colors.accent2 }}
-          href="mailto:digitalmadlad@gmail.com"
+          href="mailto:axiemanagers.io@gmail.com"
         >
-          digitalmadlad@gmail.com
+          axiemanagers.io@gmail.com
         </a>
       </p>
     </Container>
