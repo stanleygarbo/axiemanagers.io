@@ -83,22 +83,12 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>NOTICE</span> Please hard refresh if you haven't (ctrl + F5).{" "}
-        <button
-          style={{
-            padding: "0px 5px",
-            background: colors.BGLighter,
-            color: colors.textIntense,
-            border: "1px solid " + colors.textIntense + 20,
-            borderRadius: 5,
-          }}
-          onClick={() => window.location.reload(true)}
-        >
-          {" "}
-          Click here to hard refresh page
-        </button>
-      </p> */}
+      <p>
+        <span>NOTICE</span> You must load the website atleast once in 48 hours
+        to keep track of daily SLP, otherwise your list will be labeled as
+        inactive. Inactive accounts' daily SLP won't be recorded, this is done
+        to reduce load when fetching everyone's total SLP for the day.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
