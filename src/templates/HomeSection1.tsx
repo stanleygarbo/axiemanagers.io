@@ -315,7 +315,8 @@ const Container = styled.div<{ colors: IColors }>`
               }
 
               span {
-                font-size: 14px;
+                font-size: 11px;
+                line-height: 13px;
                 margin-left: 10px;
                 font-weight: 300;
               }
