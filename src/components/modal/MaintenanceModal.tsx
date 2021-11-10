@@ -11,10 +11,7 @@ const MaintenanceModal = () => {
       <Container colors={colors}>
         <img src="/maintenance.svg" alt="maintenace" />
         <h1>Server under maintenance</h1>
-        <p>
-          Please come back later once axie infinity's server maintenance is
-          over.
-        </p>
+        <p>Please come back later after 12:30 pm PH time.</p>
       </Container>
     </ModalWrapper>
   );
