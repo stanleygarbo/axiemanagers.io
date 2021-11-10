@@ -85,7 +85,8 @@ const HomeSection1: React.FC<{
     <Container colors={colors}>
       <p>
         <span>NOTICE</span> Today SLP is currently undergoing maintenance, it
-        should work fine tomorrow.
+        should work fine tomorrow. We just upgraded the server, the time taken
+        to record everyone's total SLP will be reduced.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
