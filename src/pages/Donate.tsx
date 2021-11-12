@@ -117,10 +117,7 @@ const Donate = () => {
       </div>
 
       <p>
-        Further improvements will come to axiemanagers.io, I will be&nbsp;
-        {/* adding gas fees,  */}
-        adding bulk import and much more! thank you so much! Want to get in
-        touch? Email me:{" "}
+        Thank you so much for your donations! wanna get in touch? Email me:{" "}
         <a
           style={{ color: colors.accent2 }}
           href="mailto:axiemanagers.io@gmail.com"

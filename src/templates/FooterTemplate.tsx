@@ -20,15 +20,7 @@ const FooterTemplate = () => {
               Got any questions or suggestions?
             </div>
             <div className="footer-wrapper__notice__message__description">
-              Follow me on{" "}
-              <a
-                target="_blank"
-                href="https://facebook.com/stanley.garbo29"
-                rel="noreferrer"
-              >
-                facebook
-              </a>{" "}
-              or send me a message via FB messenger/
+              Hit me up directly on&nbsp;
               <a
                 target="_blank"
                 href="https://discord.com/users/756368831944982599"
