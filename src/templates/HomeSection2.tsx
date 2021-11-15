@@ -144,6 +144,16 @@ const HomeSection2: React.FC<{
           scholarsQuery.data ? Object.keys(scholarsQuery.data.list)?.length : 0
         }
       >
+        <p
+          style={{
+            color: colors.textNotSoIntense,
+            fontSize: 15,
+            marginBottom: 10,
+            marginTop: 10,
+          }}
+        >
+          Number of scholars: {scholars?.length}
+        </p>
         <div className="options">
           {activeLayout === "cards" ? (
             <Sorters setOrderBy={setOrderBy} setOrder={setOrder} />
@@ -298,7 +308,7 @@ const Message = styled.div<{ colors: IColors }>`
 
 const Container = styled.div<{ numScholars: number; colors: IColors }>`
   max-width: 1200px;
-  margin: 20px auto 0px auto;
+  margin: 10px auto 0px auto;
   padding: 0 20px;
 
   ${({ colors }) => css`
