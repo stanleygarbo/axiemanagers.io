@@ -44,10 +44,7 @@ const SearchTemplate = () => {
         />
         <div className="scholars">
           {scholars.map((i, idx) => {
-            if (
-              i.nickname.toLowerCase().includes(searchText.toLowerCase()) &&
-              idx < 5
-            )
+            if (i.nickname.toLowerCase().includes(searchText.toLowerCase()))
               return (
                 <Link key={idx} to={`/scholar/${i.ronin}`}>
                   <div className="scholars__list">
