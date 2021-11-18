@@ -83,11 +83,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>NOTICE</span> Today SLP is currently undergoing maintenance, it
-        should work fine tomorrow. We just upgraded the server, the time taken
-        to record everyone's total SLP will be reduced.
-      </p> */}
+      <p>
+        <span>NOTICE</span> The MMR API is currently unstable, let's just wait
+        for the axie devs to fix it.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
