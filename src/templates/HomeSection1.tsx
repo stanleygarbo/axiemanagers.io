@@ -84,8 +84,10 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>NOTICE</span> The MMR API is currently unstable, let's just wait
-        for the axie devs to fix it.
+        <span>NOTICE</span> You must load the website atleast once every 4 days
+        to keep track of daily SLP, otherwise your list will be labeled as
+        inactive. Inactive accounts' daily SLP won't be recorded, this is done
+        to reduce load when fetching everyone's total SLP for the day.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
