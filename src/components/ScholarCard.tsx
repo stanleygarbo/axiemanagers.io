@@ -1,5 +1,6 @@
 import React from "react";
 import { TiArrowSync } from "react-icons/ti";
+import { useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { useTheme } from "../contexts/themeContext";
@@ -46,6 +47,12 @@ const ScholarCard: React.FC<IScholarCard> = ({
 
   const history = useHistory();
 
+  const queryClient = useQueryClient();
+
+  const axies = queryClient.getQueryState<any, any>(["axies", ronin]);
+
+  console.log(axies);
+
   return (
     <Container
       colors={colors}
@@ -76,6 +83,19 @@ const ScholarCard: React.FC<IScholarCard> = ({
             {badge.name}
           </div>
         )}
+        <div className="axies">
+          {axies?.data?.map((i) => (
+            <div
+              key={i.id}
+              style={{
+                backgroundImage: `url(${i.image})`,
+                backgroundSize: "130%",
+                width: 50,
+                height: 50,
+              }}
+            ></div>
+          ))}
+        </div>
         <div className="batch">Updated {lastUpdated}</div>
         <div className="earned">
           <section className="row">
@@ -168,6 +188,13 @@ const Container = styled.div<{ colors: IColors }>`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .axies {
+      display: flex;
+      position: absolute;
+      top: 25px;
+      right: 20px;
     }
 
     .card__wrapper {

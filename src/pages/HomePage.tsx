@@ -2,10 +2,11 @@ import styled, { css } from "styled-components";
 import HomeSection1 from "../templates/HomeSection1";
 import HomeSection2 from "../templates/HomeSection2";
 import AddScholarForm from "../components/AddScholarForm";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
 import { useScholars } from "../contexts/scholarsContext";
 import {
   fetchAllScholars,
+  fetchScholarAxies,
   fetchSLPPrice,
   refetchScholar,
 } from "../api/requests";
@@ -120,6 +121,16 @@ const HomePage = () => {
     }
   );
 
+  const axiesQuery = useQueries(
+    scholars.map((scholar) => {
+      const address = scholar.ronin.replace("ronin:", "0x");
+      return {
+        queryKey: ["axies", scholar.ronin],
+        queryFn: () => fetchScholarAxies(address),
+      };
+    })
+  );
+
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -164,6 +175,8 @@ const HomePage = () => {
 
   const random = Math.random() * (2 - 0) + 0;
   const randomMessage = messages[Math.round(random)];
+
+  console.log(!!axiesQuery);
 
   return (
     <Container colors={colors}>
