@@ -84,17 +84,20 @@ const ScholarCard: React.FC<IScholarCard> = ({
           </div>
         )}
         <div className="axies">
-          {axies?.data?.map((i) => (
-            <div
-              key={i.id}
-              style={{
-                backgroundImage: `url(${i.image})`,
-                backgroundSize: "130%",
-                width: 50,
-                height: 50,
-              }}
-            ></div>
-          ))}
+          {axies?.data?.map(
+            (i, idx) =>
+              idx < 3 && (
+                <div
+                  key={idx}
+                  style={{
+                    backgroundImage: `url(${i.image})`,
+                    backgroundSize: "130%",
+                    width: 50,
+                    height: 50,
+                  }}
+                ></div>
+              )
+          )}
         </div>
         <div className="batch">Updated {lastUpdated}</div>
         <div className="earned">
