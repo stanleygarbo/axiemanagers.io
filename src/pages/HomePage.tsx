@@ -122,18 +122,16 @@ const HomePage = () => {
   );
 
   const axiesQuery = useQueries(
-    scholars.map(
-      (scholar) => {
-        const address = scholar.ronin.replace("ronin:", "0x");
-        return {
-          queryKey: ["axies", scholar.ronin],
-          queryFn: () => fetchScholarAxies(address),
-        };
-      },
-      {
+    scholars.map((scholar) => {
+      const address = scholar.ronin.replace("ronin:", "0x");
+      return {
+        queryKey: ["axies", scholar.ronin],
+        queryFn: () => fetchScholarAxies(address),
+
+        keepPreviousData: true,
         staleTime: Infinity,
-      }
-    )
+      };
+    })
   );
 
   useEffect(() => {
