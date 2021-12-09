@@ -83,12 +83,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>NOTICE</span> You must load the website atleast once every 4 days
-        to keep track of daily SLP, otherwise your list will be labeled as
-        inactive. Inactive accounts' daily SLP won't be recorded, this is done
-        to reduce load when fetching everyone's total SLP for the day.
-      </p> */}
+      <p>
+        <span>NOTICE</span> There is a problem with the total SLP calculation, a
+        fix will be released soon.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
