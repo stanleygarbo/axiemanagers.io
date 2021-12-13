@@ -42,7 +42,7 @@ const HomeSection1: React.FC<{
 
   let totalFarmed = 0;
   if (scholarsQuery.data) {
-    totalFarmed = scholarsQuery.data.earnings.total;
+    // totalFarmed = scholarsQuery.data.earnings.total;
   }
 
   let totalManager = 0;
@@ -56,10 +56,14 @@ const HomeSection1: React.FC<{
     for (const i of scholars) {
       let scholarStat = scholarsQuery.data.list[i.ronin];
       if (scholarStat) {
-        totalManager += scholarStat.total * (i.managerShare / 100);
+        totalManager +=
+          (scholarStat.total - scholarStat.lastClaimAmount) *
+          (i.managerShare / 100);
         totalTodayManager += scholarStat.today * (i.managerShare / 100);
 
-        totalScholars += scholarStat.total * ((100 - i.managerShare) / 100);
+        totalScholars +=
+          (scholarStat.total - scholarStat.lastClaimAmount) *
+          ((100 - i.managerShare) / 100);
 
         const daysAgoSinceClaimed = Number(
           moment
@@ -75,6 +79,7 @@ const HomeSection1: React.FC<{
         }
 
         totalToday += scholarStat.today;
+        totalFarmed += scholarStat.total - scholarStat.lastClaimAmount;
 
         totalClaimed += scholarStat.lastClaimAmount;
       }
@@ -84,10 +89,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>NOTICE</span> Please take note that the game currently has a
-        visual bug with the number of SLP in the inventory. Do your payouts
-        carefully. Our data here is the same with whatever is shown on your
-        inventory in-game.
+        <span>NOTICE</span> We have temporarily adjusted the formula for
+        computing total SLP. [Total - Total_Claimed]
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
