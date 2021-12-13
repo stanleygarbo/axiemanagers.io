@@ -89,8 +89,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>UPDATE</span> Ingame SLP is now added. Please message me directly
-        on discord if you need anything.
+        <span>UPDATE</span> SLP calculation is changed. Please message me
+        directly on discord if you need anything.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
