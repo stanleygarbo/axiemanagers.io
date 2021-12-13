@@ -75,7 +75,9 @@ const HomeSection1: React.FC<{
         );
 
         if (daysAgoSinceClaimed) {
-          totalAverage += scholarStat.total / daysAgoSinceClaimed;
+          totalAverage +=
+            (scholarStat.total - scholarStat.totalClaimable) /
+            daysAgoSinceClaimed;
         }
 
         totalToday += scholarStat.today;
@@ -89,7 +91,7 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>UPDATE</span> SLP calculation is changed. Please message me
+        <span>UPDATE</span> Data calculation is changed. Please message me
         directly on discord if you need anything.
       </p>
       <div className="home-section1-wrapper">

@@ -190,7 +190,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       {
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
-                          data[i.ronin]?.total,
+                          data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                           SLPPrice?.data?.current
                         ).slp
                       }
@@ -198,7 +198,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       {
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
-                          data[i.ronin]?.total,
+                          data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                           SLPPrice?.data?.current,
                           getCurrencySign(currency)
                         ).converted

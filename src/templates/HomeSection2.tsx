@@ -244,7 +244,8 @@ const HomeSection2: React.FC<{
                   average={
                     getAverageSLP(
                       scholarsStat[i.ronin]?.lastClaimed,
-                      scholarsStat[i.ronin]?.total,
+                      scholarsStat[i.ronin]?.total -
+                        scholarsStat[i.ronin]?.totalClaimable,
                       SLPPrice?.data?.current
                     ).slp
                   }
