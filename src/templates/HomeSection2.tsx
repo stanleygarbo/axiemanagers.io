@@ -227,7 +227,7 @@ const HomeSection2: React.FC<{
                   }}
                   earned={
                     scholarsStat[i.ronin]?.total -
-                    scholarsStat[i.ronin].lastClaimAmount
+                    scholarsStat[i.ronin].totalClaimable
                   }
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0

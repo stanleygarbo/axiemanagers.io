@@ -1,0 +1,15 @@
+POST https://api.roninchain.com/rpc HTTP/1.1
+content-type: application/json
+
+{
+  "jsonrpc": "2.0", 
+  "id": 3, 
+  "method": "eth_call",
+  "params": [ 
+    0: {
+      "data": "0x70a082310000000000000000000000002a35802e2d7a3c1253331697d53a516c19c9dcc2",
+      "to": "0xa8754b9fa15fc18bb59458815510e40a12cd2014"
+    },
+    1: "latest"
+  ]
+}

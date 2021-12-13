@@ -57,12 +57,12 @@ const HomeSection1: React.FC<{
       let scholarStat = scholarsQuery.data.list[i.ronin];
       if (scholarStat) {
         totalManager +=
-          (scholarStat.total - scholarStat.lastClaimAmount) *
+          (scholarStat.total - scholarStat.totalClaimable) *
           (i.managerShare / 100);
         totalTodayManager += scholarStat.today * (i.managerShare / 100);
 
         totalScholars +=
-          (scholarStat.total - scholarStat.lastClaimAmount) *
+          (scholarStat.total - scholarStat.totalClaimable) *
           ((100 - i.managerShare) / 100);
 
         const daysAgoSinceClaimed = Number(
@@ -79,9 +79,9 @@ const HomeSection1: React.FC<{
         }
 
         totalToday += scholarStat.today;
-        totalFarmed += scholarStat.total - scholarStat.lastClaimAmount;
+        totalFarmed += scholarStat.total - scholarStat.totalClaimable;
 
-        totalClaimed += scholarStat.lastClaimAmount;
+        totalClaimed += scholarStat.totalClaimable;
       }
     }
   }
@@ -89,8 +89,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>NOTICE</span> We have temporarily adjusted the formula for
-        computing total SLP. [Total - Total_Claimed]
+        <span>UPDATE</span> Ingame SLP is now added. Please message me directly
+        on discord if you need anything.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
@@ -266,8 +266,8 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        border: 1px solid ${colors.warning};
-        background-color: ${colors.warning + 90};
+        border: 1px solid ${colors.success};
+        background-color: ${colors.success + 90};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;
