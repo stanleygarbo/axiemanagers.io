@@ -215,7 +215,7 @@ const ScholarPage = () => {
                           earnedHoveredElement
                             ? Number(earnedHoveredElement.y) *
                                 SLPPriceQuery.data?.current
-                            : Number(scholarQuery.data?.total) *
+                            : (Number(scholarQuery.data?.total) - Number(scholarQuery.data?.totalClaimable)) *
                                 SLPPriceQuery.data?.current
                         )
                       )}
