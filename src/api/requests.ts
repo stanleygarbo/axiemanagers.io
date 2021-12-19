@@ -31,7 +31,7 @@ export const fetchScholarByAddress = async (address: string) => {
 
 export const fetchScholarAxies = async (address: string) => {
   const res = await axios({
-    url: "https://axieinfinity.com/graphql-server-v2/graphql",
+    url: "https://graphql-gateway.axieinfinity.com/graphql",
     method: "POST",
     data: {
       operationName: "GetAxieBriefList",
@@ -60,11 +60,11 @@ export const refetchScholar = async (address: string) => {
   return res.data;
 };
 
-export const fetchScholarReports = async (address: string) =>{
+export const fetchScholarReports = async (address: string) => {
   const res = await axios({
     method: "get",
     url: `https://api.axiemanagers.io/reports/${address}`,
   });
 
   return res.data;
-}
+};
