@@ -32,6 +32,11 @@ const currencies: { id: ICurrency; name: string }[] = [
   { id: "vnd", name: "VND" },
   { id: "eur", name: "EUR" },
   { id: "sgd", name: "SGD" },
+  { id: "cad", name: "CAD" },
+  { id: "jpy", name: "JPY" },
+  { id: "idr", name: "IDR" },
+  { id: "cny", name: "CNY" },
+  { id: "myr", name: "myr" },
 ];
 
 const SettingsPreferences = () => {

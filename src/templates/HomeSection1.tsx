@@ -91,8 +91,7 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>UPDATE</span> Data calculation is changed. Please message me
-        directly on discord if you need anything.
+        <span>UPDATE</span> Added to currencies: JPY, CNY, IDR, MYR, CAD.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">

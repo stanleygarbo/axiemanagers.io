@@ -9,5 +9,15 @@ export function getCurrencySign(currency: string) {
     ? "₹"
     : currency === "usd"
     ? "$"
+    : currency === "cny"
+    ? "¥"
+    : currency === "jpy"
+    ? "¥"
+    : currency === "cad"
+    ? "C$"
+    : currency === "idr"
+    ? "Rp"
+    : currency === "myr"
+    ? "RM"
     : "₱";
 }

@@ -16,7 +16,19 @@ export type IScholarsTableColumns = {
   team: boolean;
 };
 
-export type ICurrency = "eur" | "sgd" | "inr" | "vnd" | "php" | "usd" | "";
+export type ICurrency =
+  | "eur"
+  | "sgd"
+  | "inr"
+  | "vnd"
+  | "php"
+  | "usd"
+  | "cad"
+  | "jpy"
+  | "cny"
+  | "idr"
+  | "myr"
+  | "";
 
 export interface IUserPreferences {
   scholarsTable: IScholarsTableColumns;
