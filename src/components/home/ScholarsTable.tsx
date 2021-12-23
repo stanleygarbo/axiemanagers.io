@@ -140,8 +140,9 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                 SLPPrice?.data?.current
               );
 
-              const yesterday =
-                data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1]?.earned;
+              const yesterday = data[i.ronin].chart
+                ? data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1]?.earned
+                : 0;
 
               const categoryQuota = categories.find(
                 (obj) => obj.name === i.category
@@ -392,13 +393,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                     <td
                       onClick={() =>
                         refetchScholarMutation.mutate(
-                          i.ronin.replace("ronin:", "0x")
+                          i.ronin?.replace("ronin:", "0x")
                         )
                       }
                     >
                       {refetchScholarMutation.isLoading &&
                       refetchScholarMutation.variables ===
-                        i.ronin.replace("ronin:", "0x") ? (
+                        i.ronin?.replace("ronin:", "0x") ? (
                         <CircularLoader size="small" />
                       ) : (
                         <TiArrowSync size={25} />
