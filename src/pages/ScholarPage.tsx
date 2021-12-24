@@ -206,8 +206,7 @@ const ScholarPage = () => {
                       {addCommaToNumber(
                         earnedHoveredElement
                           ? earnedHoveredElement.y
-                          : scholarQuery.data?.total -
-                              scholarQuery.data?.totalClaimable
+                          : scholarQuery.data?.total
                       )}{" "}
                       ≈ {getCurrencySign(currency)}
                       {addCommaToNumber(
@@ -215,7 +214,7 @@ const ScholarPage = () => {
                           earnedHoveredElement
                             ? Number(earnedHoveredElement.y) *
                                 SLPPriceQuery.data?.current
-                            : (Number(scholarQuery.data?.total) - Number(scholarQuery.data?.totalClaimable)) *
+                            : Number(scholarQuery.data?.total) *
                                 SLPPriceQuery.data?.current
                         )
                       )}

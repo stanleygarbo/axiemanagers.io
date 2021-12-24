@@ -79,7 +79,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             )}
             {scholarsTable?.total && (
               <th onClick={() => setOrientation("total")}>
-                Ingame SLP
+                Total
                 <OrderIndicator order={getOrderOf("total")} />
               </th>
             )}
@@ -129,13 +129,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             data &&
             sortedScholars.map((i, idx) => {
               const managerShare = getManagerShare(
-                data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
+                data[i.ronin]?.total,
                 i.managerShare,
                 SLPPrice?.data?.current
               );
 
               const scholarShare = getScholarShare(
-                data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
+                data[i.ronin]?.total,
                 i.managerShare,
                 SLPPrice?.data?.current
               );
@@ -179,9 +179,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           style={{ marginRight: 4 }}
                         />{" "}
                         {addCommaToNumber(
-                          data[i.ronin]
-                            ? data[i.ronin].total - data[i.ronin].totalClaimable
-                            : "---"
+                          data[i.ronin] ? data[i.ronin].total : "---"
                         )}
                       </div>
                     </td>
@@ -191,7 +189,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       {
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
-                          data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
+                          data[i.ronin]?.total,
                           SLPPrice?.data?.current
                         ).slp
                       }
@@ -199,7 +197,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       {
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
-                          data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
+                          data[i.ronin]?.total,
                           SLPPrice?.data?.current,
                           getCurrencySign(currency)
                         ).converted
