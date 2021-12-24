@@ -85,7 +85,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>UPDATE</span> Added to currencies: JPY, CNY, IDR, MYR, CAD.
+        <span>NOTICE</span> Yesterday SLP is currently bugged due to an error
+        earlier, it should work fine by dec 25, 2021.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
@@ -261,8 +262,8 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        border: 1px solid ${colors.success};
-        background-color: ${colors.success + 90};
+        border: 1px solid ${colors.warning};
+        background-color: ${colors.warning + 90};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;
