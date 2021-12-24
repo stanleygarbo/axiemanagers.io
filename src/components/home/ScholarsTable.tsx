@@ -140,7 +140,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                 SLPPrice?.data?.current
               );
 
-              const yesterday = data[i.ronin].chart
+              const yesterday = data[i.ronin]?.chart
                 ? data[i.ronin]?.chart[data[i.ronin]?.chart?.length - 1]?.earned
                 : 0;
 
