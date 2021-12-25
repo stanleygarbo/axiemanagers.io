@@ -84,10 +84,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>NOTICE</span> Yesterday SLP is currently bugged due to an error
         earlier, it should work fine by dec 25, 2021.
-      </p>
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
