@@ -225,10 +225,7 @@ const HomeSection2: React.FC<{
                         : ""
                       : "",
                   }}
-                  earned={
-                    scholarsStat[i.ronin]?.total -
-                    scholarsStat[i.ronin].totalClaimable
-                  }
+                  earned={scholarsStat[i.ronin]?.total}
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0
                       ? addCommaToNumber(scholarsStat[i.ronin]?.today) +
@@ -244,8 +241,7 @@ const HomeSection2: React.FC<{
                   average={
                     getAverageSLP(
                       scholarsStat[i.ronin]?.lastClaimed,
-                      scholarsStat[i.ronin]?.total -
-                        scholarsStat[i.ronin]?.totalClaimable,
+                      scholarsStat[i.ronin]?.total,
                       SLPPrice?.data?.current
                     ).slp
                   }
