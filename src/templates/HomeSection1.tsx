@@ -56,10 +56,14 @@ const HomeSection1: React.FC<{
     for (const i of scholars) {
       let scholarStat = scholarsQuery.data.list[i.ronin];
       if (scholarStat) {
-        totalManager += scholarStat.total * (i.managerShare / 100);
+        totalManager +=
+          (scholarStat.total - scholarStat.totalClaimable) *
+          (i.managerShare / 100);
         totalTodayManager += scholarStat.today * (i.managerShare / 100);
 
-        totalScholars += scholarStat.total * ((100 - i.managerShare) / 100);
+        totalScholars +=
+          (scholarStat.total - scholarStat.totalClaimable) *
+          ((100 - i.managerShare) / 100);
 
         const daysAgoSinceClaimed = Number(
           moment
@@ -71,11 +75,13 @@ const HomeSection1: React.FC<{
         );
 
         if (daysAgoSinceClaimed) {
-          totalAverage += scholarStat.total / daysAgoSinceClaimed;
+          totalAverage +=
+            (scholarStat.total - scholarStat.totalClaimable) /
+            daysAgoSinceClaimed;
         }
 
         totalToday += scholarStat.today;
-        totalFarmed += scholarStat.total;
+        totalFarmed += scholarStat.total - scholarStat.totalClaimable;
 
         totalClaimed += scholarStat.totalClaimable;
       }

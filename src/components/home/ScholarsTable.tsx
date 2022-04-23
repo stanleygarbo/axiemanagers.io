@@ -129,7 +129,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
             data &&
             sortedScholars.map((i, idx) => {
               const managerShare = getManagerShare(
-                data[i.ronin]?.total,
+                data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                 i.managerShare,
                 SLPPrice?.data &&
                   SLPPrice?.data["smooth-love-potion"][
@@ -138,7 +138,7 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
               );
 
               const scholarShare = getScholarShare(
-                data[i.ronin]?.total,
+                data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                 i.managerShare,
                 SLPPrice?.data &&
                   SLPPrice?.data["smooth-love-potion"][
@@ -185,7 +185,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                           style={{ marginRight: 4 }}
                         />{" "}
                         {addCommaToNumber(
-                          data[i.ronin] ? data[i.ronin].total : "---"
+                          data[i.ronin]
+                            ? data[i.ronin].total -
+                                data[i.ronin]?.totalClaimable
+                            : "---"
                         )}
                       </div>
                     </td>
