@@ -236,7 +236,11 @@ const HomeSection2: React.FC<{
                         addCommaToNumber(
                           Math.floor(
                             scholarsStat[i.ronin]?.today *
-                              SLPPrice?.data?.current
+                              (SLPPrice?.data
+                                ? SLPPrice?.data["smooth-love-potion"][
+                                    currency ? currency : "php"
+                                  ]
+                                : 0)
                           )
                         )
                       : "---"
@@ -246,7 +250,11 @@ const HomeSection2: React.FC<{
                       scholarsStat[i.ronin]?.lastClaimed,
                       scholarsStat[i.ronin]?.total -
                         scholarsStat[i.ronin]?.totalClaimable,
-                      SLPPrice?.data?.current
+                      SLPPrice?.data
+                        ? SLPPrice?.data["smooth-love-potion"][
+                            currency ? currency : "php"
+                          ]
+                        : 0
                     ).slp
                   }
                   lastClaim={getLastClaimed(scholarsStat[i.ronin]?.lastClaimed)}

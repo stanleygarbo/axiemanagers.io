@@ -1,10 +1,20 @@
 import axios from "axios";
+import { SLPPrice } from "../interfaces/IResponseTypes";
 
 export const fetchSLPPrice = async (currency: string) => {
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=smooth-love-potion&vs_currencies=${
+    currency ? currency : "php"
+  }`;
+  const { data }: { data: SLPPrice } = await axios.get(url);
+
+  return data;
+};
+
+export const fetchSLPPriceChart = async (currency: string) => {
   const { data } = await axios.get(
-    `https://api.axiemanagers.io/slp_price?currency=${
+    `https://api.coingecko.com/api/v3/coins/smooth-love-potion/market_chart?vs_currency=${
       currency ? currency : "php"
-    }`
+    }&days=30&interval=daily`
   );
 
   return data;

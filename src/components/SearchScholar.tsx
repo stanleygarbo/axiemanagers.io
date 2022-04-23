@@ -62,7 +62,11 @@ const SearchScholar = () => {
                 let conversionRate = "---";
                 if (total && SLPPriceQuery && SLPPriceQuery.data) {
                   conversionRate = Math.floor(
-                    total * SLPPriceQuery.data?.current
+                    total *
+                      (SLPPriceQuery?.data &&
+                        SLPPriceQuery?.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ])
                   ).toString();
                 }
 

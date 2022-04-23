@@ -131,13 +131,19 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
               const managerShare = getManagerShare(
                 data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                 i.managerShare,
-                SLPPrice?.data?.current
+                SLPPrice?.data &&
+                  SLPPrice?.data["smooth-love-potion"][
+                    currency ? currency : "php"
+                  ]
               );
 
               const scholarShare = getScholarShare(
                 data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
                 i.managerShare,
-                SLPPrice?.data?.current
+                SLPPrice?.data &&
+                  SLPPrice?.data["smooth-love-potion"][
+                    currency ? currency : "php"
+                  ]
               );
 
               const yesterday = data[i.ronin]?.chart
@@ -193,7 +199,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
                           data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
-                          SLPPrice?.data?.current
+                          SLPPrice?.data &&
+                            SLPPrice?.data["smooth-love-potion"][
+                              currency ? currency : "php"
+                            ]
                         ).slp
                       }
                       <br />
@@ -201,7 +210,10 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         getAverageSLP(
                           data[i.ronin]?.lastClaimed,
                           data[i.ronin]?.total - data[i.ronin]?.totalClaimable,
-                          SLPPrice?.data?.current,
+                          SLPPrice?.data &&
+                            SLPPrice?.data["smooth-love-potion"][
+                              currency ? currency : "php"
+                            ],
                           getCurrencySign(currency)
                         ).converted
                       }
@@ -270,7 +282,11 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                         {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
                           ? addCommaToNumber(
                               Math.floor(
-                                data[i.ronin]?.today * SLPPrice.data?.current
+                                data[i.ronin]?.today *
+                                  (SLPPrice?.data &&
+                                    SLPPrice?.data["smooth-love-potion"][
+                                      currency ? currency : "php"
+                                    ])
                               )
                             )
                           : "---"}
@@ -310,7 +326,13 @@ const ScholarsTable: React.FC<IScholarsTable> = ({
                       &nbsp;&#8776; {getCurrencySign(currency)}
                       {SLPPrice?.data && data[i.ronin]?.chart?.length > 0
                         ? addCommaToNumber(
-                            Math.floor(yesterday * SLPPrice.data?.current)
+                            Math.floor(
+                              yesterday *
+                                (SLPPrice?.data &&
+                                  SLPPrice?.data["smooth-love-potion"][
+                                    currency ? currency : "php"
+                                  ])
+                            )
                           )
                         : "---"}
                     </td>

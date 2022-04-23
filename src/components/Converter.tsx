@@ -23,7 +23,14 @@ const Converter = () => {
   );
 
   const onAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setConversion(Number(e.target.value) * SLPPriceQuery.data?.current);
+    setConversion(
+      Number(e.target.value) *
+        (SLPPriceQuery.data
+          ? SLPPriceQuery.data["smooth-love-potion"][
+              currency ? currency : "php"
+            ]
+          : 0)
+    );
   };
 
   return (
