@@ -6,7 +6,11 @@ import { UseQueryResult } from "react-query";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 import { IColors } from "../interfaces/IColors";
-import { Scholars, SLPPrice } from "../interfaces/IResponseTypes";
+import {
+  Scholars,
+  SLPPrice,
+  SLPPriceChart,
+} from "../interfaces/IResponseTypes";
 import { useScholars } from "../contexts/scholarsContext";
 import { addCommaToNumber } from "../util/addCommaToNumber";
 import { TiArrowSync } from "react-icons/ti";
@@ -17,8 +21,9 @@ import { useUserPreferences } from "../contexts/userPreferences";
 
 const HomeSection1: React.FC<{
   SLPPriceQuery: UseQueryResult<SLPPrice, unknown>;
+  SLPPriceChartQuery: UseQueryResult<SLPPriceChart, unknown>;
   scholarsQuery: UseQueryResult<Scholars, unknown>;
-}> = ({ SLPPriceQuery, scholarsQuery }) => {
+}> = ({ SLPPriceQuery, scholarsQuery, SLPPriceChartQuery }) => {
   const { colors } = useTheme();
   const { scholars } = useScholars();
   const { currency } = useUserPreferences();
@@ -28,17 +33,12 @@ const HomeSection1: React.FC<{
     y: string;
   } | null>(null);
 
-  let SLPPriceDate = SLPPriceQuery.data?.chart?.map((i) => {
-    return i.price !== 0
-      ? moment.unix(i.date).format("MMMM D, YYYY hh:mm A")
-      : "empty";
+  let SLPPriceDate = SLPPriceChartQuery.data?.prices?.map((i) => {
+    return moment.unix(i[0] / 1000).format("MMMM D, YYYY hh:mm A");
   });
-  let SLPPriceValue = SLPPriceQuery.data?.chart?.map((i) =>
-    i.price !== 0 ? i.price.toString() : "empty"
-  );
-
-  SLPPriceDate = SLPPriceDate?.filter((obj) => obj !== "empty");
-  SLPPriceValue = SLPPriceValue?.filter((obj) => obj !== "empty");
+  let SLPPriceValue = SLPPriceChartQuery.data?.prices?.map((i) => {
+    return i[1] !== 0 ? i[1].toString() : "empty";
+  });
 
   let totalFarmed = 0;
   if (scholarsQuery.data) {
@@ -103,7 +103,12 @@ const HomeSection1: React.FC<{
                 &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalFarmed * SLPPriceQuery.data?.current)
+                    Math.floor(
+                      totalFarmed *
+                        SLPPriceQuery.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ]
+                    )
                   )}
               </div>
             </div>
@@ -121,7 +126,12 @@ const HomeSection1: React.FC<{
                 &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalManager * SLPPriceQuery.data?.current)
+                    Math.floor(
+                      totalManager *
+                        SLPPriceQuery.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ]
+                    )
                   )}
               </div>
             </div>
@@ -139,7 +149,12 @@ const HomeSection1: React.FC<{
                 &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalScholars * SLPPriceQuery.data?.current)
+                    Math.floor(
+                      totalScholars *
+                        SLPPriceQuery.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ]
+                    )
                   )}
               </div>
             </div>
@@ -158,7 +173,12 @@ const HomeSection1: React.FC<{
                 &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalAverage * SLPPriceQuery.data?.current)
+                    Math.floor(
+                      totalAverage *
+                        SLPPriceQuery.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ]
+                    )
                   )}
               </div>
             </div>
@@ -177,7 +197,10 @@ const HomeSection1: React.FC<{
                     {getCurrencySign(currency)}
                     {addCommaToNumber(
                       Math.floor(
-                        totalTodayManager * SLPPriceQuery.data?.current
+                        totalTodayManager *
+                          SLPPriceQuery.data["smooth-love-potion"][
+                            currency ? currency : "php"
+                          ]
                       )
                     )}
                   </span>
@@ -188,7 +211,12 @@ const HomeSection1: React.FC<{
                 &#8776; {getCurrencySign(currency)}
                 {SLPPriceQuery.data &&
                   addCommaToNumber(
-                    Math.floor(totalToday * SLPPriceQuery.data?.current)
+                    Math.floor(
+                      totalToday *
+                        SLPPriceQuery.data["smooth-love-potion"][
+                          currency ? currency : "php"
+                        ]
+                    )
                   )}
               </div>
             </div>
@@ -218,7 +246,12 @@ const HomeSection1: React.FC<{
         >
           <div className="home-section1-wrapper__line-chart__price">
             {!hoveredElement ? getCurrencySign(currency) : "₱"}
-            {hoveredElement ? hoveredElement.y : SLPPriceQuery.data?.current}
+            {hoveredElement
+              ? hoveredElement.y
+              : SLPPriceQuery.data &&
+                SLPPriceQuery.data["smooth-love-potion"][
+                  currency ? currency : "php"
+                ]}
             {SLPPriceQuery.isLoading && "---"}
           </div>
           <div className="home-section1-wrapper__line-chart__date">
@@ -236,7 +269,7 @@ const HomeSection1: React.FC<{
             <TiArrowSync size={25} />
           </button>
 
-          {SLPPriceQuery.isLoading ? null : (
+          {SLPPriceQuery.isLoading || SLPPriceChartQuery.isLoading ? null : (
             <LineChart
               data={SLPPriceValue}
               labels={SLPPriceDate}
@@ -247,6 +280,7 @@ const HomeSection1: React.FC<{
           )}
         </div>
       </div>
+      {console.log(hoveredElement)}
     </Container>
   );
 };

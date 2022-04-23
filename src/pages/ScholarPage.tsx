@@ -214,10 +214,18 @@ const ScholarPage = () => {
                         Math.round(
                           earnedHoveredElement
                             ? Number(earnedHoveredElement.y) *
-                                SLPPriceQuery.data?.current
+                                (SLPPriceQuery?.data
+                                  ? SLPPriceQuery?.data["smooth-love-potion"][
+                                      currency ? currency : "php"
+                                    ]
+                                  : 0)
                             : (Number(scholarQuery.data?.total) -
                                 Number(scholarQuery.data?.totalClaimable)) *
-                                SLPPriceQuery.data?.current
+                                (SLPPriceQuery?.data
+                                  ? SLPPriceQuery?.data["smooth-love-potion"][
+                                      currency ? currency : "php"
+                                    ]
+                                  : 0)
                         )
                       )}
                     </div>

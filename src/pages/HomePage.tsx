@@ -2,15 +2,19 @@ import styled, { css } from "styled-components";
 import HomeSection1 from "../templates/HomeSection1";
 import HomeSection2 from "../templates/HomeSection2";
 import AddScholarForm from "../components/AddScholarForm";
-import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useScholars } from "../contexts/scholarsContext";
 import {
   fetchAllScholars,
-  fetchScholarAxies,
   fetchSLPPrice,
   refetchScholar,
+  fetchSLPPriceChart,
 } from "../api/requests";
-import { Scholars } from "../interfaces/IResponseTypes";
+import {
+  Scholars,
+  SLPPrice,
+  SLPPriceChart,
+} from "../interfaces/IResponseTypes";
 import { useUserPreferences } from "../contexts/userPreferences";
 import { useTheme } from "../contexts/themeContext";
 import { IColors } from "../interfaces/IColors";
@@ -99,9 +103,18 @@ const HomePage = () => {
     }
   );
 
-  const SLPPriceQuery = useQuery(
+  const SLPPriceQuery = useQuery<SLPPrice, any>(
     ["SLPPrice", currency],
     async () => await fetchSLPPrice(currency),
+    {
+      keepPreviousData: true,
+      staleTime: Infinity,
+    }
+  );
+
+  const SLPPriceChartQuery = useQuery<SLPPriceChart, any>(
+    ["SLPPriceChart", currency],
+    async () => await fetchSLPPriceChart(currency),
     {
       keepPreviousData: true,
       staleTime: Infinity,
@@ -119,19 +132,6 @@ const HomePage = () => {
         });
       },
     }
-  );
-
-  const axiesQuery = useQueries(
-    scholars.map((scholar) => {
-      const address = scholar.ronin.replace("ronin:", "0x");
-      return {
-        queryKey: ["axies", scholar.ronin],
-        queryFn: () => fetchScholarAxies(address),
-
-        keepPreviousData: true,
-        staleTime: Infinity,
-      };
-    })
   );
 
   useEffect(() => {
@@ -179,12 +179,11 @@ const HomePage = () => {
   const random = Math.random() * (2 - 0) + 0;
   const randomMessage = messages[Math.round(random)];
 
-  console.log(!!axiesQuery);
-
   return (
     <Container colors={colors}>
       <div className="section1">
         <HomeSection1
+          SLPPriceChartQuery={SLPPriceChartQuery}
           scholarsQuery={scholarsQuery}
           SLPPriceQuery={SLPPriceQuery}
         />

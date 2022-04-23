@@ -1,9 +1,11 @@
 export type SLPPrice = {
-  current: number;
-  chart: {
-    price: number;
-    date: number;
-  }[];
+  "smooth-love-potion": {
+    [key: string]: number;
+  };
+};
+
+export type SLPPriceChart = {
+  prices: number[][];
 };
 
 export type Scholar = {
