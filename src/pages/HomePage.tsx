@@ -2,11 +2,10 @@ import styled, { css } from "styled-components";
 import HomeSection1 from "../templates/HomeSection1";
 import HomeSection2 from "../templates/HomeSection2";
 import AddScholarForm from "../components/AddScholarForm";
-import { useMutation, useQueries, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useScholars } from "../contexts/scholarsContext";
 import {
   fetchAllScholars,
-  fetchScholarAxies,
   fetchSLPPrice,
   refetchScholar,
   fetchSLPPriceChart,
