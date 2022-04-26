@@ -68,19 +68,7 @@ const Donate = () => {
         with the computing costs of this tracker and keep our proxy servers up
         and running.
       </p> */}
-      <div className="field">
-        Gcash:{" "}
-        <section>
-          <Button
-            bgColor={colors.textIntense + 20}
-            style={clipboardButtonStyles}
-            onClick={() => copy("0916 585 8589 (Stanley Garbo)")}
-          >
-            <BiClipboard size={25} />
-          </Button>
-          <div className="field__content"> 0916 585 8589 (Stanley Garbo)</div>
-        </section>
-      </div>
+
       <div className="field">
         Ethereum:
         <section>
