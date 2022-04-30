@@ -23,7 +23,7 @@ export const fetchSLPPriceChart = async (currency: string) => {
 export const fetchAllScholars = async (addresses: string[]) => {
   const res = await axios({
     method: "post",
-    url: `https://api.axiemanagers.io/scholars?getLeaderboard=true`,
+    url: `https://apiv2.axiemanagers.io/scholars?getLeaderboard=true`,
     data: {
       ids: addresses,
     },
@@ -34,7 +34,7 @@ export const fetchAllScholars = async (addresses: string[]) => {
 export const fetchScholarByAddress = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://api.axiemanagers.io/scholar/${address}`,
+    url: `https://apiv2.axiemanagers.io/scholar/${address}`,
   });
   return res.data;
 };
@@ -64,7 +64,7 @@ export const fetchScholarAxies = async (address: string) => {
 export const refetchScholar = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://api.axiemanagers.io/scholar/${address}?clearCache=true`,
+    url: `https://apiv2.axiemanagers.io/scholar/${address}?clearCache=true`,
   });
 
   return res.data;
@@ -73,7 +73,7 @@ export const refetchScholar = async (address: string) => {
 export const fetchScholarReports = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://api.axiemanagers.io/reports/${address}`,
+    url: `https://apiv2.axiemanagers.io/reports/${address}`,
   });
 
   return res.data;
