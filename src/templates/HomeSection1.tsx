@@ -91,7 +91,7 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Dev</span> Hello, I'm currently available for web development freelancing. If interested please fill in this <a target="blank" href="https://forms.gle/4gcybtBqeChu5DBm7">form</a>
+        <span>Dev</span> Looking for a freelance developer? Please <a href="mailto:stanleygarbo@gmail.com">contact me</a>
       </p> 
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
