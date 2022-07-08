@@ -90,9 +90,9 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      <p>
+      {/* <p>
         <span>Dev</span> Looking for a freelance developer? Please <a href="mailto:stanleygarbo@gmail.com">contact me</a>
-      </p> 
+      </p> */}
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
