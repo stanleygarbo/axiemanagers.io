@@ -90,9 +90,10 @@ const HomeSection1: React.FC<{
 
   return (
     <Container colors={colors}>
-      {/* <p>
-        <span>Dev</span> Looking for a freelance developer? Please <a href="mailto:stanleygarbo@gmail.com">contact me</a>
-      </p> */}
+      <p>
+        <span>Update</span> This build is for demo purposes only. Most of the
+        datasource is from a node.js API I set up to generate fake data.
+      </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
           <div className="home-section1-wrapper__grid__total-farmed box home-section1-wrapper__grid__item">
@@ -301,8 +302,8 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        border: 1px solid ${colors.warning};
-        background-color: ${colors.warning + 90};
+        border: 1px solid ${colors.success};
+        background-color: ${colors.success + 90};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;
