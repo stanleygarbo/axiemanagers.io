@@ -91,8 +91,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Update</span> This build is for demo purposes only. Most of the
-        datasource is from a node.js API I set up to generate fake data.
+        <span>Notice</span> This build is for demo purposes only. The datasource
+        is from a dummy API I set up to mock data and caching.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
@@ -302,8 +302,8 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        border: 1px solid ${colors.success};
-        background-color: ${colors.success + 90};
+        border: 1px solid ${colors.warning};
+        background-color: ${colors.warning + 90};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;

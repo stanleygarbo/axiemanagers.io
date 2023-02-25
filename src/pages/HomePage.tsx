@@ -33,9 +33,10 @@ const Container = styled.div<{ colors: IColors }>`
       justify-content: center;
       display: grid;
       grid-template-columns: 1fr 728px;
-      gap: 10px;
+      gap: 20px;
 
-      .notice {
+      .notice,
+      .coinzilla {
         border: 1px dashed ${colors.textIntense + 30};
         padding: 10px;
         border-radius: 5px;
@@ -51,11 +52,19 @@ const Container = styled.div<{ colors: IColors }>`
           margin-top: 3px;
         }
       }
+
+      .coinzilla {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70px;
+      }
     }
 
     @media (max-width: 1152px) {
       .ad {
-        .notice {
+        .notice,
+        .coinzilla {
           &__title {
             font-size: 14px;
           }
@@ -69,7 +78,9 @@ const Container = styled.div<{ colors: IColors }>`
       .ad {
         display: flex;
         justify-content: center;
-
+        .coinzilla {
+          width: 100%;
+        }
         .notice {
           display: none;
         }
@@ -193,7 +204,9 @@ const HomePage = () => {
             <div className="notice__title">{randomMessage.title}</div>
             <p>{randomMessage.message}</p>
           </div>
-          <div className="coinzilla" data-zone="C-8615a9fd1747a828"></div>
+          <div className="coinzilla" data-zone="C-8615a9fd1747a828">
+            <p>728 x 90 coinzilla ad placeholder</p>
+          </div>
         </div>
         <AddScholarForm />
         <HomeSection2
