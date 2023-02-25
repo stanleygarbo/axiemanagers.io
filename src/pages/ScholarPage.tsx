@@ -530,7 +530,11 @@ const ScholarPage = () => {
                           }}
                         >
                           <div className="team__axie__class">{i.class}</div>
-                          <img height={"100%"} src={i.image} alt="" />
+                          <img
+                            height={"100%"}
+                            src={`https://axiecdn.axieinfinity.com/axies/${i.id}/axie/axie-full-transparent.png`}
+                            alt=""
+                          />
                           <div className="team__axie__info">
                             <div
                               className="team__axie__info__name"
