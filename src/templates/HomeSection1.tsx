@@ -91,8 +91,11 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice</span> This build is for demo purposes only. The datasource
-        is from a dummy API I set up to mock data and caching.
+        <span>Notice</span> This build is for demo purposes only, there are also
+        pre-added form data in case you are not familiar with the
+        niche/community this app serves. The datasource is from a dummy API I
+        set up to mock data and caching as I have taken down the original GoLang
+        webserver API and cron jobs.
       </p>
       <div className="home-section1-wrapper">
         <div className="home-section1-wrapper__grid">
