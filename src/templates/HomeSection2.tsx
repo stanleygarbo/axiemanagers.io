@@ -33,7 +33,7 @@ const HomeSection2: React.FC<{
   const { currency } = useUserPreferences();
   const SLPPrice = queryClient.getQueryState<SLPPrice>(["SLPPrice", currency]);
   const [sorted, setSorted] = useState<IScholars[]>();
-
+  console.log(scholarsQuery.data);
   const [activeLayout, setActiveLayout] = useState<"tabular" | "cards">(
     "tabular"
   );
@@ -133,7 +133,6 @@ const HomeSection2: React.FC<{
       setSorted(sortedScholars);
     }
   }, [scholarsQuery.data, scholars, orderBy, order]);
-
   if (scholarsQuery.data && sorted) {
     let scholarsStat = scholarsQuery.data.list;
 
@@ -227,7 +226,7 @@ const HomeSection2: React.FC<{
                   }}
                   earned={
                     scholarsStat[i.ronin]?.total -
-                    scholarsStat[i.ronin].totalClaimable
+                    scholarsStat[i.ronin]?.totalClaimable
                   }
                   today={
                     SLPPrice?.data && scholarsStat[i.ronin]?.chart?.length > 0

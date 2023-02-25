@@ -23,7 +23,8 @@ export const fetchSLPPriceChart = async (currency: string) => {
 export const fetchAllScholars = async (addresses: string[]) => {
   const res = await axios({
     method: "post",
-    url: `https://apiv2.axiemanagers.io/scholars?getLeaderboard=true`,
+    // url: `https://apiv2.axiemanagers.io/scholars?getLeaderboard=true`,
+    url: `http://localhost:8080/scholars`,
     data: {
       ids: addresses,
     },
@@ -34,7 +35,8 @@ export const fetchAllScholars = async (addresses: string[]) => {
 export const fetchScholarByAddress = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://apiv2.axiemanagers.io/scholar/${address}`,
+    // url: `https://apiv2.axiemanagers.io/scholar/${address}`,
+    url: `http://localhost:8080/scholar/${address}`,
   });
   return res.data;
 };
