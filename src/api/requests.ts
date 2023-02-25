@@ -75,7 +75,8 @@ export const refetchScholar = async (address: string) => {
 export const fetchScholarReports = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://apiv2.axiemanagers.io/reports/${address}`,
+    // url: `https://apiv2.axiemanagers.io/reports/${address}`,
+    url: `http://localhost:8080/reports/${address}`,
   });
 
   return res.data;

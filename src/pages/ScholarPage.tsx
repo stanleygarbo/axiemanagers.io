@@ -490,10 +490,9 @@ const ScholarPage = () => {
                       reports will be coming soon.
                     </p>
                   </div>
-                  <div
-                    className="coinzilla"
-                    data-zone="C-8615a9fd1747a828"
-                  ></div>
+                  <div className="coinzilla" data-zone="C-8615a9fd1747a828">
+                    <p>728 x 90 coinzilla ad placeholder</p>
+                  </div>
                 </div>
 
                 <div className="layout-selector">
@@ -634,7 +633,8 @@ const Container = styled.div<{ colors: IColors }>`
       grid-template-columns: 1fr 728px;
       gap: 10px;
 
-      .notice {
+      .notice,
+      .coinzilla {
         border: 1px dashed ${colors.textIntense + 30};
         padding: 10px;
         border-radius: 5px;
@@ -650,6 +650,13 @@ const Container = styled.div<{ colors: IColors }>`
           margin-top: 3px;
         }
       }
+
+      .coinzilla {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     .layout-selector {
@@ -658,7 +665,8 @@ const Container = styled.div<{ colors: IColors }>`
 
     @media (max-width: 1152px) {
       .ad {
-        .notice {
+        .notice,
+        .coinzilla {
           &__title {
             font-size: 14px;
           }
@@ -678,9 +686,12 @@ const Container = styled.div<{ colors: IColors }>`
         margin-left: 16px;
         margin-right: 16px;
 
+        .coinzilla {
+          width: 100%;
+        }
         .notice {
-          /* display: none; */
-          margin-top: 20px;
+          display: none;
+          // margin-top: 20px;
         }
       }
     }
