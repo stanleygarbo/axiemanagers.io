@@ -91,8 +91,8 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Notice</span> This build is for demo purposes only, there are also
-        pre-added form data in case you are not familiar with the
+        <span>Not Maintained</span> This build is for demo purposes only, there
+        are also pre-added form data in case you are not familiar with the
         niche/community this app serves. The datasource is from a dummy API I
         set up to mock data and caching as I have taken down the original GoLang
         webserver API and cron jobs.
