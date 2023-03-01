@@ -95,7 +95,7 @@ const Container = styled.div<{ colors: IColors }>`
 `;
 
 const HomePage = () => {
-  const { scholars } = useScholars();
+  const { scholars, addScholar } = useScholars();
   const { currency } = useUserPreferences();
   const { colors } = useTheme();
   const refetchedScholars = useRef<string[]>([]);
@@ -103,6 +103,18 @@ const HomePage = () => {
   const ids = scholars?.map((i) => i.ronin.replace("ronin:", "0x"));
 
   const queryClient = useQueryClient();
+
+  // add list of scholars by default if there are none
+  useEffect(() => {
+    if (scholars.length < 1) {
+      addScholar({
+        ronin: "ronin:94d2cd95c8b15f8869ad671b5b31fe4b5e4d844d",
+        nickname: "dian",
+        managerShare: 50,
+        color: "#1b70d9",
+      });
+    }
+  }, [scholars]);
 
   const scholarsQuery = useQuery<Scholars, any>(
     "Scholars",
