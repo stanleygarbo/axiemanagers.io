@@ -518,6 +518,15 @@ const ScholarPage = () => {
                       </div>
                     )}
                     <div className="team">
+                      {axiesQuery.data.length ? null : (
+                        <div className="team__message">
+                          <span className="team__message__nickname">
+                            {" "}
+                            {scholar?.nickname}
+                          </span>{" "}
+                          has no axies
+                        </div>
+                      )}
                       {axiesQuery.data?.map((i) => (
                         <div
                           key={i.id}
@@ -867,6 +876,20 @@ const Container = styled.div<{ colors: IColors }>`
       margin-top: 20px;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
+
+      &__message {
+        color: ${colors.textNotSoIntense};
+
+        border: 1px dashed ${colors.textIntense + 30};
+        padding: 40px 100px;
+        border-radius: 5px;
+        justify-self: start;
+
+        &__nickname {
+          color: ${colors.textIntense};
+        }
+      }
+
       &__axie {
         color: ${colors.textNotSoIntense};
         background-color: ${colors.BGLight};
