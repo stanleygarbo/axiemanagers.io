@@ -114,7 +114,7 @@ const HomePage = () => {
         color: "#1b70d9",
       });
     }
-  }, [scholars]);
+  }, [scholars, addScholar]);
 
   const scholarsQuery = useQuery<Scholars, any>(
     "Scholars",
