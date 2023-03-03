@@ -40,6 +40,7 @@ const Container = styled.div<{ colors: IColors }>`
         border: 1px dashed ${colors.textIntense + 30};
         padding: 10px;
         border-radius: 5px;
+        position: relative;
 
         &__title {
           color: ${colors.textNotSoIntense};
@@ -58,6 +59,18 @@ const Container = styled.div<{ colors: IColors }>`
         align-items: center;
         justify-content: center;
         min-height: 70px;
+
+        p {
+          color: ${colors.textIntense};
+          width: 100%;
+          height: 100%;
+          background: rgba(13, 41, 74, 0.9);
+          position: absolute;
+          margin: 0;
+          display: grid;
+          place-items: center;
+          display: none;
+        }
       }
     }
 
@@ -216,9 +229,22 @@ const HomePage = () => {
             <div className="notice__title">{randomMessage.title}</div>
             <p>{randomMessage.message}</p>
           </div>
-          <div className="coinzilla" data-zone="C-8615a9fd1747a828">
-            <p>728 x 90 coinzilla ad placeholder</p>
-          </div>
+          <div
+            className="coinzilla"
+            style={{ padding: 0, border: "none" }}
+            data-zone="C-8615a9fd1747a828"
+            dangerouslySetInnerHTML={{
+              __html: `
+                <iframe
+                  frameBorder={0}
+                  width="100%"
+                  height="90px"
+                  src="https://cdn.coinzilla.io/html_customers/09e329762039303b1521fd97b28de72a/index.html"
+                ></iframe>
+                <p>728 x 90 coinzilla ad placeholder</p>
+              `,
+            }}
+          ></div>
         </div>
         <AddScholarForm />
         <HomeSection2
