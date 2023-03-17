@@ -1,46 +1,23 @@
-# Getting Started with Create React App
+# A community-loved web-based blockchain asset tracking system that had amassed up to 160k+ users.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
 
-## Available Scripts
+![Dashboard Screenshot](https://images.ctfassets.net/fzre4f4yqndt/3xtwnBidWQncFZuzKNAr4A/d551d01399af33123ddbba34e8ce1c9f/axie-managers-io-home.png)
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+- ⚙️ React, TypeScript, Golang, PostgreSQL, Redis, Docker, Caddy
+- 📆 Aug 2021 - Aug 2022
+- 💻 Web-based Tracking System
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A platform for a specific blockchain gaming community where they could track all of their assets whether in-game or on the blockchain. It became quite a popular tracker for community members, amassing up to 168k users
 
-### `yarn test`
+## Context
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the explosion of interest in cryptocurrencies in 2020-2021, combined with the COVID-19 pandemic keeping the majority of people indoors and unemployed, blockchain games became quite popular in the Philippines as it allowed people to earn cryptocurrencies as rewards which they can later on trade for real money just for playing a game.
 
-### `yarn build`
+Axie Infinity was the most popular blockchain game where you could buy, sell and breed digital creatures called "axies," which are represented as NFTs. They can then use these creatures to play the game, allowing them to earn tokens which they can then trade for real money. People who had the financial capabilities to buy "axies" would sometimes lend these creatures to other people and let them play the game, they would just have to split the rewards. This gave birth to the game's scholarship system. The community refers to the people who own and lend axies as "managers" and people who play/borrow with the lender's axies as "scholars"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![A test image](https://stanleygarbo.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ffzre4f4yqndt%2F7I8IgJp1a2yRCd3bUxzeEx%2Fa8c0286bd5f006531fb16b2c17ab325d%2FBDCFCB70-604C-4DD6-95E6-F973B939F7CF.jpeg&w=1920&q=75)
