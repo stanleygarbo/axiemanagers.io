@@ -25,7 +25,7 @@ export const fetchAllScholars = async (addresses: string[]) => {
     method: "post",
     // url: `https://apiv2.axiemanagers.io/scholars?getLeaderboard=true`,
     // url: `http://localhost:8080/scholars`,
-    url: `https://axiemockdata-production.up.railway.app/scholars`,
+    url: `https://axiemockdata.onrender.com/scholars`,
     data: {
       ids: addresses,
     },
@@ -38,7 +38,7 @@ export const fetchScholarByAddress = async (address: string) => {
     method: "get",
     // url: `https://apiv2.axiemanagers.io/scholar/${address}`,
     // url: `http://localhost:8080/scholar/${address}`,
-    url: `https://axiemockdata-production.up.railway.app/scholar/${address}`,
+    url: `https://axiemockdata.onrender.com/scholar/${address}`,
   });
   return res.data;
 };
@@ -68,7 +68,7 @@ export const fetchScholarAxies = async (address: string) => {
 export const refetchScholar = async (address: string) => {
   const res = await axios({
     method: "get",
-    url: `https://apiv2.axiemanagers.io/scholar/${address}?clearCache=true`,
+    url: `https://axiemockdata.onrender.com/scholar/${address}?clearCache=true`,
   });
 
   return res.data;
@@ -79,7 +79,7 @@ export const fetchScholarReports = async (address: string) => {
     method: "get",
     // url: `https://apiv2.axiemanagers.io/reports/${address}`,
     // url: `http://localhost:8080/reports/${address}`,
-    url: `https://axiemockdata-production.up.railway.app/reports/${address}`,
+    url: `https://axiemockdata.onrender.com/reports/${address}`,
   });
 
   return res.data;
