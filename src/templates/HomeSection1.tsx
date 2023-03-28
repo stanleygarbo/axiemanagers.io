@@ -91,8 +91,9 @@ const HomeSection1: React.FC<{
   return (
     <Container colors={colors}>
       <p>
-        <span>Not Maintained</span> This build is for demo purposes only, there
-        are also pre-added form data in case you are not familiar with the
+        <span>Not Maintained</span> Unable to access Coingecko API for fetching
+        crypto prices. This build is for demo purposes only, there are also
+        pre-added form data in case you are not familiar with the
         niche/community this app serves. The datasource is from a dummy API I
         set up to mock data and caching as I have taken down the original GoLang
         webserver API and cron jobs.
@@ -305,8 +306,8 @@ const Container = styled.div<{ colors: IColors }>`
       font-size: 13px;
 
       span {
-        border: 1px solid ${colors.warning};
-        background-color: ${colors.warning + 90};
+        border: 1px solid ${colors.danger};
+        background-color: ${colors.danger + 90};
         color: #fff;
         padding: 1px 7px;
         border-radius: 5px;
