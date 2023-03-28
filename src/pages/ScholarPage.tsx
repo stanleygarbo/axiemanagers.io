@@ -518,7 +518,7 @@ const ScholarPage = () => {
                       </div>
                     )}
                     <div className="team">
-                      {axiesQuery.data.length ? null : (
+                      {axiesQuery.data?.length ? null : (
                         <div className="team__message">
                           <span className="team__message__nickname">
                             {" "}
